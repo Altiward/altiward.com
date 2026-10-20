@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Altiward | See who holds admin on every Mac, and for how long</title>
+<meta name="description" content="Open-source oversight of Mac admin rights alongside SAP Privileges. Check actual membership, configure expiry enforcement and send evidence to your SIEM.">
+<link rel="canonical" href="https://altiward.com/altiward/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Altiward">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://altiward.com/altiward/">
+<meta property="og:title" content="Altiward | See who holds admin on every Mac, and for how long">
+<meta property="og:description" content="Open-source oversight of Mac admin rights alongside SAP Privileges. Check actual membership, configure expiry enforcement and send evidence to your SIEM.">
+<meta property="og:image" content="https://altiward.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://altiward.com/#org",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://altiward.com/#logo",
+    "url": "https://altiward.com/mark.png",
+    "contentUrl": "https://altiward.com/mark.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": {
+    "@id": "https://altiward.com/#logo"
+   },
+   "description": "Altiward adds open-source oversight to SAP Privileges, with admin membership checks, configurable expiry enforcement, console revocation and SIEM export. Self-hosted under Apache 2.0.",
+   "email": "hello@altiward.com",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general enquiries",
+    "email": "hello@altiward.com",
+    "availableLanguage": "en-GB"
+   }
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://altiward.com/#site",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "inLanguage": "en-GB",
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://altiward.com/altiward/#webpage",
+   "url": "https://altiward.com/altiward/",
+   "name": "Altiward | See who holds admin on every Mac, and for how long",
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "about": {
+    "@id": "https://altiward.com/#software"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://altiward.com/og.png",
+    "width": 1200,
+    "height": 630
+   },
+   "inLanguage": "en-GB"
+  },
+  {
+   "@type": "SoftwareApplication",
+   "@id": "https://altiward.com/#software",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "applicationCategory": "SecurityApplication",
+   "applicationSubCategory": "Mac admin access control and evidence",
+   "operatingSystem": "macOS",
+   "description": "Open-source oversight of Mac admin rights alongside SAP Privileges. Check actual membership, configure expiry enforcement and send evidence to your SIEM.",
+   "softwareRequirements": "macOS 13 or later; SAP Privileges for elevation",
+   "isAccessibleForFree": true,
+   "license": "https://www.apache.org/licenses/LICENSE-2.0",
+   "offers": {
+    "@type": "Offer",
+    "price": "0",
+    "priceCurrency": "GBP"
+   },
+   "downloadUrl": "https://github.com/Altiward/altiward/releases",
+   "inLanguage": "en-GB",
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   },
+   "provider": {
+    "@id": "https://altiward.com/#org"
+   },
+   "sameAs": "https://github.com/Altiward/altiward"
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#page-content">Skip to content</a>
+
+<div class="wrap">
+  <header class="site-header">
+      <a class="lockup" href="/" aria-label="Altiward home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <span>Altiward</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <details class="nav-menu">
+          <summary>Products<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></summary>
+          <div class="nav-panel">
+            <a href="/altiward/" aria-current="page"><strong>Altiward</strong><span>Agent, server and console for Mac admin oversight</span></a>
+            <a href="/forwarder/"><strong class="mono">altiward-forwarder</strong><span>SAP&nbsp;Privileges events to your SIEM, no agent needed</span></a>
+            <a href="/detections/"><strong class="mono">altiward-siem</strong><span>Detection rules for Sentinel and Splunk</span></a>
+            <a class="panel-foot" href="/#projects">How the three fit together</a>
+          </div>
+        </details>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/">Guides</a>
+        <a href="/altiward/#start">Install</a>
+      </nav>
+      <span class="spacer"></span>
+      <a class="gh-button" href="https://github.com/Altiward/altiward"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View on GitHub</a>
+    </header>
+
+  <main id="page-content" tabindex="-1">
+    <section class="home-hero product-hero" aria-labelledby="hero-title">
+      <span class="label">Altiward · Agent, server and console · Open source</span>
+      <h1 id="hero-title" class="display">See who holds admin on every Mac. <span>And for how long.</span></h1>
+      <p class="lede">Altiward checks each Mac's real admin group against recorded grants, can remove rights that outlive them, and sends the record to your SIEM. SAP&nbsp;Privileges handles elevation; Altiward adds oversight across the fleet.</p>
+      <div class="actions">
+        <a class="button solid" href="https://github.com/Altiward/altiward"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View Altiward on GitHub</a>
+        <a class="button outline" href="#start">Try the console locally</a>
+      </div>
+    </section>
+
+    <figure class="shot">
+      <span class="frame"><picture><source srcset="/images/console-admins-now-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-admins-now-light.png" width="1440" height="900" alt="Admins now in the Altiward console: ten people holding admin rights, one account without a grant, each with their Mac and the time used against the time allowed. One session is open in the detail panel, elevated and verified, with its reason and timeline." loading="eager" decoding="async"></picture></span>
+      <figcaption><strong>Admins now</strong>, in the Altiward console. Example data.</figcaption>
+    </figure>
+
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="section-head">
+        <span class="label">What Altiward adds</span>
+        <h2 id="features-title">Know who has admin. Act on what you find.</h2>
+      </div>
+      <div class="feature-rows">
+        <div>
+          <span class="label">01 · Observe</span>
+          <h3>Check actual admin rights</h3>
+          <p>The agent reads each Mac's admin group and checks it against recorded grants and your permanent-admin list. Unexpected membership becomes a finding for your team to investigate.</p>
+        </div>
+        <div>
+          <span class="label">02 · Control</span>
+          <h3>Choose what happens at expiry</h3>
+          <p>Alert when rights outlive their grant, or configure the agent to remove them. Request an early revocation from the console; the Mac applies it when it can reach your server.</p>
+        </div>
+        <div>
+          <span class="label">03 · Investigate</span>
+          <h3>See what changed during a session</h3>
+          <p>Review detected changes to local accounts, launch items, sudoers, SSH keys and remote access. Missing check-ins show where visibility has stopped.</p>
+        </div>
+        <div>
+          <span class="label">04 · Export</span>
+          <h3>Bring the record into your SIEM</h3>
+          <p>Send session evidence, findings and console actions to Splunk, Microsoft Sentinel or syslog as OCSF events, and correlate them with the telemetry you already collect.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="session" aria-labelledby="session-title">
+      <div class="section-head">
+        <span class="label">The separate check</span>
+        <h2 id="session-title">It reads the admin group, not just the timer.</h2>
+      </div>
+    <figure class="strip" aria-labelledby="strip-title">
+      <div class="strip-head">
+        <div>
+          <strong id="strip-title">One session, from grant to removal</strong>
+          <span class="small muted">Example data</span>
+        </div>
+        <span class="mono">priya.raman · C02XK0AAJGH5</span>
+      </div>
+
+      <div class="timeline" role="img" aria-label="Timeline from 14:00 to 14:40. The account is a standard user until admin rights are granted at 14:02. SAP Privileges' timer stops at 14:10. The grant expires at 14:32 while the rights are still held, and the rights are removed at 14:39, after the five-minute grace period, returning the account to a standard user.">
+        <span class="n s1" style="left: 5%">1</span>
+        <span class="n s2" style="left: 25%">2</span>
+        <span class="n s3" style="left: 80%">3</span>
+        <span class="n s4" style="left: 97.5%">4</span>
+        <i class="tick step s1" style="left: 5%"></i>
+        <i class="tick s2" style="left: 25%"></i>
+        <i class="tick s3" style="left: 80%"></i>
+        <i class="tick step s4" style="left: 97.5%"></i>
+        <i class="bar low" style="left: 0; width: 5%"></i>
+        <i class="bar high" style="left: 5%; width: 75%"></i>
+        <i class="bar over" style="left: 80%; width: 17.5%"></i>
+        <i class="bar low tail" style="left: 97.5%; right: 0"></i>
+        <i class="axis"></i>
+        <span class="t first" style="left: 0">14:00</span>
+        <span class="t mid" style="left: 25%">14:10</span>
+        <span class="t" style="left: 50%">14:20</span>
+        <span class="t mid" style="left: 75%">14:30</span>
+        <span class="t last">14:40</span>
+      </div>
+
+      <div class="legend" aria-hidden="true">
+        <span><i class="key low"></i>Standard user</span>
+        <span><i class="key high"></i>Admin, within its grant</span>
+        <span><i class="key over"></i>Admin, past expiry</span>
+      </div>
+
+      <ol class="events">
+        <li><span class="when"><b>1</b> · 14:02</span><span class="what">Admin granted. Reason: “Install the printer driver”</span><span class="who">Recorded by SAP&nbsp;Privileges</span></li>
+        <li><span class="when"><b>2</b> · 14:10</span><span class="what">SAP&nbsp;Privileges' timer stops. The agent keeps checking the admin group.</span><span class="who">Altiward agent</span></li>
+        <li><span class="when"><b>3</b> · 14:32</span><span class="what">The grant expires. The rights are still in the admin group.</span><span class="who">Altiward agent</span></li>
+        <li><span class="when"><b>4</b> · 14:39</span><span class="what">Rights removed, and the session recorded as ended by enforcement.</span><span class="who">Altiward agent</span></li>
+      </ol>
+      <p class="strip-note">Illustrative session with <code>ExpiryEnforcement=enforce</code> and the default five-minute grace period. Removal occurs at a heartbeat after that period, not at a fixed deadline. The default, <code>alert</code>, reports the rights past expiry instead of removing them. <a href="/how-it-works/">How it works, step by step</a></p>
+    </figure>
+    </section>
+
+    <section class="section" id="console" aria-labelledby="console-title">
+      <div class="section-head">
+        <span class="label">The console</span>
+        <h2 id="console-title">One place to see admin rights across the fleet.</h2>
+      </div>
+      <div class="shot-pair">
+        <figure class="shot" id="shot-overview">
+          <a class="frame zoom" href="#view-overview"><picture><source srcset="/images/console-overview-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-overview-light.png" width="1440" height="900" alt="The Altiward console&#x27;s Overview: ten people with admin rights now, one without a grant, two things that need a look, and elevations per day over the last 30 days." loading="lazy" decoding="async"></picture><span class="zoom-cue" aria-hidden="true">Open full size</span></a>
+          <figcaption><strong>Overview</strong>. Example data.</figcaption>
+        </figure>
+        <div class="lightbox" id="view-overview" role="group" aria-label="Overview, full size">
+          <a class="lightbox-backdrop" href="#shot-overview" tabindex="-1" aria-hidden="true"></a>
+          <picture><source srcset="/images/console-overview-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-overview-light.png" width="1440" height="900" alt="The Altiward console&#x27;s Overview: ten people with admin rights now, one without a grant, two things that need a look, and elevations per day over the last 30 days." loading="lazy" decoding="async"></picture>
+          <a class="lightbox-close" href="#shot-overview">Close</a>
+        </div>
+        <figure class="shot" id="shot-fleet">
+          <a class="frame zoom" href="#view-fleet"><picture><source srcset="/images/console-fleet-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-fleet-light.png" width="1440" height="900" alt="Fleet in the Altiward console: each enrolled Mac with its last check-in, admins, macOS, agent and SAP Privileges versions. One Mac&#x27;s agent is marked outdated." loading="lazy" decoding="async"></picture><span class="zoom-cue" aria-hidden="true">Open full size</span></a>
+          <figcaption><strong>Fleet</strong>. Example data.</figcaption>
+        </figure>
+        <div class="lightbox" id="view-fleet" role="group" aria-label="Fleet, full size">
+          <a class="lightbox-backdrop" href="#shot-fleet" tabindex="-1" aria-hidden="true"></a>
+          <picture><source srcset="/images/console-fleet-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-fleet-light.png" width="1440" height="900" alt="Fleet in the Altiward console: each enrolled Mac with its last check-in, admins, macOS, agent and SAP Privileges versions. One Mac&#x27;s agent is marked outdated." loading="lazy" decoding="async"></picture>
+          <a class="lightbox-close" href="#shot-fleet">Close</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="start" id="start" aria-labelledby="start-title">
+      <div>
+        <div class="section-head">
+          <span class="label">Your infrastructure</span>
+          <h2 id="start-title">You run it. You keep the record.</h2>
+        </div>
+        <dl class="facts" id="data">
+          <div><dt>Self-hosted</dt><dd>You host the server, web console and Postgres database. Docker Compose files are included.</dd></div>
+          <div><dt>No fleet telemetry to Altiward</dt><dd>The console's optional update check asks GitHub for the release list. It sends no fleet data and can be turned off.</dd></div>
+          <div><dt>Free, with no limit on Macs</dt><dd>Apache License 2.0. <a href="https://github.com/Altiward/altiward/blob/main/docs/data-handling.md">Read what Altiward collects, stores and sends</a>, or review the source before you deploy.</dd></div>
+        </dl>
+      </div>
+      <div>
+        <div class="code-panel">
+          <div class="code-head"><span class="title">Try the console locally</span><span class="file">Go 1.25+ · Node 22 · Docker</span></div>
+<pre tabindex="0" aria-label="Commands to try the console locally"><code>git clone https://github.com/Altiward/altiward
+cd altiward &amp;&amp; make console-install
+make run-api
+<span class="c"># then, in a second terminal</span>
+make console-seed &amp;&amp; make console-dev
+<span class="c"># open http://localhost:5173 and sign in with</span>
+<span class="c"># the token dev-console-token-001</span></code></pre>
+        </div>
+        <div class="actions">
+          <a class="button solid" href="https://github.com/Altiward/altiward/blob/main/docs/install.md">Read the install guide</a>
+          <a class="button outline" href="https://github.com/Altiward/altiward/releases">Releases</a>
+        </div>
+        <p class="small muted">Only need SAP&nbsp;Privileges events in your SIEM? <a href="/forwarder/">altiward-forwarder</a> sends them without the agent.</p>
+      </div>
+    </section>
+  </main>
+</div>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="lockup" href="/" aria-label="Altiward home">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+          <span>Altiward</span>
+        </a>
+        <p>Open-source oversight for temporary admin on macOS.</p>
+      </div>
+      <nav aria-label="Explore Altiward">
+        <span class="label">Explore</span>
+        <a href="/altiward/">Altiward</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/">Guides</a>
+        <a href="/#projects">Projects</a>
+      </nav>
+      <nav aria-label="Altiward on GitHub">
+        <span class="label">GitHub</span>
+        <a class="mono" href="https://github.com/Altiward/altiward">altiward</a>
+        <a class="mono" href="https://github.com/Altiward/altiward-forwarder">altiward-forwarder</a>
+        <a class="mono" href="https://github.com/Altiward/altiward-siem">altiward-siem</a>
+        <a href="https://github.com/Altiward/altiward/releases">Releases</a>
+      </nav>
+      <nav aria-label="Project resources">
+        <span class="label">Project</span>
+        <a href="https://github.com/Altiward/altiward/blob/main/CONTRIBUTING.md">Contribute</a>
+        <a href="https://github.com/Altiward/altiward.com">Website source</a>
+        <a href="/security/">Report a vulnerability</a>
+        <a href="mailto:hello@altiward.com">hello@altiward.com</a>
+      </nav>
+    </div>
+    <p class="legal">© 2026 Altiward. Open source under the Apache License 2.0. Altiward is an independent project and isn't affiliated with or endorsed by SAP. SAP is a trademark of SAP SE.</p>
+  </div>
+</footer>
+</body>
+</html>

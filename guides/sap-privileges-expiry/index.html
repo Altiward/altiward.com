@@ -1,0 +1,278 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>When Mac admin rights outlive their timer | Altiward</title>
+<meta name="description" content="Why SAP Privileges admin rights can outlive their timer, which settings reduce the risk, and how Altiward adds expiry enforcement and session evidence.">
+<link rel="canonical" href="https://altiward.com/guides/sap-privileges-expiry/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Altiward">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://altiward.com/guides/sap-privileges-expiry/">
+<meta property="og:title" content="When Mac admin rights outlive their timer | Altiward">
+<meta property="og:description" content="Why SAP Privileges admin rights can outlive their timer, which settings reduce the risk, and how Altiward adds expiry enforcement and session evidence.">
+<meta property="og:image" content="https://altiward.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://altiward.com/#org",
+   "name": "Altiward",
+   "url": "https://altiward.com/"
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://altiward.com/#site",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://altiward.com/guides/sap-privileges-expiry/#webpage",
+   "url": "https://altiward.com/guides/sap-privileges-expiry/",
+   "name": "When Mac admin rights outlive their timer | Altiward",
+   "description": "Why SAP Privileges admin rights can outlive their timer, which settings reduce the risk, and how Altiward adds expiry enforcement and session evidence.",
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://altiward.com/guides/sap-privileges-expiry/#breadcrumb"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://altiward.com/og.png",
+    "width": 1200,
+    "height": 630
+   },
+   "inLanguage": "en-GB",
+   "mainEntity": {
+    "@id": "https://altiward.com/guides/sap-privileges-expiry/#article"
+   }
+  },
+  {
+   "@type": [
+    "Article",
+    "TechArticle"
+   ],
+   "@id": "https://altiward.com/guides/sap-privileges-expiry/#article",
+   "url": "https://altiward.com/guides/sap-privileges-expiry/",
+   "headline": "When Mac admin rights outlive their timer",
+   "description": "Why SAP Privileges admin rights can outlive their timer, which settings reduce the risk, and how Altiward adds expiry enforcement and session evidence.",
+   "inLanguage": "en-GB",
+   "dateModified": "2026-10-19",
+   "author": {
+    "@id": "https://altiward.com/#org"
+   },
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   },
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "mainEntityOfPage": {
+    "@id": "https://altiward.com/guides/sap-privileges-expiry/#webpage"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://altiward.com/guides/sap-privileges-expiry/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Altiward",
+     "item": "https://altiward.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://altiward.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Admin rights that outlive their timer",
+     "item": "https://altiward.com/guides/sap-privileges-expiry/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#page-content">Skip to content</a>
+
+<div class="wrap">
+  <header class="site-header">
+      <a class="lockup" href="/" aria-label="Altiward home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <span>Altiward</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <details class="nav-menu">
+          <summary>Products<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></summary>
+          <div class="nav-panel">
+            <a href="/altiward/"><strong>Altiward</strong><span>Agent, server and console for Mac admin oversight</span></a>
+            <a href="/forwarder/"><strong class="mono">altiward-forwarder</strong><span>SAP&nbsp;Privileges events to your SIEM, no agent needed</span></a>
+            <a href="/detections/"><strong class="mono">altiward-siem</strong><span>Detection rules for Sentinel and Splunk</span></a>
+            <a class="panel-foot" href="/#projects">How the three fit together</a>
+          </div>
+        </details>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/" aria-current="true">Guides</a>
+        <a href="/altiward/#start">Install</a>
+      </nav>
+      <span class="spacer"></span>
+      <a class="gh-button" href="https://github.com/Altiward/altiward"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View on GitHub</a>
+    </header>
+
+  <div class="guide-layout">
+    <nav class="guide-nav" aria-label="Guides">
+      <div>
+        <span class="label">Guides</span>
+        <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
+        <a href="/guides/sap-privileges-expiry/" aria-current="page">When Mac admin rights outlive their timer</a>
+        <a href="/guides/sap-privileges-siem/">Mac admin evidence in your SIEM</a>
+        <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
+        <a href="/guides/intune-epm-mac/">Deploy on Intune-managed Macs</a>
+        <a href="/laps/">macOS LAPS and just-in-time admin</a>
+        <a href="/dspt-caf/">CAF-aligned DSPT evidence</a>
+      </div>
+      <div class="toc">
+        <span class="label">On this page</span>
+        <a href="#how">How the timer works</a>
+        <a href="#why">Six reasons admin rights outlive the timer</a>
+        <a href="#settings">Settings that reduce the risk</a>
+        <a href="#check">How to check that admin rights ended</a>
+        <a href="#limits">What Privileges can't do on its own</a>
+        <a href="#sources">Sources</a>
+      </div>
+    </nav>
+
+    <main class="guide-article" id="page-content" tabindex="-1">
+      <span class="label">Altiward guide · Expiry enforcement</span>
+      <h1>When Mac admin rights outlive their timer</h1>
+      <p class="lede">Altiward adds a separate membership check and configurable enforcement when temporary admin rights outlive their recorded grant. Here's why it matters alongside SAP&nbsp;Privileges, and which native settings reduce the risk.</p>
+      <div class="meta-line"><span>Last reviewed October 2026</span><span>SAP Privileges 2.6.0</span><span>corp.sap.privileges</span></div>
+
+      <div class="callout"><svg viewBox="0 0 16 16" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 7.25v3.5M8 5.1v.1"/></svg><div>
+        <p><strong>Check actual rights against the recorded grant.</strong> Altiward's agent reads the admin group and, when enforcement is enabled, removes rights it finds past expiry and the configured grace period. Its server flags missing Altiward check-ins, making a loss of visibility visible to your team. <a href="/how-it-works/">See an example of enforcement and the resulting evidence</a>.</p>
+        <p>SAP documents that Privileges cannot guarantee removal on a schedule. Its own settings reduce several risks below; Altiward adds enforcement and fleet-wide evidence alongside those controls. <a href="/guides/sap-privileges-with-altiward/">Compare Privileges alone with Privileges plus Altiward</a>.</p>
+      </div></div>
+
+      <p>This guide is about Privileges 2.x and was checked against <a href="https://github.com/SAP/macOS-enterprise-privileges/releases/tag/2.6.0">Privileges 2.6.0</a>, released on 17 September 2026. Key names are the ones you set in a configuration profile for the <code>corp.sap.privileges</code> preference domain.</p>
+
+      <div class="callout"><svg viewBox="0 0 16 16" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 7.25v3.5M8 5.1v.1"/></svg><div>
+        <p><strong>Altiward alerts by default.</strong> In the <code>com.altiward.agent</code> profile, <code>ExpiryEnforcement=alert</code> reports overdue rights; <code>enforce</code> removes them; <code>off</code> disables the check. The default grace period is five minutes, followed by the next heartbeat check. The <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example profile on GitHub</a> documents these settings.</p>
+      </div></div>
+
+      <h2 id="how">How the timer works</h2>
+      <p>When someone asks for admin, <em>PrivilegesDaemon</em>, which runs with root rights, adds them to the Mac's admin group. The countdown that should take them out again is run by the <em>PrivilegesAgent</em>, a LaunchAgent in the person's own session. SAP's maintainers put it this way: "the revocation of admin rights happens in the user context" (<a href="https://github.com/SAP/macOS-enterprise-privileges/issues/277">issue #277</a>).</p>
+      <p>That design is reasonable, and the agent is relaunched if it quits. But it means the thing that ends admin rights runs alongside a person who, for those minutes, can change anything on the Mac.</p>
+
+      <h2 id="why">Six reasons admin rights outlive the timer</h2>
+
+      <h3>1. The timer was never meant to end</h3>
+      <p>An <code>ExpirationInterval</code> of <code>0</code> "disables the timeout and allows the user to request permanent administrator privileges." Unless a profile manages the interval, people can pick <em>Never</em> themselves. Renewals extend a grant too: <code>AllowPrivilegeRenewal</code> offers a <em>Renew</em> button before expiry, and from 2.6.0, <code>AutoRenewalProcessPaths</code> renews automatically while a listed process is running. There's no cumulative cap on renewals today; it's an <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/280">open feature request</a>.</p>
+
+      <h3>2. The person isn't covered by the timer</h3>
+      <p>With <code>LimitToUser</code> or <code>LimitToGroup</code> set, people outside the limit aren't managed by Privileges at all, so an admin right they hold has no timer. SAP confirmed this is "expected behavior" in <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/277">issue #277</a>. <code>AutomaticRevocationExcludedUsers</code> (2.5.2+) deliberately exempts accounts from every automatic revocation, which is right for a break-glass account and wrong for anyone else.</p>
+
+      <h3>3. Something else changed the admin group</h3>
+      <p>If another process adds or removes an admin, Privileges notices but doesn't undo it. A maintainer explained why: "If the admin privileges are changed by another process, Privileges is out of the game… it's a bad idea to change them again" (<a href="https://github.com/SAP/macOS-enterprise-privileges/issues/185">issue #185</a>). Since 2.3.0, Privileges logs the change on the Mac. From <a href="https://github.com/SAP/macOS-enterprise-privileges/releases/tag/2.6.0">2.6.0</a>, on macOS 14 or later with the system extension turned on, it logs every change to the admin group along with the process that made it. That record stays on the Mac, where an admin reads it with <code>PrivilegesCLI --history</code>. It raises no alert and sends nothing to a SIEM. Platform SSO set to make users admin at sign-in is one example reported to SAP (<a href="https://github.com/SAP/macOS-enterprise-privileges/issues/185">issue #185</a>).</p>
+
+      <h3>4. The person used their admin rights to keep them</h3>
+      <p>This is the one SAP is most direct about. Its <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Frequently-Asked-Questions">FAQ</a> lists what a local admin can do, including "completely removing the <em>Privileges</em> application", "creating a new administrator account or modifying existing user accounts", and "resetting date/time… to try to trick <em>Privileges</em>". A second admin account outlives every timer, because Privileges only manages the account that asked. Persistence through a <code>sudoers.d</code> entry has been reported too (<a href="https://github.com/SAP/macOS-enterprise-privileges/issues/92">issue #92</a>).</p>
+      <p>Tamper protection (2.5.0+, below) protects Privileges' application files and components against unauthorised changes. In its discussion of a proposed cumulative elevation limit, SAP also explains that client-side controls are not a tamper-proof boundary against someone determined to misuse existing admin rights (<a href="https://github.com/SAP/macOS-enterprise-privileges/issues/280">issue #280</a>).</p>
+
+      <h3>5. The grant reported an error but went through</h3>
+      <p>A user report in <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/288">issue #288</a> describes a grant succeeding without a revocation timer after the daemon reports <em>Failed to verify group membership</em>. The reporter suspected directory cache delays on Macs signed in with an Apple Account; the maintainer discussed removing the extra verification check. Read the issue and current release notes to assess whether the report applies to your version and environment. An earlier report with the same symptom, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/260">issue #260</a>, could not be reproduced by the maintainer.</p>
+
+      <h3>6. The profile didn't apply</h3>
+      <p>Privileges reads managed settings only from <code>corp.sap.privileges</code>. A profile aimed at another domain, such as the daemon's, does nothing and raises no error (<a href="https://github.com/SAP/macOS-enterprise-privileges/issues/274">issue #274</a>). On a Mac with no managed interval, the person chooses their own, including <em>Never</em>.</p>
+
+      <h2 id="settings">Settings that reduce the risk</h2>
+      <p>All of these go in a configuration profile for <code>corp.sap.privileges</code>, deployed through your MDM. SAP's <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges">Managing Privileges</a> page documents each one.</p>
+      <div class="compare" tabindex="0" role="region" aria-label="Privileges settings that narrow the gaps">
+        <table>
+          <thead><tr><th scope="col">Key</th><th scope="col">Since</th><th scope="col">Risk it reduces</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><code>ExpirationIntervalMax</code></th><td>2.0.0</td><td>Lets people choose a duration up to your limit and takes <em>Never</em> off the table. SAP recommends it over <code>ExpirationInterval</code>; if you set both, <code>ExpirationInterval</code> wins.</td></tr>
+            <tr><th scope="row"><code>AllowPrivilegeRenewal</code>, <code>RenewalFollowsAuthSetting</code></th><td>2.1.0</td><td>Leave renewal off, or make renewing need the same authentication as the first request.</td></tr>
+            <tr><th scope="row"><code>RevokePrivilegesAtLogin</code></th><td>2.0.0</td><td>Takes admin away when the person signs in, so rights don't carry over a logout or restart.</td></tr>
+            <tr><th scope="row"><code>RevokePrivilegesOnScreenLock</code></th><td>2.5.1</td><td>Ends admin when the screen locks, so an unattended Mac isn't left elevated.</td></tr>
+            <tr><th scope="row"><code>RevokePrivilegesAfterSystemTimeChange</code></th><td>2.4.1</td><td>Ends admin if the clock is changed. SAP notes it "offers no protection against users misusing their admin rights" in other ways.</td></tr>
+            <tr><th scope="row"><code>EnableSystemExtension</code></th><td>2.5.0</td><td>Tamper protection for Privileges' own files and launchd jobs, on macOS 13 or later. It needs Full Disk Access granted to <code>corp.sap.privileges.extension</code> by a PPPC profile.</td></tr>
+            <tr><th scope="row"><code>RequireAuthentication</code>, <code>ReasonRequired</code></th><td>1.5.0</td><td>Makes each request carry a password or Touch ID, and a reason you can review later.</td></tr>
+            <tr><th scope="row"><code>RemoteLogging</code>, <code>QueueUnsentEvents</code></th><td>1.5.0, 2.4.0</td><td>Sends each grant and revocation off the Mac, by syslog or webhook, and queues events that couldn't be sent. See <a href="/guides/sap-privileges-siem/">sending Privileges logs to your SIEM</a>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Keep <code>LimitToUser</code>, <code>LimitToGroup</code> and the <code>…ExcludedUsers</code> keys for the accounts that genuinely need them, and remember that anyone outside them has no timer.</p>
+
+      <h2 id="check">How to check that admin rights ended</h2>
+      <p><strong>On the Mac</strong>, Privileges 2.6.0 adds a 30-day history:</p>
+<figure class="code-panel">
+        <figcaption class="code-head"><span class="file">PrivilegesCLI history command</span></figcaption>
+<pre tabindex="0" aria-label="PrivilegesCLI history command"><code>/Applications/Privileges.app/Contents/MacOS/PrivilegesCLI --history --privilege-changes-only</code></pre>
+      </figure>
+      <p>Add <code>--json</code> for machine-readable output. From 2.6.0, the daemon's audit messages are also in the unified log:</p>
+<figure class="code-panel">
+        <figcaption class="code-head"><span class="file">Unified log query for Privileges audit messages</span></figcaption>
+<pre tabindex="0" aria-label="Unified log query for Privileges audit messages"><code>sudo log show --predicate 'process == "PrivilegesDaemon" AND subsystem == "com.apple.defaults" AND category == "audit"'</code></pre>
+      </figure>
+      <p><strong>Across the fleet</strong>, both of those live on the Mac, alongside the person who held admin. Send events off the Mac with <code>RemoteLogging</code>, and pair each <code>granted</code> event with its <code>revoked</code> event. A grant whose revocation never arrives is the one to look at. Check the admin group itself too: our free <a href="/guides/find-unexpected-admins/">Unexpected admins check</a> lists admin accounts that aren't on your permanent list.</p>
+
+      <h2 id="limits">What Privileges can't do on its own</h2>
+      <p>SAP's FAQ says that "controls, mitigations, defense-in-depth, reporting, and auditing suitable to each organization's environments and threat models are needed. This is true with or without the use of the <em>Privileges</em> application."</p>
+      <p>Altiward adds checks against recorded grants, expiry enforcement, findings for unexpected admin membership and a server-side alert when its agent stops checking in. The agent must be running to check and enforce rights; a missing check-in shows a coverage gap rather than its cause. Session evidence covers admin rights and detected account changes. Correlate it with your existing security telemetry to investigate process activity. <a href="/how-it-works/">See how it works</a>.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul class="sources">
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges">Managing Privileges</a> and <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Frequently-Asked-Questions">Frequently Asked Questions</a>, Privileges wiki</li>
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/releases">Privileges release notes</a>, 2.3.0 to 2.6.0</li>
+        <li>GitHub issues <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/92">#92</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/185">#185</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/260">#260</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/274">#274</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/277">#277</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/280">#280</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/288">#288</a></li>
+      </ul>
+
+      <div class="closing-box">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <div>
+          <strong>Check actual rights against the recorded grant.</strong>
+          <p>Altiward's agent reads the admin group and can remove rights found past expiry when enforcement is on. The agent must be running for those checks to take place.</p>
+        </div>
+        <a class="button solid" href="/how-it-works/">See how it works</a>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="site-footer slim">
+  <div class="wrap">
+    <p class="legal">© 2026 Altiward. Open source under the Apache License 2.0. Altiward is an independent project and isn't affiliated with or endorsed by SAP. SAP is a trademark of SAP SE.</p>
+    <nav aria-label="Project resources">
+      <a href="/security/">Report a vulnerability</a>
+      <a href="mailto:hello@altiward.com">hello@altiward.com</a>
+      <a href="https://github.com/Altiward/altiward.com/blob/main/guides/sap-privileges-expiry/index.html">Edit this page on GitHub</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

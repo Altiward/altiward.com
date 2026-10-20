@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Mac admin evidence in your SIEM | Altiward</title>
+<meta name="description" content="Connect Altiward to Splunk, Microsoft Sentinel or syslog. Find the integration guides, confirm event delivery and use the included dashboards and starter searches.">
+<link rel="canonical" href="https://altiward.com/guides/sap-privileges-siem/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Altiward">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://altiward.com/guides/sap-privileges-siem/">
+<meta property="og:title" content="Mac admin evidence in your SIEM | Altiward">
+<meta property="og:description" content="Connect Altiward to Splunk, Microsoft Sentinel or syslog. Find the integration guides, confirm event delivery and use the included dashboards and starter searches.">
+<meta property="og:image" content="https://altiward.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://altiward.com/#org",
+   "name": "Altiward",
+   "url": "https://altiward.com/"
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://altiward.com/#site",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://altiward.com/guides/sap-privileges-siem/#webpage",
+   "url": "https://altiward.com/guides/sap-privileges-siem/",
+   "name": "Mac admin evidence in your SIEM | Altiward",
+   "description": "Connect Altiward to Splunk, Microsoft Sentinel or syslog. Find the integration guides, confirm event delivery and use the included dashboards and starter searches.",
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://altiward.com/guides/sap-privileges-siem/#breadcrumb"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://altiward.com/og.png",
+    "width": 1200,
+    "height": 630
+   },
+   "inLanguage": "en-GB",
+   "mainEntity": {
+    "@id": "https://altiward.com/guides/sap-privileges-siem/#article"
+   }
+  },
+  {
+   "@type": [
+    "Article",
+    "TechArticle"
+   ],
+   "@id": "https://altiward.com/guides/sap-privileges-siem/#article",
+   "url": "https://altiward.com/guides/sap-privileges-siem/",
+   "headline": "Mac admin evidence in your SIEM",
+   "description": "Connect Altiward to Splunk, Microsoft Sentinel or syslog. Find the integration guides, confirm event delivery and use the included dashboards and starter searches.",
+   "inLanguage": "en-GB",
+   "dateModified": "2026-10-19",
+   "author": {
+    "@id": "https://altiward.com/#org"
+   },
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   },
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "mainEntityOfPage": {
+    "@id": "https://altiward.com/guides/sap-privileges-siem/#webpage"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://altiward.com/guides/sap-privileges-siem/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Altiward",
+     "item": "https://altiward.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://altiward.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Mac admin evidence in your SIEM",
+     "item": "https://altiward.com/guides/sap-privileges-siem/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#page-content">Skip to content</a>
+
+<div class="wrap">
+  <header class="site-header">
+      <a class="lockup" href="/" aria-label="Altiward home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <span>Altiward</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <details class="nav-menu">
+          <summary>Products<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></summary>
+          <div class="nav-panel">
+            <a href="/altiward/"><strong>Altiward</strong><span>Agent, server and console for Mac admin oversight</span></a>
+            <a href="/forwarder/"><strong class="mono">altiward-forwarder</strong><span>SAP&nbsp;Privileges events to your SIEM, no agent needed</span></a>
+            <a href="/detections/"><strong class="mono">altiward-siem</strong><span>Detection rules for Sentinel and Splunk</span></a>
+            <a class="panel-foot" href="/#projects">How the three fit together</a>
+          </div>
+        </details>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/" aria-current="true">Guides</a>
+        <a href="/altiward/#start">Install</a>
+      </nav>
+      <span class="spacer"></span>
+      <a class="gh-button" href="https://github.com/Altiward/altiward"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View on GitHub</a>
+    </header>
+
+  <div class="guide-layout">
+    <nav class="guide-nav" aria-label="Guides">
+      <div>
+        <span class="label">Guides</span>
+        <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
+        <a href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a>
+        <a href="/guides/sap-privileges-siem/" aria-current="page">Mac admin evidence in your SIEM</a>
+        <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
+        <a href="/guides/intune-epm-mac/">Deploy on Intune-managed Macs</a>
+        <a href="/laps/">macOS LAPS and just-in-time admin</a>
+        <a href="/dspt-caf/">CAF-aligned DSPT evidence</a>
+      </div>
+      <div class="toc">
+        <span class="label">On this page</span>
+        <a href="#choose">1. Choose your Altiward integration</a>
+        <a href="#validate">2. Verify a session end to end</a>
+        <a href="#findings">3. Decide which findings need a response</a>
+        <a href="#companion-projects">Companion projects</a>
+      </div>
+    </nav>
+
+    <main class="guide-article" id="page-content" tabindex="-1">
+      <span class="label">Altiward guide · SIEM evidence</span>
+      <h1>Mac admin evidence in your SIEM</h1>
+      <p class="lede">Send Altiward session evidence, findings and console actions to Splunk, Microsoft Sentinel or syslog. Start with the supported integrations and confirm delivery from Mac to SIEM.</p>
+      <div class="meta-line"><span>Last reviewed October 2026</span><span>Splunk · Microsoft Sentinel · syslog</span><span>OCSF</span></div>
+
+      <p>The Altiward agent checks the Mac's admin group against recorded grants and your permanent-admin list. Your server exports the resulting events as OCSF, with CEF also available for syslog. You configure the destination; no session evidence goes to Altiward.</p>
+
+      <h2 id="choose">1. Choose your Altiward integration</h2>
+      <p>The setup files live with the code on GitHub. Use the guide for your destination rather than building a separate receiver for SAP&nbsp;Privileges events.</p>
+      <div class="compare" tabindex="0" role="region" aria-label="Table">
+        <table>
+          <thead><tr><th scope="col">Destination</th><th scope="col">How Altiward sends events</th><th scope="col">Setup and examples</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Splunk</th><td>HTTP Event Collector (HEC)</td><td><a href="https://github.com/Altiward/altiward/tree/main/integrations/splunk">Splunk integration and starter dashboard</a></td></tr>
+            <tr><th scope="row">Microsoft Sentinel</th><td>Logs Ingestion API</td><td><a href="https://github.com/Altiward/altiward/tree/main/integrations/sentinel">Sentinel setup and workbook</a></td></tr>
+            <tr><th scope="row">Syslog receiver</th><td>TLS or TCP, as OCSF JSON or CEF</td><td><a href="https://github.com/Altiward/altiward/tree/main/integrations/syslog">Syslog configuration</a></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>Configure the server using <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md#4-connect-your-siem">Connect your SIEM in the install guide</a>. Events wait in the server's Postgres outbox until the destination accepts them, so a SIEM outage delays delivery.</p>
+
+      <h2 id="validate">2. Verify a session end to end</h2>
+      <ol class="step-rows">
+        <li><div>Request temporary admin through SAP&nbsp;Privileges on an enrolled Mac. Give a reason you can recognise.</div></li>
+        <li><div>Find the session in the Altiward console. Check the user, Mac, recorded reason, grant time and expiry.</div></li>
+        <li><div>Revoke the session while the Mac can reach the server, then confirm that its admin rights have ended.</div></li>
+        <li><div>Find the corresponding events in your SIEM and compare them with the console record.</div></li>
+      </ol>
+      <p>The <a href="/how-it-works/#see-it">console and SIEM walkthrough</a> shows example records. Use your deployment's event fields and timestamps when adapting searches.</p>
+
+      <h2 id="findings">3. Decide which findings need a response</h2>
+      <ul>
+        <li><strong>Admin rights without a recorded grant:</strong> check the account's purpose and your permanent-admin list.</li>
+        <li><strong>Detected changes during a session:</strong> correlate new local accounts or other persistence changes with your security telemetry.</li>
+        <li><strong>Rights past expiry:</strong> check your configured expiry policy and the recorded outcome. Alerting is the default; removing rights requires enforcement to be enabled.</li>
+        <li><strong>Missing check-ins:</strong> investigate a loss of visibility. The finding does not establish why the Mac stopped reporting.</li>
+      </ul>
+      <p>Altiward records admin rights and detected changes. Use your EDR and other logs to investigate commands and process activity. See the <a href="https://github.com/Altiward/altiward/blob/main/docs/schema/README.md">event schema</a> for the contract and example fixtures.</p>
+      <p>Start with the Sentinel analytics rules and Splunk saved searches in <a href="/detections/">altiward-siem</a>. Adapt them to your environment and response process.</p>
+      <h2 id="companion-projects">Companion projects</h2>
+      <p><a href="/detections/">altiward-siem</a> holds detection rules, hunting queries and saved searches for Sentinel and Splunk, each checked against example Altiward events.</p>
+      <p><a href="/forwarder/">altiward-forwarder</a> is for teams that want SAP&nbsp;Privileges events in their SIEM without Altiward's ongoing admin oversight. SAP&nbsp;Privileges remains responsible for elevation in both workflows.</p>
+
+      <div class="closing-box">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <div>
+          <strong>See the events before you connect a SIEM.</strong>
+          <p>How it works follows an example session and revocation, and shows the OCSF event behind a finding.</p>
+        </div>
+        <a class="button solid" href="/how-it-works/">See how it works</a>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="site-footer slim">
+  <div class="wrap">
+    <p class="legal">© 2026 Altiward. Open source under the Apache License 2.0. Altiward is an independent project and isn't affiliated with or endorsed by SAP. SAP is a trademark of SAP SE.</p>
+    <nav aria-label="Project resources">
+      <a href="/security/">Report a vulnerability</a>
+      <a href="mailto:hello@altiward.com">hello@altiward.com</a>
+      <a href="https://github.com/Altiward/altiward.com/blob/main/guides/sap-privileges-siem/index.html">Edit this page on GitHub</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

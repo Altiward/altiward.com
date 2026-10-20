@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Altiward guides and documentation | Altiward</title>
+<meta name="description" content="Install and configure Altiward with source documentation on GitHub and practical guides to SAP Privileges, expiry policy, permanent admins and SIEM export.">
+<link rel="canonical" href="https://altiward.com/guides/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Altiward">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://altiward.com/guides/">
+<meta property="og:title" content="Altiward guides and documentation | Altiward">
+<meta property="og:description" content="Install and configure Altiward with source documentation on GitHub and practical guides to SAP Privileges, expiry policy, permanent admins and SIEM export.">
+<meta property="og:image" content="https://altiward.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "https://altiward.com/guides/#webpage",
+   "url": "https://altiward.com/guides/",
+   "name": "Altiward guides and documentation | Altiward",
+   "description": "Install and configure Altiward with source documentation on GitHub and practical guides to SAP Privileges, expiry policy, permanent admins and SIEM export.",
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://altiward.com/guides/#breadcrumb"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://altiward.com/og.png",
+    "width": 1200,
+    "height": 630
+   },
+   "inLanguage": "en-GB"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://altiward.com/guides/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Altiward",
+     "item": "https://altiward.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://altiward.com/guides/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#page-content">Skip to content</a>
+
+<div class="wrap">
+  <header class="site-header">
+      <a class="lockup" href="/" aria-label="Altiward home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <span>Altiward</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <details class="nav-menu">
+          <summary>Products<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></summary>
+          <div class="nav-panel">
+            <a href="/altiward/"><strong>Altiward</strong><span>Agent, server and console for Mac admin oversight</span></a>
+            <a href="/forwarder/"><strong class="mono">altiward-forwarder</strong><span>SAP&nbsp;Privileges events to your SIEM, no agent needed</span></a>
+            <a href="/detections/"><strong class="mono">altiward-siem</strong><span>Detection rules for Sentinel and Splunk</span></a>
+            <a class="panel-foot" href="/#projects">How the three fit together</a>
+          </div>
+        </details>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/" aria-current="page">Guides</a>
+        <a href="/altiward/#start">Install</a>
+      </nav>
+      <span class="spacer"></span>
+      <a class="gh-button" href="https://github.com/Altiward/altiward"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View on GitHub</a>
+    </header>
+
+  <main id="page-content" tabindex="-1" class="page-end">
+    <section class="hero-copy" aria-labelledby="page-title">
+      <span class="label">Guides</span>
+      <h1 id="page-title">Guides for temporary Mac admin.</h1>
+      <p class="lede">Start with the install guide on GitHub, then use these guides to configure Altiward alongside SAP&nbsp;Privileges and investigate the evidence.</p>
+    </section>
+
+    <section class="guide-group" aria-labelledby="start-title">
+      <h2 id="start-title" class="label">Start here</h2>
+      <div class="guide-cards two">
+        <a class="guide-card" href="https://github.com/Altiward/altiward/blob/main/docs/install.md">
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 3.5h4a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 0-1.5-1.5h-4zM13.5 3.5h-4A1.5 1.5 0 0 0 8 5v8a1.5 1.5 0 0 1 1.5-1.5h4z"/></svg><span class="label">Install guide · On GitHub</span></span>
+          <strong>Install Altiward</strong>
+          <span class="desc">The server, the Mac agent, SIEM export and upgrades, step by step.</span>
+        </a>
+        <a class="guide-card" href="https://github.com/Altiward/altiward/blob/main/docs/data-handling.md">
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="8" cy="4" rx="5" ry="1.75"/><path d="M3 4v8c0 1 2.2 1.75 5 1.75s5-.75 5-1.75V4M3 8c0 1 2.2 1.75 5 1.75S13 9 13 8"/></svg><span class="label">Reference · On GitHub</span></span>
+          <strong>What Altiward collects, stores and sends</strong>
+          <span class="desc">What the agent collects on each Mac, what the server stores, and the connections each part makes.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="guide-group" aria-labelledby="setup-title">
+      <h2 id="setup-title" class="label">Set it up</h2>
+      <div class="guide-cards">
+        <a class="guide-card" href="/guides/intune-epm-mac/">
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2.5 4 1 1 2-2M2.5 9l1 1 2-2M7.5 4.5h6M7.5 9.5h6M7.5 13h6"/></svg><span class="label">Checklist · Intune</span></span>
+          <strong>Deploy Altiward on Intune-managed Macs</strong>
+          <span class="desc">Agent settings, SAP&nbsp;Privileges profiles, permanent admins and a deployment checklist.</span>
+        </a>
+        <a class="guide-card" href="/guides/sap-privileges-siem/">
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2.5" width="12" height="9" rx="1"/><path d="M5 9 7 6.5l1.5 1.5L11 5M5.5 14h5"/></svg><span class="label">Guide · Splunk · Sentinel · syslog</span></span>
+          <strong>Mac admin evidence in your SIEM</strong>
+          <span class="desc">Connect Altiward to Splunk, Sentinel or syslog and confirm event delivery end to end.</span>
+        </a>
+        <a class="guide-card" href="/laps/">
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="10.5" r="3"/><path d="m7.5 8.5 6-6M11.5 4.5l1.5 1.5"/></svg><span class="label">Topic · macOS LAPS</span></span>
+          <strong>macOS LAPS and just-in-time admin do different jobs</strong>
+          <span class="desc">How LAPS in Intune and Jamf Pro, SAP&nbsp;Privileges and Altiward fit together.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="guide-group" aria-labelledby="gaps-title">
+      <h2 id="gaps-title" class="label">Understand the gaps</h2>
+      <div class="guide-cards">
+        <a class="guide-card" href="/guides/sap-privileges-expiry/">
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.5 1.5"/></svg><span class="label">Guide · Expiry</span></span>
+          <strong>When Mac admin rights outlive their timer</strong>
+          <span class="desc">Six reasons rights can outlive a grant, which Privileges settings reduce the risk, and how to check.</span>
+        </a>
+        <a class="guide-card" href="/guides/sap-privileges-with-altiward/">
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2.5" width="5" height="11" rx="1"/><rect x="9" y="2.5" width="5" height="11" rx="1"/></svg><span class="label">Comparison</span></span>
+          <strong>What Altiward adds to SAP&nbsp;Privileges</strong>
+          <span class="desc">Privileges alone side by side with Privileges plus Altiward: enforcement, findings and fleet-wide evidence.</span>
+        </a>
+        <a class="guide-card" href="/dspt-caf/">
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.75h5.5L12.5 4.75V14.25H4z"/><path d="M9.5 1.75v3h3M6.25 8.5h4M6.25 11h4"/></svg><span class="label">Topic · Health and care</span></span>
+          <strong>CAF-aligned DSPT evidence for Mac admin rights</strong>
+          <span class="desc">Which outcomes temporary admin evidence supports, for health and care teams with Macs.</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="guide-group" aria-labelledby="check-title">
+      <h2 id="check-title" class="label">Check your Macs today</h2>
+      <a class="guide-feature" href="/guides/find-unexpected-admins/">
+        <div>
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><span class="label">Free script · Jamf Pro · Intune · MIT licence</span></span>
+          <strong>Find unexpected Mac admin accounts</strong>
+          <span class="desc">A Jamf Pro extension attribute that lists local admins outside your permanent list at each inventory update, with clear limits on what a snapshot can establish.</span>
+          <span class="go">Get the script</span>
+        </div>
+        <div class="code-panel" aria-hidden="true">
+          <div class="code-head"><span class="file">unexpected-admins.zsh · output</span></div>
+<pre><code>&lt;result&gt;None&lt;/result&gt;
+&lt;result&gt;jdoe (logged in), support2&lt;/result&gt;</code></pre>
+        </div>
+      </a>
+    </section>
+  </main>
+</div>
+
+<footer class="site-footer slim">
+  <div class="wrap">
+    <p class="legal">© 2026 Altiward. Open source under the Apache License 2.0. Altiward is an independent project and isn't affiliated with or endorsed by SAP. SAP is a trademark of SAP SE.</p>
+    <nav aria-label="Project resources">
+      <a href="/security/">Report a vulnerability</a>
+      <a href="mailto:hello@altiward.com">hello@altiward.com</a>
+      <a href="https://github.com/Altiward/altiward.com/blob/main/guides/index.html">Edit this page on GitHub</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

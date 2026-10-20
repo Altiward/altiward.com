@@ -1,0 +1,217 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Reporting a security problem | Altiward</title>
+<meta name="description" content="Report vulnerabilities in Altiward, altiward-forwarder, altiward-siem or this website privately. See what's in scope and how we handle security reports.">
+<link rel="canonical" href="https://altiward.com/security/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Altiward">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://altiward.com/security/">
+<meta property="og:title" content="Reporting a security problem | Altiward">
+<meta property="og:description" content="Report vulnerabilities in Altiward, altiward-forwarder, altiward-siem or this website privately. See what's in scope and how we handle security reports.">
+<meta property="og:image" content="https://altiward.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "WebPage",
+   "@id": "https://altiward.com/security/#webpage",
+   "url": "https://altiward.com/security/",
+   "name": "Reporting a security problem | Altiward",
+   "description": "Report vulnerabilities in Altiward, altiward-forwarder, altiward-siem or this website privately. See what's in scope and how we handle security reports.",
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "about": {
+    "@id": "https://altiward.com/#software"
+   },
+   "breadcrumb": {
+    "@id": "https://altiward.com/security/#breadcrumb"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://altiward.com/og.png",
+    "width": 1200,
+    "height": 630
+   },
+   "inLanguage": "en-GB"
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://altiward.com/security/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Altiward",
+     "item": "https://altiward.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Security",
+     "item": "https://altiward.com/security/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#page-content">Skip to content</a>
+
+<div class="wrap">
+    <header class="site-header">
+      <a class="lockup" href="/" aria-label="Altiward home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <span>Altiward</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <details class="nav-menu">
+          <summary>Products<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></summary>
+          <div class="nav-panel">
+            <a href="/altiward/"><strong>Altiward</strong><span>Agent, server and console for Mac admin oversight</span></a>
+            <a href="/forwarder/"><strong class="mono">altiward-forwarder</strong><span>SAP&nbsp;Privileges events to your SIEM, no agent needed</span></a>
+            <a href="/detections/"><strong class="mono">altiward-siem</strong><span>Detection rules for Sentinel and Splunk</span></a>
+            <a class="panel-foot" href="/#projects">How the three fit together</a>
+          </div>
+        </details>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/">Guides</a>
+        <a href="/altiward/#start">Install</a>
+      </nav>
+      <span class="spacer"></span>
+      <a class="gh-button" href="https://github.com/Altiward/altiward"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View on GitHub</a>
+    </header>
+</div>
+
+<main id="page-content" tabindex="-1">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="label eyebrow">Security</span>
+      <h1>Reporting a security problem.</h1>
+      <p class="lede">Altiward is a security tool, so we want to hear about weaknesses in it. Here's how to report one, what's in scope, and what you can expect from us.</p>
+    </div>
+  </div>
+
+  <div class="wrap closing">
+    <section class="section" id="report" aria-labelledby="report-title">
+      <div class="section-head">
+        <span class="label">How to report</span>
+        <h2 id="report-title">Report a vulnerability privately.</h2>
+      </div>
+      <div class="steps">
+        <div>
+          <span class="num">01</span>
+          <h3>Email us privately</h3>
+          <p>Email <a href="mailto:hello@altiward.com?subject=Security%20report">hello@altiward.com</a> with “Security report” in the subject. Include the affected Altiward component. Please don't open a public issue or post vulnerability details.</p>
+        </div>
+        <div>
+          <span class="num">02</span>
+          <h3>Tell us what you found</h3>
+          <p>The affected component and version, the steps to reproduce it, and what an attacker could do with it. Leave out real fleet data and secrets.</p>
+        </div>
+        <div>
+          <span class="num">03</span>
+          <h3>We work on it with you</h3>
+          <p>We acknowledge reports within five working days, keep you posted while we work on a fix, and agree disclosure timing with you. See the <a href="https://github.com/Altiward/.github/blob/main/SECURITY.md">project security policy</a> for supported versions and the reporting process.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="scope" aria-labelledby="scope-title">
+      <div class="section-head">
+        <span class="label">Scope</span>
+        <h2 id="scope-title">What to test, and what not to.</h2>
+      </div>
+      <div class="cards">
+        <div class="card">
+          <h3>In scope</h3>
+          <p><strong>The Altiward agent on macOS</strong>, including its tamper checks and how it records and removes admin rights. A way to stop or bypass the agent without it going on record is exactly what we want to hear about.</p>
+          <p><strong>The Altiward server and console</strong>: the API, the console, sign-in, and delivery to SIEMs.</p>
+          <p><strong>altiward-forwarder</strong>: the relay, on-Mac hook and event delivery. <strong>altiward-siem</strong>: the detection rules, searches and deployment templates.</p>
+          <p><strong>altiward.com</strong>, this website.</p>
+        </div>
+        <div class="card">
+          <h3>Out of scope</h3>
+          <p><strong>Someone else's Altiward server.</strong> Teams run their own servers, and we can't give permission to test them. Test an installation you run yourself.</p>
+          <p><strong>SAP&nbsp;Privileges itself.</strong> Report those to SAP, through the <a href="https://github.com/SAP/macOS-enterprise-privileges">SAP&nbsp;Privileges repository</a>.</p>
+          <p><strong>Denial of service, spam, social engineering and physical attacks.</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="copy" aria-labelledby="copy-title">
+      <div class="section-head">
+        <span class="label">Getting a copy</span>
+        <h2 id="copy-title">Review the source. Test your own installation.</h2>
+        <p class="muted">The <a href="https://github.com/Altiward/altiward">agent, server and console source</a> and <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md">install guide</a> are on GitHub. Test only systems you own or have permission to assess.</p>
+      </div>
+    </section>
+
+    <section class="section" id="commitments" aria-labelledby="commitments-title">
+      <div class="section-head">
+        <span class="label">Our side</span>
+        <h2 id="commitments-title">What you can expect from us.</h2>
+      </div>
+      <dl class="points">
+        <div><dt>Good faith</dt><dd>If you act in good faith and follow this page, we won't take legal action against you for your research.</dd></div>
+        <div><dt>Credit</dt><dd>With your permission, we'll credit you in the release notes for the fix.</dd></div>
+        <div><dt>No paid bounty</dt><dd>There's no paid bug bounty right now.</dd></div>
+      </dl>
+    </section>
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <a class="lockup" href="/" aria-label="Altiward home">
+          <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+          <span>Altiward</span>
+        </a>
+        <p>Open-source oversight for temporary admin on macOS.</p>
+      </div>
+      <nav aria-label="Explore Altiward">
+        <span class="label">Explore</span>
+        <a href="/altiward/">Altiward</a>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/">Guides</a>
+        <a href="/#projects">Projects</a>
+      </nav>
+      <nav aria-label="Altiward on GitHub">
+        <span class="label">GitHub</span>
+        <a class="mono" href="https://github.com/Altiward/altiward">altiward</a>
+        <a class="mono" href="https://github.com/Altiward/altiward-forwarder">altiward-forwarder</a>
+        <a class="mono" href="https://github.com/Altiward/altiward-siem">altiward-siem</a>
+        <a href="https://github.com/Altiward/altiward/releases">Releases</a>
+      </nav>
+      <nav aria-label="Project resources">
+        <span class="label">Project</span>
+        <a href="https://github.com/Altiward/altiward/blob/main/CONTRIBUTING.md">Contribute</a>
+        <a href="https://github.com/Altiward/altiward.com">Website source</a>
+        <a href="/security/">Report a vulnerability</a>
+        <a href="mailto:hello@altiward.com">hello@altiward.com</a>
+      </nav>
+    </div>
+    <p class="legal">© 2026 Altiward. Open source under the Apache License 2.0. Altiward is an independent project and isn't affiliated with or endorsed by SAP. SAP is a trademark of SAP SE.</p>
+  </div>
+</footer>
+</body>
+</html>

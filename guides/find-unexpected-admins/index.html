@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Unexpected admins check: free Jamf script for Macs | Altiward</title>
+<meta name="description" content="Altiward&#x27;s free Unexpected admins check lists Mac admins outside your permanent-admin list, for Jamf Pro or Intune. It doesn&#x27;t verify grants.">
+<link rel="canonical" href="https://altiward.com/guides/find-unexpected-admins/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Altiward">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://altiward.com/guides/find-unexpected-admins/">
+<meta property="og:title" content="Unexpected admins check: free Jamf script for Macs | Altiward">
+<meta property="og:description" content="Altiward&#x27;s free Unexpected admins check lists Mac admins outside your permanent-admin list, for Jamf Pro or Intune. It doesn&#x27;t verify grants.">
+<meta property="og:image" content="https://altiward.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://altiward.com/#org",
+   "name": "Altiward",
+   "url": "https://altiward.com/"
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://altiward.com/#site",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://altiward.com/guides/find-unexpected-admins/#webpage",
+   "url": "https://altiward.com/guides/find-unexpected-admins/",
+   "name": "Unexpected admins check: free Jamf script for Macs | Altiward",
+   "description": "Altiward's free Unexpected admins check lists Mac admins outside your permanent-admin list, for Jamf Pro or Intune. It doesn't verify grants.",
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://altiward.com/guides/find-unexpected-admins/#breadcrumb"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://altiward.com/og.png",
+    "width": 1200,
+    "height": 630
+   },
+   "inLanguage": "en-GB",
+   "mainEntity": {
+    "@id": "https://altiward.com/guides/find-unexpected-admins/#article"
+   }
+  },
+  {
+   "@type": [
+    "Article",
+    "TechArticle"
+   ],
+   "@id": "https://altiward.com/guides/find-unexpected-admins/#article",
+   "url": "https://altiward.com/guides/find-unexpected-admins/",
+   "headline": "Find unexpected Mac admin accounts",
+   "description": "Altiward's free Unexpected admins check lists Mac admins outside your permanent-admin list, for Jamf Pro or Intune. It doesn't verify grants.",
+   "inLanguage": "en-GB",
+   "dateModified": "2026-10-19",
+   "author": {
+    "@id": "https://altiward.com/#org"
+   },
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   },
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "mainEntityOfPage": {
+    "@id": "https://altiward.com/guides/find-unexpected-admins/#webpage"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://altiward.com/guides/find-unexpected-admins/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Altiward",
+     "item": "https://altiward.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://altiward.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Unexpected admins check",
+     "item": "https://altiward.com/guides/find-unexpected-admins/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#page-content">Skip to content</a>
+
+<div class="wrap">
+  <header class="site-header">
+      <a class="lockup" href="/" aria-label="Altiward home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <span>Altiward</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <details class="nav-menu">
+          <summary>Products<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></summary>
+          <div class="nav-panel">
+            <a href="/altiward/"><strong>Altiward</strong><span>Agent, server and console for Mac admin oversight</span></a>
+            <a href="/forwarder/"><strong class="mono">altiward-forwarder</strong><span>SAP&nbsp;Privileges events to your SIEM, no agent needed</span></a>
+            <a href="/detections/"><strong class="mono">altiward-siem</strong><span>Detection rules for Sentinel and Splunk</span></a>
+            <a class="panel-foot" href="/#projects">How the three fit together</a>
+          </div>
+        </details>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/" aria-current="true">Guides</a>
+        <a href="/altiward/#start">Install</a>
+      </nav>
+      <span class="spacer"></span>
+      <a class="gh-button" href="https://github.com/Altiward/altiward"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View on GitHub</a>
+    </header>
+
+  <div class="guide-layout">
+    <nav class="guide-nav" aria-label="Guides">
+      <div>
+        <span class="label">Guides</span>
+        <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
+        <a href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a>
+        <a href="/guides/sap-privileges-siem/">Mac admin evidence in your SIEM</a>
+        <a href="/guides/find-unexpected-admins/" aria-current="page">Find unexpected Mac admin accounts</a>
+        <a href="/guides/intune-epm-mac/">Deploy on Intune-managed Macs</a>
+        <a href="/laps/">macOS LAPS and just-in-time admin</a>
+        <a href="/dspt-caf/">CAF-aligned DSPT evidence</a>
+      </div>
+      <div class="toc">
+        <span class="label">On this page</span>
+        <a href="#what">What it checks</a>
+        <a href="#script">The script</a>
+        <a href="#jamf">Add it to Jamf Pro</a>
+        <a href="#reading">Reading the results</a>
+        <a href="#limits">What a script can't tell you</a>
+        <a href="#related">Related guides</a>
+      </div>
+    </nav>
+
+    <main class="guide-article" id="page-content" tabindex="-1">
+      <span class="label">Altiward guide · Free script</span>
+      <h1>Find unexpected Mac admin accounts</h1>
+      <p class="lede">Altiward's free Unexpected admins check lists local admins outside your permanent-admin list. Use it as a Jamf Pro extension attribute or adapt its output for Intune. It gives you a snapshot to investigate; it does not verify whether rights were granted.</p>
+      <div class="meta-line"><span>unexpected-admins.zsh</span><span>MIT licence</span><span>Jamf Pro · Intune</span><span>Published October 2026</span></div>
+
+      <div class="callout"><svg viewBox="0 0 16 16" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 7.25v3.5M8 5.1v.1"/></svg><div><p>A local admin outside your permanent list might hold approved temporary rights, be a leftover from a previous setup, or need further investigation. This script cannot tell those cases apart. Review its results against your approved accounts and grants before taking action.</p></div></div>
+      <p>As a Jamf Pro extension attribute, it reports at each inventory update so you can group Macs with accounts to review.</p>
+
+      <h2 id="what">What it checks</h2>
+      <ul>
+        <li>Every local account on the Mac, including hidden ones with a UID below 500. Only macOS's own service accounts (names starting with an underscore, plus <code>daemon</code> and <code>nobody</code>) are skipped.</li>
+        <li>Whether each account is in the admin group, using <code>dseditgroup -o checkmember</code>. That also catches accounts made admin through a nested group, which reading the group's member list alone would miss.</li>
+        <li>Whether the account is on your list of permanent admins. Those are left out of the result.</li>
+      </ul>
+      <p>It reports <code>None</code>, or a comma-separated list of account names. The person logged in at the Mac is marked <code>(logged in)</code>.</p>
+
+      <h2 id="script">The script</h2>
+      <p>Download <a href="/tools/unexpected-admins.zsh">unexpected-admins.zsh</a> or copy it from here. It's MIT licensed, so you can change it and use it however you like. Set <code>PERMANENT_ADMINS</code> to your own permanent admin accounts before you deploy it.</p>
+<figure class="code-panel">
+        <figcaption class="code-head"><span class="file">unexpected-admins.zsh</span><a class="button solid" href="/tools/unexpected-admins.zsh" download>Download</a></figcaption>
+<pre tabindex="0" aria-label="The extension attribute script"><code>#!/bin/zsh
+# SPDX-License-Identifier: MIT
+# Copyright (c) 2026 Altiward
+#
+# Unexpected admins check: a free Jamf Pro extension attribute for macOS, from Altiward.
+#
+# Lists every local account that holds admin rights but isn't on your list of
+# permanent admins (IT's managed or LAPS account, for example). Membership is
+# checked with dseditgroup, so accounts made admin through a nested group count
+# too, and hidden accounts (UID below 500) aren't skipped.
+#
+# Output, for Jamf Pro:
+#   &lt;result&gt;None&lt;/result&gt;
+#   &lt;result&gt;jdoe (logged in), support2&lt;/result&gt;
+#
+# "(logged in)" marks the person at the Mac. If they're elevated through
+# SAP Privileges when inventory runs, they'll show up here until their rights
+# end. This snapshot does not establish whether any listed rights are authorised.
+#
+# https://altiward.com/guides/find-unexpected-admins/
+
+# Accounts that should always be admin. Separate names with spaces.
+PERMANENT_ADMINS=(root)
+
+# Optional: also read the list from a managed preference, so you can change it
+# with a configuration profile instead of editing the script. Set the domain
+# and key to match your profile, or leave the domain empty to skip it.
+PREF_DOMAIN=""                 # e.g. "com.example.unexpected-admins"
+PREF_KEY="PermanentAdmins"     # an array of account names
+
+if [[ -n $PREF_DOMAIN ]]; then
+  pref_file="/Library/Managed Preferences/${PREF_DOMAIN}.plist"
+  if [[ -f $pref_file ]]; then
+    i=0
+    while name=$(/usr/libexec/PlistBuddy -c "Print :${PREF_KEY}:${i}" "$pref_file" 2&gt;/dev/null); do
+      PERMANENT_ADMINS+=("$name")
+      (( i++ ))
+    done
+  fi
+fi
+
+console_user=$(/usr/bin/stat -f %Su /dev/console)
+
+found=()
+for account in $(/usr/bin/dscl . -list /Users); do
+  # Skip macOS's own service accounts.
+  case $account in
+    _*|daemon|nobody) continue ;;
+  esac
+  (( ${PERMANENT_ADMINS[(Ie)$account]} )) &amp;&amp; continue
+
+  if /usr/sbin/dseditgroup -o checkmember -m "$account" admin &gt;/dev/null 2&gt;&amp;1; then
+    if [[ $account == "$console_user" ]]; then
+      found+=("$account (logged in)")
+    else
+      found+=("$account")
+    fi
+  fi
+done
+
+if (( ${#found} == 0 )); then
+  echo "&lt;result&gt;None&lt;/result&gt;"
+else
+  echo "&lt;result&gt;${(j:, :)found}&lt;/result&gt;"
+fi</code></pre>
+      </figure>
+
+      <h2 id="jamf">Add it to Jamf Pro</h2>
+      <ol class="step-rows">
+        <li><div>In Jamf Pro, go to <strong>Settings</strong>, then <strong>Computer management</strong>, then <strong>Extension attributes</strong>, and click <strong>New</strong>.</div></li>
+        <li><div>Name it <em>Unexpected admins</em>. Set the data type to <strong>String</strong> and the input type to <strong>Script</strong>.</div></li>
+        <li><div>Paste in the script, with your <code>PERMANENT_ADMINS</code> list, and save.</div></li>
+        <li><div>Create a smart computer group called <em>Macs with unexpected admins</em>, with the criterion <em>Unexpected admins</em> <strong>is not</strong> <code>None</code>.</div></li>
+      </ol>
+      <p>Results arrive as each Mac next submits inventory. If you'd rather manage the list of permanent admins with a configuration profile than edit the script, set <code>PREF_DOMAIN</code> to your profile's preference domain and put the names in a <code>PermanentAdmins</code> array.</p>
+
+      <h3>Using Intune instead</h3>
+      <p>Intune's custom attributes for macOS also run a shell script and report what it prints. Change the two <code>echo</code> lines at the end so they print the result without the <code>&lt;result&gt;</code> tags.</p>
+
+      <h2 id="reading">Reading the results</h2>
+      <div class="results">
+        <div><code>None</code><span>No admin outside your permanent list when inventory ran.</span></div>
+        <div><code>jdoe (logged in)</code><span>The person at the Mac. Expected if they had temporary admin through SAP&nbsp;Privileges when inventory ran; they'll drop off the list once their rights end. If they show up on every inventory update, they're probably a permanent admin nobody moved to standard user.</span></div>
+        <div><code>support2</code><span>Outside your permanent-admin list and not the current console user. That doesn't establish whether its rights are authorised. Check the account's purpose and grant history before deciding whether to remove its rights or update your list.</span></div>
+      </div>
+
+      <h2 id="limits">What a script can't tell you</h2>
+      <p>An extension attribute is a snapshot, taken whenever inventory runs, often once a day. An account made admin at 10:00 and removed at 10:20 never shows up. The script also runs on a Mac where the person may hold admin rights, so someone determined could stop it reporting them. And it can't tell you whether an admin was granted, only whether the account is on your list.</p>
+      <p>Altiward adds ongoing agent checks against recorded grants and their expiry, optional enforcement of rights found past expiry, and findings for detected unexpected admins and missing check-ins. Its agent must be running for those checks to take place. <a href="/how-it-works/">See how it works</a>.</p>
+
+      <h2 id="related">Related guides</h2>
+      <ul>
+        <li><a href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a></li>
+        <li><a href="/laps/">macOS LAPS and just-in-time admin</a>: which accounts to list as permanent admins</li>
+      </ul>
+
+      <div class="closing-box">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <div>
+          <strong>Start with a snapshot. Add grant checks with Altiward.</strong>
+          <p>The agent checks membership against recorded SAP&nbsp;Privileges grants and their expiry, and sends findings to your SIEM. It must be running for those checks to take place.</p>
+        </div>
+        <a class="button solid" href="/how-it-works/">See how it works</a>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="site-footer slim">
+  <div class="wrap">
+    <p class="legal">© 2026 Altiward. Open source under the Apache License 2.0. Altiward is an independent project and isn't affiliated with or endorsed by SAP. SAP is a trademark of SAP SE.</p>
+    <nav aria-label="Project resources">
+      <a href="/security/">Report a vulnerability</a>
+      <a href="mailto:hello@altiward.com">hello@altiward.com</a>
+      <a href="https://github.com/Altiward/altiward.com/blob/main/guides/find-unexpected-admins/index.html">Edit this page on GitHub</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,5 @@
+Contact: mailto:hello@altiward.com
+Expires: 2027-10-17T00:00:00.000Z
+Preferred-Languages: en
+Canonical: https://altiward.com/.well-known/security.txt
+Policy: https://altiward.com/security/
