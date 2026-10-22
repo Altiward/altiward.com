@@ -276,15 +276,17 @@
       </div>
       <div>
         <div class="code-panel">
-          <div class="code-head"><span class="title">Try the console locally</span><span class="file">Go 1.25+ · Node 22 · Docker</span></div>
-<pre tabindex="0" aria-label="Commands to try the console locally"><code>git clone https://github.com/Altiward/altiward
-cd altiward &amp;&amp; make console-install
-make run-api
-<span class="c"># then, in a second terminal</span>
-make console-seed &amp;&amp; make console-dev
-<span class="c"># open http://localhost:5173 and sign in with</span>
-<span class="c"># the token dev-console-token-001</span></code></pre>
+          <div class="code-head"><span class="title">Try the console locally</span><span class="file">Needs only Docker</span></div>
+<pre tabindex="0" aria-label="Commands to run the console with demo data"><code>git clone https://github.com/Altiward/altiward
+cd altiward
+docker compose -f dev/compose.demo.yaml up --build</code></pre>
         </div>
+        <ol class="step-rows">
+          <li><div><p>The first run downloads and builds the server, which can take a few minutes.</p></div></li>
+          <li><div><p>When it prints <code>Demo ready</code>, open <code>http://localhost:8080</code> and sign in with the token <code>dev-console-token-001</code>.</p></div></li>
+          <li><div><p>The demo keeps running until you stop it with <code>docker compose -f dev/compose.demo.yaml down -v</code>, which also deletes its data.</p></div></li>
+        </ol>
+        <p class="small muted">You need git and Docker with Compose v2, which <a href="https://docs.docker.com/get-started/get-docker/">Docker Desktop</a> includes. On Windows, run the commands in WSL&nbsp;2. <a href="https://github.com/Altiward/altiward/blob/main/dev/README.md#troubleshooting">Fixes for common errors</a> · <a href="https://github.com/Altiward/altiward/blob/main/dev/README.md#run-from-source">Run from source</a></p>
         <div class="actions">
           <a class="button solid" href="https://github.com/Altiward/altiward/blob/main/docs/install.md">Read the install guide</a>
           <a class="button outline" href="https://github.com/Altiward/altiward/releases">Releases</a>
