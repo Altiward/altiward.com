@@ -269,10 +269,15 @@
           <h2 id="start-title">You run it. You keep the record.</h2>
         </div>
         <dl class="facts" id="data">
-          <div><dt>Self-hosted</dt><dd>You host the server, web console and Postgres database. Docker Compose files are included.</dd></div>
+          <div><dt>Self-hosted</dt><dd>You host the server, web console and Postgres database. Docker Compose files are included, or <a href="https://github.com/Altiward/altiward/blob/main/deploy/azure/README.md">deploy it to Azure Container Apps</a> in your own subscription (preview).</dd></div>
           <div><dt>No fleet telemetry to Altiward</dt><dd>The console's optional update check asks GitHub for the release list. It sends no fleet data and can be turned off.</dd></div>
           <div><dt>Free, with no limit on Macs</dt><dd>Apache License 2.0. <a href="https://github.com/Altiward/altiward/blob/main/docs/data-handling.md">Read what Altiward collects, stores and sends</a>, or review the source before you deploy.</dd></div>
         </dl>
+        <div class="actions">
+          <a class="button solid" href="https://github.com/Altiward/altiward/blob/main/docs/install.md">Read the install guide</a>
+          <a class="button outline" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward%2Fserver-v0.2.0%2Fdeploy%2Fazure%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward%2Fserver-v0.2.0%2Fdeploy%2Fazure%2FcreateUiDefinition.json">Deploy to Azure (preview)</a>
+          <a class="button outline" href="https://github.com/Altiward/altiward/releases">Releases</a>
+        </div>
       </div>
       <div>
         <div class="code-panel">
@@ -287,10 +292,6 @@ docker compose -f dev/compose.demo.yaml up --build</code></pre>
           <li><div><p>The demo keeps running until you stop it with <code>docker compose -f dev/compose.demo.yaml down -v</code>, which also deletes its data.</p></div></li>
         </ol>
         <p class="small muted">You need git and Docker with Compose v2, which <a href="https://docs.docker.com/get-started/get-docker/">Docker Desktop</a> includes. On Windows, run the commands in WSL&nbsp;2. <a href="https://github.com/Altiward/altiward/blob/main/dev/README.md#troubleshooting">Fixes for common errors</a> · <a href="https://github.com/Altiward/altiward/blob/main/dev/README.md#run-from-source">Run from source</a></p>
-        <div class="actions">
-          <a class="button solid" href="https://github.com/Altiward/altiward/blob/main/docs/install.md">Read the install guide</a>
-          <a class="button outline" href="https://github.com/Altiward/altiward/releases">Releases</a>
-        </div>
         <p class="small muted">Only need SAP&nbsp;Privileges events in your SIEM? <a href="/forwarder/">altiward-forwarder</a> sends them without the agent.</p>
       </div>
     </section>
