@@ -150,7 +150,59 @@
       </div>
     </section>
 
-    <section class="project-cards" id="projects" aria-label="The three projects">
+    <section class="section" id="why" aria-labelledby="why-title">
+      <div class="section-head">
+        <span class="label">Why Altiward</span>
+        <h2 id="why-title">Why the timer isn't enough.</h2>
+        <p>SAP&nbsp;Privileges gives admin rights for a set time, and a countdown in the person's own session takes them back. Once someone is admin, they can stop that countdown, and nothing on the Mac removes the rights. By default, Altiward's agent alerts when the timer is stopped, and, if enabled, removes rights that outlive their grant.</p>
+      </div>
+      <figure class="strip" aria-labelledby="why-strip-title">
+        <div class="strip-head">
+          <div>
+            <strong id="why-strip-title">The timer stopped, the rights kept</strong>
+            <span class="small muted">Example data</span>
+          </div>
+          <span class="mono">priya.raman · C02XK0AAJGH5</span>
+        </div>
+        <div class="timeline" role="img" aria-label="Timeline from 14:00 to 14:40. Admin rights are granted at 14:02 for 30 minutes. At 14:10 the person stops SAP Privileges' timer. By 14:15 Altiward has flagged it. The grant expires at 14:32 with the rights still held, and the rights are removed at 14:39, after the five-minute grace period.">
+          <span class="n s1" style="left: 5%">1</span>
+          <span class="n s2" style="left: 25%">2</span>
+          <span class="n s3" style="left: 37.5%">3</span>
+          <span class="n s4" style="left: 80%">4</span>
+          <span class="n s5" style="left: 97.5%">5</span>
+          <i class="tick step s1" style="left: 5%"></i>
+          <i class="tick s2" style="left: 25%"></i>
+          <i class="tick s3" style="left: 37.5%"></i>
+          <i class="tick s4" style="left: 80%"></i>
+          <i class="tick step s5" style="left: 97.5%"></i>
+          <i class="bar low" style="left: 0; width: 5%"></i>
+          <i class="bar high" style="left: 5%; width: 75%"></i>
+          <i class="bar over" style="left: 80%; width: 17.5%"></i>
+          <i class="bar low tail" style="left: 97.5%; right: 0"></i>
+          <i class="axis"></i>
+          <span class="t first" style="left: 0">14:00</span>
+          <span class="t mid" style="left: 25%">14:10</span>
+          <span class="t" style="left: 50%">14:20</span>
+          <span class="t mid" style="left: 75%">14:30</span>
+          <span class="t last">14:40</span>
+        </div>
+        <div class="legend" aria-hidden="true">
+          <span><i class="key low"></i>Standard user</span>
+          <span><i class="key high"></i>Admin, within its grant</span>
+          <span><i class="key over"></i>Admin, past expiry</span>
+        </div>
+        <ol class="events">
+          <li><span class="when"><b>1</b> · 14:02</span><span class="what">Admin granted for 30 minutes. Reason: “Install the printer driver”</span><span class="who">SAP&nbsp;Privileges</span></li>
+          <li><span class="when"><b>2</b> · 14:10</span><span class="what">Now admin, the person stops the Privileges agent that runs the countdown. Nothing on the Mac will take the rights back.</span><span class="who">The person</span></li>
+          <li><span class="when"><b>3</b> · 14:15</span><span class="what">At its next heartbeat, the agent sees the timer isn't running and raises a High finding.</span><span class="who">Altiward agent</span></li>
+          <li><span class="when"><b>4</b> · 14:32</span><span class="what">The grant expires on Altiward's own record. The rights are still in the admin group.</span><span class="who">Altiward agent</span></li>
+          <li><span class="when"><b>5</b> · 14:39</span><span class="what">Rights removed after the five-minute grace period, and the session recorded as ended by enforcement.</span><span class="who">Altiward agent</span></li>
+        </ol>
+        <p class="strip-note">Illustrative session with <code>ExpiryEnforcement=enforce</code>. The default, <code>alert</code>, reports the rights past expiry instead of removing them. <a href="/how-it-works/">See it happen, minute by minute</a></p>
+      </figure>
+    </section>
+
+    <section class="project-cards" style="padding-top: var(--section)" id="projects" aria-label="The three projects">
       <div class="project-card lead">
         <span class="label">Agent · Server · Console</span>
         <h2 class="mono"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>altiward</h2>
@@ -189,6 +241,7 @@
         <li><a href="/forwarder/"><span class="need">SAP&nbsp;Privileges' grants and revocations in your SIEM, without an agent</span><span class="repo mono">altiward-forwarder</span></a></li>
         <li><a href="/detections/"><span class="need">Alerts in Sentinel or Splunk on the events either project sends</span><span class="repo mono">altiward-siem</span></a></li>
       </ul>
+      <p class="flow-note">Need to know when rights outlive their timer? The forwarder passes on what Privileges reports, so it can't see a stopped timer. That takes the Altiward agent.</p>
     </section>
 
     <section class="section split-section page-end" id="guides" aria-labelledby="guides-title">

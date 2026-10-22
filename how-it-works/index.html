@@ -102,8 +102,8 @@
   <main id="page-content" tabindex="-1">
     <section class="hero-copy" aria-labelledby="page-title">
       <span class="label">How it works</span>
-      <h1 id="page-title">A separate check when admin outlives its grant.</h1>
-      <p class="lede">SAP&nbsp;Privileges grants admin and runs a revocation timer. Altiward's agent keeps its own record of the grant's expiry and checks the Mac's admin group directly.</p>
+      <h1 id="page-title">Once they're admin, they can stop the timer.</h1>
+      <p class="lede">SAP&nbsp;Privileges takes admin rights back with a countdown that runs in the person's own session. With admin rights, they can stop it, and the rights stay. Altiward's agent runs as root, keeps its own record of the expiry and checks the Mac's admin group directly.</p>
     </section>
 
     <section aria-label="An example session">
@@ -112,19 +112,20 @@
           <div class="top"><span class="mono">1 · 14:02</span><span class="label">SAP Privileges</span></div>
           <div class="glyph" aria-hidden="true"><i class="low" style="width: 30%"></i><i class="high" style="width: 70%"></i></div>
           <strong>Admin granted</strong>
-          <p>Reason: “Install the printer driver”. Allowed for 30 minutes.</p>
+          <p>Reason: “Install the printer driver”. Allowed for 30 minutes. Privileges starts its countdown.</p>
         </li>
         <li>
-          <div class="top"><span class="mono">2 · 14:10</span><span class="label">Altiward agent</span></div>
+          <div class="top"><span class="mono">2 · 14:10</span><span class="label">The person</span></div>
           <div class="glyph" aria-hidden="true"><i class="high" style="width: 100%"></i></div>
-          <strong>The timer stops</strong>
-          <p>SAP&nbsp;Privileges' timer stops while the person holds admin. The agent keeps checking at each heartbeat.</p>
+          <strong>The timer is stopped</strong>
+          <p>Now admin, they stop the Privileges agent that runs the countdown. Nothing on the Mac will take the rights back.</p>
+          <p>Within five minutes, Altiward's agent sees the timer isn't running and raises a High finding.</p>
         </li>
         <li>
           <div class="top"><span class="mono">3 · 14:32</span><span class="label">Altiward agent</span></div>
           <div class="glyph" aria-hidden="true"><i class="over" style="width: 100%"></i></div>
           <strong>The grant expires</strong>
-          <p>The account is still in the admin group. The five-minute grace period starts.</p>
+          <p>Altiward kept its own record of the expiry. The account is still in the admin group, and the five-minute grace period starts.</p>
         </li>
         <li>
           <div class="top"><span class="mono">4 · 14:39</span><span class="label">Altiward agent</span></div>
@@ -142,6 +143,7 @@
           <span class="label">Expiry policy</span>
           <h2 id="policy-title">You choose what happens at expiry.</h2>
           <p>The agent checks at each heartbeat. Integrity checks can identify changes to the monitored components. If the agent stops checking in, the server flags a loss of visibility; it can't establish everything that happened while the agent was unavailable.</p>
+          <p>Couldn't they stop Altiward too? The agent is a root LaunchDaemon. Its tamper checks alert if that LaunchDaemon or its signature changes, and the server raises a finding when a Mac stops checking in.</p>
           <p>Review the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example agent profile</a> before you change the policy.</p>
           <a class="more" href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a>
         </div>

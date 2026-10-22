@@ -590,5 +590,14 @@ html:has(.lightbox:target) { overflow: hidden; }
     @keyframes strip-row-2 { 0%, 22% { background-color: transparent; } 26%, 100% { background-color: var(--surface-200); } }
     @keyframes strip-row-3 { 0%, 60% { background-color: transparent; } 64%, 100% { background-color: var(--surface-200); } }
     @keyframes strip-row-4 { 0%, 82% { background-color: transparent; } 88%, 100% { background-color: var(--surface-200); } }
+    /* The home page's strip has a fifth event, Altiward flagging the stopped timer at 14:15 */
+    #why .strip .s3 { animation-name: why-at-3; }
+    #why .strip .s4 { animation-name: strip-at-3; }
+    #why .strip .s5, #why .strip .bar.tail { animation-name: strip-at-4; }
+    #why .strip .events li:nth-child(3) { animation-name: why-row-3; }
+    #why .strip .events li:nth-child(4) { animation-name: strip-row-3; }
+    #why .strip .events li:nth-child(5) { animation-name: strip-row-4; }
+    @keyframes why-at-3 { 0%, 31% { opacity: 0; } 35% { opacity: 1; } }
+    @keyframes why-row-3 { 0%, 31% { background-color: transparent; } 35%, 100% { background-color: var(--surface-200); } }
   }
 }
