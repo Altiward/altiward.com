@@ -282,14 +282,17 @@
       <div>
         <div class="code-panel">
           <div class="code-head"><span class="title">Try the console locally</span><span class="file">Needs only Docker</span></div>
-<pre tabindex="0" aria-label="Commands to run the console with demo data"><code>git clone https://github.com/Altiward/altiward
+<pre tabindex="0" aria-label="Commands to run the console with demo data, and to stop it"><code>git clone https://github.com/Altiward/altiward
 cd altiward
-docker compose -f dev/compose.demo.yaml up --build</code></pre>
+docker compose -f dev/compose.demo.yaml up --build
+
+# When you're done, from the same folder:
+docker compose -f dev/compose.demo.yaml down -v</code></pre>
         </div>
         <ol class="step-rows">
           <li><div><p>The first run downloads and builds the server, which can take a few minutes.</p></div></li>
           <li><div><p>When it prints <code>Demo ready</code>, open <code>http://localhost:8080</code> and sign in with the token <code>dev-console-token-001</code>.</p></div></li>
-          <li><div><p>The demo keeps running until you stop it with <code>docker compose -f dev/compose.demo.yaml down -v</code>, which also deletes its data.</p></div></li>
+          <li><div><p>It keeps running in the background until you stop it with the last command, which also deletes the demo data. Leave out <code>-v</code> to keep the data for next time.</p></div></li>
         </ol>
         <p class="small muted">You need git and Docker with Compose v2, which <a href="https://docs.docker.com/get-started/get-docker/">Docker Desktop</a> includes. On Windows, run the commands in WSL&nbsp;2. <a href="https://github.com/Altiward/altiward/blob/main/dev/README.md#troubleshooting">Fixes for common errors</a> · <a href="https://github.com/Altiward/altiward/blob/main/dev/README.md#run-from-source">Run from source</a></p>
         <p class="small muted">Only need SAP&nbsp;Privileges events in your SIEM? <a href="/forwarder/">altiward-forwarder</a> sends them without the agent.</p>
