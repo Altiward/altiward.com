@@ -6,24 +6,7 @@ Plain HTML and one stylesheet. There's no build step: the files in this reposito
 
 ## Content
 
-The site is the front door to Altiward on GitHub. Every page should help someone
-understand, deploy, configure or investigate Altiward. Keep detailed installation and
-integration references in the source repository and link to them here. Describe
-implemented capabilities accurately, and label anything not yet built as planned.
-
-SAP Privileges grants admin rights; Altiward adds oversight, configurable expiry
-enforcement and evidence. Altiward is a companion to Privileges, not a replacement
-elevation tool. Describe expiry enforcement as optional: the default policy alerts.
-
-For page locations, preview instructions and asset ownership, see
-[CONTRIBUTING.md](CONTRIBUTING.md).
-
-## Reporting a security problem
-
-Please don't open a public issue. See [altiward.com/security](https://altiward.com/security/) or email hello@altiward.com.
-
-Only advertise a GitHub private vulnerability reporting form after confirming that the
-repository is public and the feature is enabled.
+The site is the front door to Altiward on GitHub.
 
 ## Licence
 
