@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Deploy Altiward on Intune-managed Macs | Altiward</title>
-<meta name="description" content="Deploy Altiward on Intune-managed Macs: deploy the agent and profiles alongside SAP Privileges, protect permanent admins and validate SIEM delivery.">
+<title>Intune EPM on Mac: what to use instead | Altiward</title>
+<meta name="description" content="Intune Endpoint Privilege Management is Windows-only. How to give Intune-managed Macs temporary admin with SAP Privileges, and deploy it and Altiward.">
 <link rel="canonical" href="https://altiward.com/guides/intune-epm-mac/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Altiward">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://altiward.com/guides/intune-epm-mac/">
-<meta property="og:title" content="Deploy Altiward on Intune-managed Macs | Altiward">
-<meta property="og:description" content="Deploy Altiward on Intune-managed Macs: deploy the agent and profiles alongside SAP Privileges, protect permanent admins and validate SIEM delivery.">
+<meta property="og:title" content="Intune EPM on Mac: what to use instead | Altiward">
+<meta property="og:description" content="Intune Endpoint Privilege Management is Windows-only. How to give Intune-managed Macs temporary admin with SAP Privileges, and deploy it and Altiward.">
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -46,8 +46,8 @@
    "@type": "WebPage",
    "@id": "https://altiward.com/guides/intune-epm-mac/#webpage",
    "url": "https://altiward.com/guides/intune-epm-mac/",
-   "name": "Deploy Altiward on Intune-managed Macs | Altiward",
-   "description": "Deploy Altiward on Intune-managed Macs: deploy the agent and profiles alongside SAP Privileges, protect permanent admins and validate SIEM delivery.",
+   "name": "Intune EPM on Mac: what to use instead | Altiward",
+   "description": "Intune Endpoint Privilege Management is Windows-only. How to give Intune-managed Macs temporary admin with SAP Privileges, and deploy it and Altiward.",
    "isPartOf": {
     "@id": "https://altiward.com/#site"
    },
@@ -72,10 +72,10 @@
    ],
    "@id": "https://altiward.com/guides/intune-epm-mac/#article",
    "url": "https://altiward.com/guides/intune-epm-mac/",
-   "headline": "Deploy Altiward on Intune-managed Macs.",
-   "description": "Deploy Altiward on Intune-managed Macs: deploy the agent and profiles alongside SAP Privileges, protect permanent admins and validate SIEM delivery.",
+   "headline": "Intune EPM on Mac: what to use instead",
+   "description": "Intune Endpoint Privilege Management is Windows-only. How to give Intune-managed Macs temporary admin with SAP Privileges, and deploy it and Altiward.",
    "inLanguage": "en-GB",
-   "dateModified": "2026-10-19",
+   "dateModified": "2026-10-23",
    "author": {
     "@id": "https://altiward.com/#org"
    },
@@ -108,7 +108,7 @@
     {
      "@type": "ListItem",
      "position": 3,
-     "name": "Altiward on Intune-managed Macs",
+     "name": "Intune EPM on Mac",
      "item": "https://altiward.com/guides/intune-epm-mac/"
     }
    ]
@@ -152,46 +152,84 @@
         <a href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a>
         <a href="/guides/sap-privileges-siem/">Mac admin evidence in your SIEM</a>
         <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
-        <a href="/guides/intune-epm-mac/" aria-current="page">Deploy on Intune-managed Macs</a>
+        <a href="/guides/intune-epm-mac/" aria-current="page">Intune EPM on Mac: what to use</a>
         <a href="/laps/">macOS LAPS and just-in-time admin</a>
         <a href="/dspt-caf/">CAF-aligned DSPT evidence</a>
       </div>
       <div class="toc">
         <span class="label">On this page</span>
-        <a href="#before">1. Prepare the server and managed Macs</a>
-        <a href="#profiles">2. Configure the agent and Privileges profiles</a>
-        <a href="#mac">3. Keep the managed admin account separate</a>
-        <a href="#validate">4. Deploy and validate the whole workflow</a>
+        <a href="#epm">Does Intune EPM work on Macs?</a>
+        <a href="#instead">What to use on Macs instead</a>
+        <a href="#privileges">Deploy SAP&nbsp;Privileges with Intune</a>
+        <a href="#altiward">Add Altiward for oversight</a>
+        <a href="#laps">Keep the managed admin account separate</a>
+        <a href="#validate">Check the whole workflow</a>
+        <a href="#sources">Sources</a>
       </div>
     </nav>
 
     <main class="guide-article" id="page-content" tabindex="-1">
       <span class="label">Altiward guide · Intune-managed Macs</span>
-      <h1>Deploy Altiward on Intune-managed Macs</h1>
-      <p class="lede">Use Intune to deploy Altiward alongside SAP&nbsp;Privileges. This checklist points you to the configuration and install docs, then shows how to confirm the deployment is working.</p>
-      <div class="meta-line"><span>Last reviewed October 2026</span><span>Microsoft Intune</span><span>macOS 13 or later</span></div>
+      <h1>Intune EPM on Mac: what to use instead</h1>
+      <p class="lede">Intune's Endpoint Privilege Management (EPM) doesn't support macOS. This guide explains what Intune shops use on Macs instead, then shows how to deploy SAP&nbsp;Privileges, and optionally Altiward, through Intune.</p>
+      <div class="meta-line"><span>Last reviewed October 2026</span><span>Microsoft Intune</span><span>SAP&nbsp;Privileges 2.6.0</span><span>macOS 13 or later</span></div>
 
-      <p>SAP&nbsp;Privileges remains responsible for granting admin. Altiward checks membership, records the session and adds configurable expiry enforcement, console revocation and SIEM export. Intune distributes the package and profiles; Altiward does not need a direct Intune API integration.</p>
+      <h2 id="epm">Does Intune EPM work on Macs?</h2>
+      <div class="callout"><svg viewBox="0 0 16 16" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 7.25v3.5M8 5.1v.1"/></svg><div><p><strong>No.</strong> Microsoft documents Endpoint Privilege Management for Windows only. Its <a href="https://learn.microsoft.com/en-us/intune/epm/overview">EPM overview</a>, updated 2 October 2026, says it applies to Windows, and EPM elevates only <code>.exe</code>, <code>.msi</code> and <code>.ps1</code> files. Intune's <a href="https://learn.microsoft.com/en-us/intune/whats-new/in-development">features in development</a> list, updated 30 September 2026, has no EPM for macOS.</p></div></div>
+      <p>On Windows, EPM lets a standard user run approved files with elevated rights, using rules you set in Intune, and logs each elevation. Intune has nothing like it for Macs. What Intune does offer on macOS is a managed local admin account created at enrollment, with its password held in Intune. That account is for IT, not a way for people to get admin rights for a task.</p>
 
-      <h2 id="before">1. Prepare the server and managed Macs</h2>
-      <p>Follow the <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md">Altiward install guide</a> to bring up the server and console. Macs need macOS 13 or later, with SAP&nbsp;Privileges already configured.</p>
-      <p>The <a href="https://github.com/Altiward/altiward/blob/main/docs/data-handling.md">data-handling document</a> lists what leaves each Mac.</p>
+      <h2 id="instead">What to use on Macs instead</h2>
+      <p>Most Mac fleets that remove everyday admin rights use one of two approaches.</p>
+      <div class="compare" tabindex="0" role="region" aria-label="Ways to give Mac users temporary admin">
+        <table>
+          <thead><tr><th scope="col">Approach</th><th scope="col">How it works</th><th scope="col">Cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><a href="https://github.com/SAP/macOS-enterprise-privileges">SAP&nbsp;Privileges</a></th><td>The person asks for admin, optionally gives a reason, and gets full admin rights for a time you limit. You configure it with an MDM profile, and it can send each change to syslog or a webhook.</td><td>Free, open source (Apache&nbsp;2.0)</td></tr>
+            <tr><th scope="row">Commercial endpoint privilege tools with a Mac agent, such as Admin By Request, BeyondTrust and CyberArk</th><td>Closer to EPM on Windows: rules for which apps can run elevated, approval workflows and central reporting.</td><td>Paid, per device or user</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The main difference from EPM: Privileges gives the person full admin for a period rather than elevating one app. Its timer runs in that person's own session, and an admin can stop it. <a href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a> covers the causes and the settings that narrow them. If you need something outside the session to check who holds admin and remove expired rights, add Altiward (<a href="#altiward">below</a>).</p>
 
-      <h2 id="profiles">2. Configure the agent and Privileges profiles</h2>
-      <p>Use the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example Altiward agent settings</a> as your reference. Deploy the settings in the <code>com.altiward.agent</code> domain through Intune:</p>
+      <h2 id="privileges">Deploy SAP&nbsp;Privileges with Intune</h2>
+      <p>All of this is in the Microsoft Intune admin center. Test on a pilot group before assigning it to everyone.</p>
+      <ol class="step-rows">
+        <li><div><strong>Add the package.</strong> Download <code>Privileges_&lt;version&gt;.pkg</code> from <a href="https://github.com/SAP/macOS-enterprise-privileges/releases">SAP's releases</a> (2.6.0, released 17 September 2026, at the time of writing). In Intune, go to <strong>Apps › All Apps › Create</strong>, choose platform <strong>macOS</strong> and type <strong>macOS app (PKG)</strong>, and upload it.</div></li>
+        <li><div><strong>Approve the system extension and its access.</strong> SAP's <a href="https://github.com/SAP/macOS-enterprise-privileges/tree/main/application_management/example_profiles">example profiles</a> include <code>Example_ApprovePrivileges.mobileconfig</code>. It allows SAP's system extension (team <code>7R5ZEU67FQ</code>), gives <code>corp.sap.privileges.extension</code> Full Disk Access, and manages Privileges' login items and notifications. It also sets two Privileges keys, <code>RevokePrivilegesAtLogin</code> and <code>EnableSystemExtension</code>: delete its <em>Privileges configuration</em> payload and put those keys in the next step's settings instead, so that only one profile sets <code>corp.sap.privileges</code>. Upload the edited file at <strong>Devices › Manage devices › Configuration › Create › New policy</strong>, platform <strong>macOS</strong>, profile type <strong>Templates › Custom</strong>, deployment channel <strong>Device channel</strong>.</div></li>
+        <li><div>
+          <p><strong>Set Privileges' settings.</strong> Create another macOS policy with <strong>Templates › Preference file</strong> and preference domain name <code>corp.sap.privileges</code>. Intune wants the keys alone, without the <code>&lt;?xml</code>, <code>&lt;!DOCTYPE</code> and <code>&lt;plist&gt;</code> lines or the outermost <code>&lt;dict&gt;</code>. SAP's <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges">Managing Privileges</a> page documents every key, and the <a href="/guides/sap-privileges-expiry/#settings">expiry guide</a> explains which ones narrow the gaps. A starting point:</p>
+          <figure class="code-panel">
+            <figcaption class="code-head"><span class="file">corp.sap.privileges, keys for an Intune preference file</span></figcaption>
+<pre tabindex="0" aria-label="Example Privileges keys for an Intune preference file"><code>&lt;key&gt;ExpirationIntervalMax&lt;/key&gt;
+&lt;integer&gt;30&lt;/integer&gt;
+&lt;key&gt;ReasonRequired&lt;/key&gt;
+&lt;true/&gt;
+&lt;key&gt;EnableSystemExtension&lt;/key&gt;
+&lt;true/&gt;
+&lt;key&gt;RevokePrivilegesAtLogin&lt;/key&gt;
+&lt;true/&gt;</code></pre>
+          </figure>
+          <p>That example limits each grant to 30 minutes, requires a reason, turns on Privileges' tamper protection and removes rights at the next login. To send Privileges' own events to your SIEM, add <code>RemoteLogging</code> to the same file; see <a href="/forwarder/">altiward-forwarder</a> for Splunk and Sentinel.</p>
+        </div></li>
+        <li><div><strong>Check a pilot Mac.</strong> Under <strong>System Settings › General › Device Management</strong>, both profiles should be listed. Request admin in Privileges, check that the duration matches your limit, then run <code>PrivilegesCLI --history --privilege-changes-only</code> to see the grant recorded.</div></li>
+      </ol>
+      <p>Intune will need macOS 15 or later for new enrollments once Apple releases macOS 27, according to Microsoft's development notes. Macs already enrolled stay enrolled.</p>
+
+      <h2 id="altiward">Add Altiward for oversight</h2>
+      <p>Privileges grants admin, and Altiward checks it. Altiward's agent reads each Mac's admin group, compares it with the grants Privileges reported, and alerts on rights past their expiry, or removes them if you turn enforcement on. It sends the evidence to your SIEM. It needs an Altiward server first: follow the <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md">install guide</a>, which also lists <a href="https://github.com/Altiward/altiward/blob/main/docs/data-handling.md">what leaves each Mac</a>. Then, in Intune:</p>
       <ul>
-        <li><code>ServerURL</code> points to your Altiward agent endpoint.</li>
-        <li><code>EnrollmentToken</code> allows the Mac to enroll with your server.</li>
-        <li><code>PermanentAdmins</code> lists IT and break-glass accounts that Altiward must leave alone.</li>
-        <li><code>ExpiryEnforcement</code> defaults to <code>alert</code>. Set it to <code>enforce</code> to remove overdue rights, excluding accounts in <code>PermanentAdmins</code>.</li>
+        <li><strong>Agent settings:</strong> a <strong>Templates › Preference file</strong> policy with domain <code>com.altiward.agent</code>, from the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example settings</a>: <code>ServerURL</code>, <code>EnrollmentToken</code>, <code>PermanentAdmins</code> and <code>ExpiryEnforcement</code> (<code>alert</code> by default, or <code>enforce</code> to remove overdue rights).</li>
+        <li><strong>Login items:</strong> a <strong>Templates › Custom</strong> policy, device channel, with <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/altiward-login-items.mobileconfig"><code>altiward-login-items.mobileconfig</code></a>, so people can't turn the agent off.</li>
+        <li><strong>The package:</strong> <code>Altiward-&lt;version&gt;.pkg</code> from <a href="https://github.com/Altiward/altiward/releases">GitHub Releases</a>, added as <strong>macOS app (PKG)</strong>.</li>
+        <li><strong>The hook:</strong> add the keys from the agent release's <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/corp.sap.privileges.plist"><code>corp.sap.privileges.plist</code></a> to your existing Privileges preference file. <code>PostChangeExecutableChecksum</code> must match the agent version you deploy, or Privileges won't run the hook. Leave <code>PostChangeActionOnGrantOnly</code> unset, because Altiward needs revokes too.</li>
       </ul>
-      <p>Include the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/altiward-login-items.mobileconfig">login-items profile</a> and add the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/corp.sap.privileges.plist">Altiward hook settings</a> to your existing <code>corp.sap.privileges</code> profile. Keep one managed source for those Privileges settings.</p>
+      <p>Privileges has one hook setting, so Altiward can't run alongside altiward-forwarder's on-Mac hook. Its relay works with either.</p>
 
-      <h2 id="mac">3. Keep the managed admin account separate</h2>
-      <p>If you use macOS LAPS, put its managed account name in <code>PermanentAdmins</code>. Altiward excludes listed accounts from unexpected-admin findings and expiry enforcement. Password management stays with your MDM. See <a href="/laps/">how Altiward treats permanent admins</a>.</p>
+      <h2 id="laps">Keep the managed admin account separate</h2>
+      <p>If Intune creates a local admin account at enrollment, put its short name in <code>PermanentAdmins</code>, exactly as you set it in Intune. Altiward leaves listed accounts out of unexpected-admin findings and expiry enforcement. Left out, the account shows as an admin nobody granted. Password management stays with Intune. See <a href="/laps/">how Altiward treats permanent admins</a>.</p>
 
-      <h2 id="validate">4. Deploy and validate the whole workflow</h2>
-      <p>Deploy the agent package from <a href="https://github.com/Altiward/altiward/releases">GitHub Releases</a> to your managed Macs, following the install guide. Confirm the deployment:</p>
+      <h2 id="validate">Check the whole workflow</h2>
+      <p>On a pilot Mac with both Privileges and Altiward:</p>
       <ol class="step-rows">
         <li><div>Confirm that the Mac enrolls and appears in the console's Fleet view.</div></li>
         <li><div>Request admin through SAP&nbsp;Privileges with a test reason. Check that Altiward records the user, Mac, reason and expiry.</div></li>
@@ -199,7 +237,14 @@
         <li><div>Test your chosen expiry policy and console revocation while the Mac can reach the server.</div></li>
         <li><div>Confirm delivery to your SIEM using the <a href="/guides/sap-privileges-siem/">Altiward SIEM guide</a>.</div></li>
       </ol>
-      <p>Use the <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md">install guide</a> as the reference for package changes, enrollment, backups and upgrades.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul class="sources">
+        <li>Microsoft, <a href="https://learn.microsoft.com/en-us/intune/epm/overview">Learn about using Endpoint Privilege Management with Microsoft Intune</a>, updated 2 October 2026</li>
+        <li>Microsoft, <a href="https://learn.microsoft.com/en-us/intune/whats-new/in-development">In development for Microsoft Intune</a>, updated 30 September 2026</li>
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/releases">Privileges release notes</a>, 2.6.0, and <a href="https://github.com/SAP/macOS-enterprise-privileges/tree/main/application_management/example_profiles">example profiles</a></li>
+        <li>Altiward, <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md">install guide</a>, Intune section</li>
+      </ul>
 
       <div class="closing-box">
         <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
