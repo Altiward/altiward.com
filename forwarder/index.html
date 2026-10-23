@@ -28,6 +28,44 @@
  "@context": "https://schema.org",
  "@graph": [
   {
+   "@type": "Organization",
+   "@id": "https://altiward.com/#org",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://altiward.com/#logo",
+    "url": "https://altiward.com/mark.png",
+    "contentUrl": "https://altiward.com/mark.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": {
+    "@id": "https://altiward.com/#logo"
+   },
+   "description": "Altiward adds open-source oversight to SAP Privileges, with admin membership checks, configurable expiry enforcement, console revocation and SIEM export. Self-hosted under Apache 2.0.",
+   "email": "hello@altiward.com",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general enquiries",
+    "email": "hello@altiward.com",
+    "availableLanguage": "en-GB"
+   },
+   "sameAs": [
+    "https://github.com/Altiward"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://altiward.com/#site",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "inLanguage": "en-GB",
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   }
+  },
+  {
    "@type": "WebPage",
    "@id": "https://altiward.com/forwarder/#webpage",
    "url": "https://altiward.com/forwarder/",
@@ -54,9 +92,16 @@
    "@type": "SoftwareSourceCode",
    "@id": "https://altiward.com/forwarder/#software",
    "name": "altiward-forwarder",
+   "url": "https://altiward.com/forwarder/",
    "description": "SAP Privileges event forwarding to Splunk, Sentinel or syslog through a relay or a Mac-side hook.",
    "codeRepository": "https://github.com/Altiward/altiward-forwarder",
+   "sameAs": "https://github.com/Altiward/altiward-forwarder",
    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+   "programmingLanguage": "Go",
+   "isAccessibleForFree": true,
+   "author": {
+    "@id": "https://altiward.com/#org"
+   },
    "publisher": {
     "@id": "https://altiward.com/#org"
    }
