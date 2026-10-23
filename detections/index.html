@@ -167,7 +167,7 @@
       <p class="lede">altiward-siem holds analytics rules, hunting queries and saved searches for the OCSF records Altiward and altiward-forwarder send. Every field each one reads is checked against example records from both projects.</p>
       <div class="actions">
         <a class="button solid" href="https://github.com/Altiward/altiward-siem?tab=readme-ov-file#readme-ov-file"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View detections on GitHub</a>
-        <a class="button outline" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward-siem%2Fv0.1.0%2Fsentinel%2Fazuredeploy.json">Deploy the Sentinel rules (preview)</a>
+        <a class="button outline" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward-siem%2Fv0.2.0%2Fsentinel%2Fazuredeploy.json">Deploy the Sentinel rules (preview)</a>
       </div>
       <p class="hero-note">Free and open source under Apache 2.0. Set up the Sentinel table first, as <a href="https://github.com/Altiward/altiward/tree/main/integrations/sentinel">Altiward's Sentinel guide</a> describes.</p>
     </div>
@@ -211,7 +211,7 @@
         <h2 id="install-title">Into the SIEM you already run.</h2>
       </div>
       <dl class="points">
-        <div><dt>Microsoft Sentinel</dt><dd>Deploy every analytics rule at once with the <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward-siem%2Fv0.1.0%2Fsentinel%2Fazuredeploy.json">Deploy to Azure template</a> (preview), or create one from its YAML. Paste a hunting query into Logs. The rules read the <code>AltiwardOCSF_CL</code> table, which Altiward's setup script creates; altiward-forwarder uses the same table.</dd></div>
+        <div><dt>Microsoft Sentinel</dt><dd>Deploy every analytics rule at once with the <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward-siem%2Fv0.2.0%2Fsentinel%2Fazuredeploy.json">Deploy to Azure template</a> (preview), or create one from its YAML. Paste a hunting query into Logs. The rules read the <code>AltiwardOCSF_CL</code> table, which Altiward's setup script creates; altiward-forwarder uses the same table.</dd></div>
         <div><dt>Splunk</dt><dd>Copy <code>savedsearches.conf</code> into one of your apps. The alerts and reports start switched off: enable the ones you want and add an alert action. Each search is also a file to paste into Search.</dd></div>
         <div><dt>Checked against real records</dt><dd>CI checks every field a detection reads against example OCSF records from Altiward and altiward-forwarder, so a rule can't depend on a field neither project sends.</dd></div>
       </dl>
