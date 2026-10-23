@@ -5,15 +5,15 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Mac admin evidence in your SIEM | Altiward</title>
-<meta name="description" content="Connect Altiward to Splunk, Microsoft Sentinel or syslog. Find the integration guides, confirm event delivery and use the included dashboards and starter searches.">
+<title>macOS SAP Privileges events in Splunk or Sentinel | Altiward</title>
+<meta name="description" content="Get macOS SAP Privileges grant and revoke events into Splunk, Microsoft Sentinel or syslog: Privileges' own remote logging, altiward-forwarder or Altiward.">
 <link rel="canonical" href="https://altiward.com/guides/sap-privileges-siem/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Altiward">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://altiward.com/guides/sap-privileges-siem/">
-<meta property="og:title" content="Mac admin evidence in your SIEM | Altiward">
-<meta property="og:description" content="Connect Altiward to Splunk, Microsoft Sentinel or syslog. Find the integration guides, confirm event delivery and use the included dashboards and starter searches.">
+<meta property="og:title" content="macOS SAP Privileges events in Splunk or Sentinel | Altiward">
+<meta property="og:description" content="Get macOS SAP Privileges grant and revoke events into Splunk, Microsoft Sentinel or syslog: Privileges' own remote logging, altiward-forwarder or Altiward.">
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -69,8 +69,8 @@
    "@type": "WebPage",
    "@id": "https://altiward.com/guides/sap-privileges-siem/#webpage",
    "url": "https://altiward.com/guides/sap-privileges-siem/",
-   "name": "Mac admin evidence in your SIEM | Altiward",
-   "description": "Connect Altiward to Splunk, Microsoft Sentinel or syslog. Find the integration guides, confirm event delivery and use the included dashboards and starter searches.",
+   "name": "macOS SAP Privileges events in Splunk or Sentinel | Altiward",
+   "description": "Get macOS SAP Privileges grant and revoke events into Splunk, Microsoft Sentinel or syslog: Privileges' own remote logging, altiward-forwarder or Altiward.",
    "isPartOf": {
     "@id": "https://altiward.com/#site"
    },
@@ -92,8 +92,8 @@
    "@type": "TechArticle",
    "@id": "https://altiward.com/guides/sap-privileges-siem/#article",
    "url": "https://altiward.com/guides/sap-privileges-siem/",
-   "headline": "Mac admin evidence in your SIEM",
-   "description": "Connect Altiward to Splunk, Microsoft Sentinel or syslog. Find the integration guides, confirm event delivery and use the included dashboards and starter searches.",
+   "headline": "Send macOS SAP Privileges events to your SIEM",
+   "description": "Get macOS SAP Privileges grant and revoke events into Splunk, Microsoft Sentinel or syslog: Privileges' own remote logging, altiward-forwarder or Altiward.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
    "dateModified": "2026-10-23",
@@ -130,7 +130,7 @@
     {
      "@type": "ListItem",
      "position": 3,
-     "name": "Mac admin evidence in your SIEM",
+     "name": "SAP Privileges events in your SIEM",
      "item": "https://altiward.com/guides/sap-privileges-siem/"
     }
    ]
@@ -172,7 +172,7 @@
         <span class="label">Guides</span>
         <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
         <a href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a>
-        <a href="/guides/sap-privileges-siem/" aria-current="page">Mac admin evidence in your SIEM</a>
+        <a href="/guides/sap-privileges-siem/" aria-current="page">SAP&nbsp;Privileges events in your SIEM</a>
         <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
         <a href="/guides/intune-epm-mac/">Intune EPM on Mac: what to use</a>
         <a href="/laps/">macOS LAPS and just-in-time admin</a>
@@ -180,24 +180,113 @@
       </div>
       <div class="toc">
         <span class="label">On this page</span>
-        <a href="#choose">1. Choose your Altiward integration</a>
-        <a href="#validate">2. Verify a session end to end</a>
-        <a href="#findings">3. Decide which findings need a response</a>
-        <a href="#companion-projects">Companion projects</a>
+        <a href="#routes">Three ways to get the events out</a>
+        <a href="#remote-logging">1. Privileges' own remote logging</a>
+        <a href="#forwarder">2. altiward-forwarder</a>
+        <a href="#altiward">3. Altiward</a>
+        <a href="#queries">Find elevations in Splunk and Sentinel</a>
+        <a href="#sources">Sources</a>
       </div>
     </nav>
 
     <main class="guide-article" id="page-content" tabindex="-1">
       <span class="label">Altiward guide · SIEM evidence</span>
-      <h1>Mac admin evidence in your SIEM</h1>
-      <p class="lede">Send Altiward session evidence, findings and console actions to Splunk, Microsoft Sentinel or syslog. Start with the supported integrations and confirm delivery from Mac to SIEM.</p>
-      <div class="meta-line"><span>Last reviewed October 2026</span><span>Splunk · Microsoft Sentinel · syslog</span><span>OCSF</span></div>
+      <h1>Send macOS SAP&nbsp;Privileges events to your SIEM</h1>
+      <p class="lede">Each time someone gains or gives up admin rights through SAP&nbsp;Privileges on a Mac, your SIEM can get a record of it. There are three ways to send it, from a setting in Privileges itself to a full oversight tool.</p>
+      <div class="meta-line"><span>Last reviewed October 2026</span><span>SAP&nbsp;Privileges 2.6.0</span><span>Splunk · Microsoft Sentinel · syslog</span><span>OCSF</span></div>
 
-      <p>The Altiward agent checks the Mac's admin group against recorded grants and your permanent-admin list. Your server exports the resulting events as OCSF, with CEF also available for syslog. You configure the destination; no session evidence goes to Altiward.</p>
+      <p>This guide is about the macOS app <a href="https://github.com/SAP/macOS-enterprise-privileges">SAP&nbsp;Privileges</a>, not the security of SAP's business software.</p>
 
-      <h2 id="choose">1. Choose your Altiward integration</h2>
-      <p>The setup files live with the code on GitHub. Use the guide for your destination rather than building a separate receiver for SAP&nbsp;Privileges events.</p>
-      <div class="compare" tabindex="0" role="region" aria-label="Table">
+      <h2 id="routes">Three ways to get the events out</h2>
+      <div class="compare" tabindex="0" role="region" aria-label="Ways to send SAP Privileges events to a SIEM">
+        <table>
+          <thead><tr><th scope="col">Route</th><th scope="col">What you run</th><th scope="col">What reaches your SIEM</th><th scope="col">Checked against the admin group</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><a href="#remote-logging">Privileges' own remote logging</a></th><td>Nothing extra: a setting in your Privileges profile</td><td>A syslog line in Privileges' own format, or a JSON webhook</td><td>No</td></tr>
+            <tr><th scope="row"><a href="#forwarder">altiward-forwarder</a></th><td>A relay you host, or a hook on each Mac</td><td>OCSF records in Splunk, Sentinel or syslog</td><td>No: each record is the Mac's own report</td></tr>
+            <tr><th scope="row"><a href="#altiward">Altiward</a></th><td>A server and console, and an agent on each Mac</td><td>The same OCSF records, plus findings such as rights past expiry and admins nobody granted</td><td>Yes</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="remote-logging">1. Privileges' own remote logging</h2>
+      <p>Since version 1.5.0, Privileges can report each change itself. Add <code>RemoteLogging</code> to the profile that sets <code>corp.sap.privileges</code>. <code>ServerType</code> is <code>syslog</code> or <code>webhook</code>, and <code>ServerAddress</code> is the syslog host or the webhook's URL. Syslog goes to port 514, or 6514 with <code>UseTLS</code>. <code>QueueUnsentEvents</code> (2.4.0 or later) keeps events Privileges couldn't send, 20 by default, and sends them again the next time someone changes their rights through Privileges.</p>
+      <figure class="code-panel">
+        <figcaption class="code-head"><span class="file">corp.sap.privileges, syslog over TLS</span></figcaption>
+<pre tabindex="0" aria-label="Example RemoteLogging settings for syslog"><code>&lt;key&gt;RemoteLogging&lt;/key&gt;
+&lt;dict&gt;
+    &lt;key&gt;ServerType&lt;/key&gt;
+    &lt;string&gt;syslog&lt;/string&gt;
+    &lt;key&gt;ServerAddress&lt;/key&gt;
+    &lt;string&gt;syslog.example.com&lt;/string&gt;
+    &lt;key&gt;SyslogOptions&lt;/key&gt;
+    &lt;dict&gt;
+        &lt;key&gt;UseTLS&lt;/key&gt;
+        &lt;true/&gt;
+    &lt;/dict&gt;
+    &lt;key&gt;QueueUnsentEvents&lt;/key&gt;
+    &lt;true/&gt;
+&lt;/dict&gt;</code></pre>
+      </figure>
+      <p>With <code>ServerType</code> set to <code>webhook</code>, Privileges posts JSON like this example from SAP's documentation. <code>custom_data</code> holds whatever you put in <code>WebhookCustomData</code>, and <code>delayed</code> is <code>true</code> for an event sent from the queue.</p>
+      <figure class="code-panel">
+        <figcaption class="code-head"><span class="file">Privileges webhook body</span></figcaption>
+<pre class="event" tabindex="0" aria-label="Example Privileges webhook body"><code>{
+   "admin": true,
+   "custom_data": {
+      "name": "Testuser's Mac",
+      "serial": "XYZ1234567"
+   },
+   "delayed": false,
+   "event": "corp.sap.privileges.granted",
+   "expires": "2024-11-28T07:40:59Z",
+   "machine": "E60E8CCB-32F1-4495-A436-BD1939C2BC32",
+   "reason": "",
+   "timestamp": "2024-11-28T07:20:59Z",
+   "user": "testuser"
+}</code></pre>
+      </figure>
+      <p>Two limits decide whether this is enough on its own:</p>
+      <ul>
+        <li><strong>The webhook can't carry a token.</strong> Splunk's HTTP Event Collector and Sentinel's Logs Ingestion API both need one, so the webhook needs something in between to receive it.</li>
+        <li><strong>Syslog arrives in Privileges' own format.</strong> If a syslog receiver already feeds your SIEM, this is the simplest route, but you write the parsing yourself.</li>
+      </ul>
+
+      <h2 id="forwarder">2. altiward-forwarder: OCSF into Splunk or Sentinel</h2>
+      <p><a href="/forwarder/">altiward-forwarder</a> is free and open source. It turns each Privileges event into an OCSF record and sends it to Splunk, Sentinel or syslog. It works in one of two ways:</p>
+      <ul>
+        <li><strong>A relay you host</strong> takes Privileges' webhook, checks each Mac's client certificate and stores the event on disk before it answers. <a href="https://github.com/Altiward/altiward-forwarder#quick-start-the-relay">Relay quick start</a>.</li>
+        <li><strong>A hook on each Mac</strong>, which Privileges runs after each change, sends the record straight to your SIEM. There's no relay to host, but each Mac holds a token for your SIEM. <a href="https://github.com/Altiward/altiward-forwarder#quick-start-the-on-mac-hook">Hook quick start</a>.</li>
+      </ul>
+      <p>Each grant becomes an OCSF User Access Management record (<code>class_uid</code> 3005). Trimmed, it looks like this:</p>
+      <figure class="code-panel">
+        <figcaption class="code-head"><span class="file">altiward-forwarder record for a grant</span></figcaption>
+<pre class="event" tabindex="0" aria-label="Example OCSF record from altiward-forwarder"><code>{
+  "class_uid": 3005,
+  "activity_id": 1,
+  "activity_name": "Assign Privileges",
+  "time": 1792506383000,
+  "user": { "name": "jdoe" },
+  "device": { "uid": "8A1B2C3D-4E5F-6A7B-8C9D-0E1F2A3B4C5D" },
+  "privileges": ["admin"],
+  "message": "jdoe was granted admin rights on 8A1B2C3D-… via SAP Privileges: Installing a printer driver",
+  "metadata": { "product": { "name": "Altiward Forwarder" } },
+  "unmapped": {
+    "altiward": {
+      "event_type": "elevation.granted",
+      "reason": "Installing a printer driver",
+      "expires_time": 1792506683000,
+      "reported_by": "privileges_webhook",
+      "verified": false
+    }
+  }
+}</code></pre>
+      </figure>
+      <p>Every record says <code>verified: false</code>, because it's what the Mac reported and nothing checks it. A local admin can stop Privileges from reporting.</p>
+
+      <h2 id="altiward">3. Altiward: checked against the admin group</h2>
+      <p>The Altiward agent reads each Mac's admin group and compares it with the grants Privileges reported and your permanent-admin list. The server sends the same OCSF records, plus findings for what doesn't match. CEF is also available for syslog. You choose the destination; no session evidence goes to Altiward.</p>
+      <div class="compare" tabindex="0" role="region" aria-label="Altiward SIEM integrations">
         <table>
           <thead><tr><th scope="col">Destination</th><th scope="col">How Altiward sends events</th><th scope="col">Setup and examples</th></tr></thead>
           <tbody>
@@ -208,28 +297,47 @@
         </table>
       </div>
       <p>Configure the server using <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md#4-connect-your-siem">Connect your SIEM in the install guide</a>. Events wait in the server's Postgres outbox until the destination accepts them, so a SIEM outage delays delivery.</p>
-
-      <h2 id="validate">2. Verify a session end to end</h2>
+      <p>To check a session end to end:</p>
       <ol class="step-rows">
         <li><div>Request temporary admin through SAP&nbsp;Privileges on an enrolled Mac. Give a reason you can recognise.</div></li>
         <li><div>Find the session in the Altiward console. Check the user, Mac, recorded reason, grant time and expiry.</div></li>
         <li><div>Revoke the session while the Mac can reach the server, then confirm that its admin rights have ended.</div></li>
         <li><div>Find the corresponding events in your SIEM and compare them with the console record.</div></li>
       </ol>
-      <p>The <a href="/how-it-works/#see-it">console and SIEM walkthrough</a> shows example records. Use your deployment's event fields and timestamps when adapting searches.</p>
-
-      <h2 id="findings">3. Decide which findings need a response</h2>
+      <p>Then decide which findings need a response:</p>
       <ul>
         <li><strong>Admin rights without a recorded grant:</strong> check the account's purpose and your permanent-admin list.</li>
         <li><strong>Detected changes during a session:</strong> correlate new local accounts or other persistence changes with your security telemetry.</li>
         <li><strong>Rights past expiry:</strong> check your configured expiry policy and the recorded outcome. Alerting is the default; removing rights requires enforcement to be enabled.</li>
         <li><strong>Missing check-ins:</strong> investigate a loss of visibility. The finding does not establish why the Mac stopped reporting.</li>
       </ul>
-      <p>Altiward records admin rights and detected changes. Use your EDR and other logs to investigate commands and process activity. See the <a href="https://github.com/Altiward/altiward/blob/main/docs/schema/README.md">event schema</a> for the contract and example fixtures.</p>
-      <p>Start with the Sentinel analytics rules and Splunk saved searches in <a href="/detections/">altiward-siem</a>. Adapt them to your environment and response process.</p>
-      <h2 id="companion-projects">Companion projects</h2>
-      <p><a href="/detections/">altiward-siem</a> holds detection rules, hunting queries and saved searches for Sentinel and Splunk, each checked against example Altiward events.</p>
-      <p><a href="/forwarder/">altiward-forwarder</a> is for teams that want SAP&nbsp;Privileges events in their SIEM without Altiward's ongoing admin oversight. SAP&nbsp;Privileges remains responsible for elevation in both workflows.</p>
+      <p>The <a href="/how-it-works/#see-it">console and SIEM walkthrough</a> shows example records, and the <a href="https://github.com/Altiward/altiward/blob/main/docs/schema/README.md">event schema</a> has the full contract.</p>
+
+      <h2 id="queries">Find elevations in Splunk and Sentinel</h2>
+      <p>The forwarder and Altiward write to the same places: Sentinel's <code>AltiwardOCSF_CL</code> table and Splunk's <code>altiward:ocsf</code> sourcetype. So these searches, from <a href="/detections/">altiward-siem</a>, list every grant from either one, with its reason, expiry and which product reported it.</p>
+      <figure class="code-panel">
+        <figcaption class="code-head"><span class="file">Splunk: elevations.spl</span></figcaption>
+<pre tabindex="0" aria-label="Splunk search for elevations"><code>sourcetype="altiward:ocsf" class_uid=3005 activity_id=1
+| table _time host device.uid user.name unmapped.altiward.reason unmapped.altiward.expires_time metadata.product.name message</code></pre>
+      </figure>
+      <figure class="code-panel">
+        <figcaption class="code-head"><span class="file">Microsoft Sentinel: elevations.kql</span></figcaption>
+<pre tabindex="0" aria-label="Sentinel query for elevations"><code>AltiwardOCSF_CL
+| where ClassUid == 3005 and ActivityId == 1
+| project TimeGenerated, DeviceSerial, DeviceUid = tostring(Ocsf.device.uid), UserName,
+    Reason = tostring(Ocsf.unmapped.altiward.reason),
+    Expires = unixtime_milliseconds_todatetime(tolong(Ocsf.unmapped.altiward.expires_time)),
+    ReportedBy = tostring(Ocsf.metadata.product.name), Message
+| order by TimeGenerated desc</code></pre>
+      </figure>
+      <p>Forwarder webhook events name the Mac only by its hardware UUID, so <code>DeviceSerial</code> is empty for them. altiward-siem also has alerts, such as more than 10 elevations by one user in 7 days and one user's admin time per day over a limit. Each says whether it works with forwarder events or needs Altiward.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul class="sources">
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges#RemoteLogging">Managing Privileges: RemoteLogging</a>, Privileges wiki</li>
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/tree/main/application_management/example_profiles">Example_RemoteLogging.mobileconfig</a></li>
+        <li>Altiward, <a href="https://github.com/Altiward/altiward-forwarder">altiward-forwarder README</a> and <a href="https://github.com/Altiward/altiward-siem">altiward-siem README</a></li>
+      </ul>
 
       <div class="closing-box">
         <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>

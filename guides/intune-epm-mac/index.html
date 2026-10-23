@@ -172,7 +172,7 @@
         <span class="label">Guides</span>
         <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
         <a href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a>
-        <a href="/guides/sap-privileges-siem/">Mac admin evidence in your SIEM</a>
+        <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
         <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
         <a href="/guides/intune-epm-mac/" aria-current="page">Intune EPM on Mac: what to use</a>
         <a href="/laps/">macOS LAPS and just-in-time admin</a>
@@ -231,7 +231,7 @@
 &lt;key&gt;RevokePrivilegesAtLogin&lt;/key&gt;
 &lt;true/&gt;</code></pre>
           </figure>
-          <p>That example limits each grant to 30 minutes, requires a reason, turns on Privileges' tamper protection and removes rights at the next login. To send Privileges' own events to your SIEM, add <code>RemoteLogging</code> to the same file; see <a href="/forwarder/">altiward-forwarder</a> for Splunk and Sentinel.</p>
+          <p>That example limits each grant to 30 minutes, requires a reason, turns on Privileges' tamper protection and removes rights at the next login. To send Privileges' own events to your SIEM, add <code>RemoteLogging</code> to the same file; see <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>.</p>
         </div></li>
         <li><div><strong>Check a pilot Mac.</strong> Under <strong>System Settings › General › Device Management</strong>, both profiles should be listed. Request admin in Privileges, check that the duration matches your limit, then run <code>PrivilegesCLI --history --privilege-changes-only</code> to see the grant recorded.</div></li>
       </ol>
