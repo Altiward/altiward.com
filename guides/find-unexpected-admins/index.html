@@ -31,13 +31,36 @@
    "@type": "Organization",
    "@id": "https://altiward.com/#org",
    "name": "Altiward",
-   "url": "https://altiward.com/"
+   "url": "https://altiward.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://altiward.com/#logo",
+    "url": "https://altiward.com/mark.png",
+    "contentUrl": "https://altiward.com/mark.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": {
+    "@id": "https://altiward.com/#logo"
+   },
+   "description": "Altiward adds open-source oversight to SAP Privileges, with admin membership checks, configurable expiry enforcement, console revocation and SIEM export. Self-hosted under Apache 2.0.",
+   "email": "hello@altiward.com",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general enquiries",
+    "email": "hello@altiward.com",
+    "availableLanguage": "en-GB"
+   },
+   "sameAs": [
+    "https://github.com/Altiward"
+   ]
   },
   {
    "@type": "WebSite",
    "@id": "https://altiward.com/#site",
    "name": "Altiward",
    "url": "https://altiward.com/",
+   "inLanguage": "en-GB",
    "publisher": {
     "@id": "https://altiward.com/#org"
    }
@@ -66,16 +89,15 @@
    }
   },
   {
-   "@type": [
-    "Article",
-    "TechArticle"
-   ],
+   "@type": "TechArticle",
    "@id": "https://altiward.com/guides/find-unexpected-admins/#article",
    "url": "https://altiward.com/guides/find-unexpected-admins/",
    "headline": "Find unexpected Mac admin accounts",
    "description": "Altiward's free Unexpected admins check lists Mac admins outside your permanent-admin list, for Jamf Pro or Intune. It doesn't verify grants.",
    "inLanguage": "en-GB",
-   "dateModified": "2026-10-19",
+   "datePublished": "2026-10-20",
+   "dateModified": "2026-10-23",
+   "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
    },
@@ -87,6 +109,9 @@
    },
    "mainEntityOfPage": {
     "@id": "https://altiward.com/guides/find-unexpected-admins/#webpage"
+   },
+   "hasPart": {
+    "@id": "https://altiward.com/guides/find-unexpected-admins/#script"
    }
   },
   {
@@ -112,6 +137,23 @@
      "item": "https://altiward.com/guides/find-unexpected-admins/"
     }
    ]
+  },
+  {
+   "@type": "SoftwareSourceCode",
+   "@id": "https://altiward.com/guides/find-unexpected-admins/#script",
+   "name": "unexpected-admins.zsh",
+   "description": "Free Jamf Pro extension attribute for macOS that lists local accounts holding admin rights outside your permanent-admin list.",
+   "url": "https://altiward.com/tools/unexpected-admins.zsh",
+   "programmingLanguage": "Zsh",
+   "runtimePlatform": "macOS",
+   "license": "https://opensource.org/licenses/MIT",
+   "isAccessibleForFree": true,
+   "author": {
+    "@id": "https://altiward.com/#org"
+   },
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   }
   }
  ]
 }
@@ -150,7 +192,7 @@
         <span class="label">Guides</span>
         <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
         <a href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a>
-        <a href="/guides/sap-privileges-siem/">Mac admin evidence in your SIEM</a>
+        <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
         <a href="/guides/find-unexpected-admins/" aria-current="page">Find unexpected Mac admin accounts</a>
         <a href="/guides/intune-epm-mac/">Intune EPM on Mac: what to use</a>
         <a href="/laps/">macOS LAPS and just-in-time admin</a>

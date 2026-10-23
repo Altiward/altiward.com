@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>altiward-forwarder: SAP Privileges events in your SIEM | Altiward</title>
+<title>altiward-forwarder: open-source relay and hook for SAP Privileges | Altiward</title>
 <meta name="description" content="SAP Privileges event forwarding to Splunk, Microsoft Sentinel and syslog, from a relay you host or a hook on each Mac. Open source, with companion SIEM content.">
 <link rel="canonical" href="https://altiward.com/forwarder/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Altiward">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://altiward.com/forwarder/">
-<meta property="og:title" content="altiward-forwarder: SAP Privileges events in your SIEM | Altiward">
+<meta property="og:title" content="altiward-forwarder: open-source relay and hook for SAP Privileges | Altiward">
 <meta property="og:description" content="SAP Privileges event forwarding to Splunk, Microsoft Sentinel and syslog, from a relay you host or a hook on each Mac. Open source, with companion SIEM content.">
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
@@ -28,10 +28,48 @@
  "@context": "https://schema.org",
  "@graph": [
   {
+   "@type": "Organization",
+   "@id": "https://altiward.com/#org",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://altiward.com/#logo",
+    "url": "https://altiward.com/mark.png",
+    "contentUrl": "https://altiward.com/mark.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": {
+    "@id": "https://altiward.com/#logo"
+   },
+   "description": "Altiward adds open-source oversight to SAP Privileges, with admin membership checks, configurable expiry enforcement, console revocation and SIEM export. Self-hosted under Apache 2.0.",
+   "email": "hello@altiward.com",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general enquiries",
+    "email": "hello@altiward.com",
+    "availableLanguage": "en-GB"
+   },
+   "sameAs": [
+    "https://github.com/Altiward"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://altiward.com/#site",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "inLanguage": "en-GB",
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   }
+  },
+  {
    "@type": "WebPage",
    "@id": "https://altiward.com/forwarder/#webpage",
    "url": "https://altiward.com/forwarder/",
-   "name": "altiward-forwarder: SAP Privileges events in your SIEM | Altiward",
+   "name": "altiward-forwarder: open-source relay and hook for SAP Privileges | Altiward",
    "description": "SAP Privileges event forwarding to Splunk, Microsoft Sentinel and syslog, from a relay you host or a hook on each Mac. Open source, with companion SIEM content.",
    "isPartOf": {
     "@id": "https://altiward.com/#site"
@@ -54,9 +92,16 @@
    "@type": "SoftwareSourceCode",
    "@id": "https://altiward.com/forwarder/#software",
    "name": "altiward-forwarder",
+   "url": "https://altiward.com/forwarder/",
    "description": "SAP Privileges event forwarding to Splunk, Sentinel or syslog through a relay or a Mac-side hook.",
    "codeRepository": "https://github.com/Altiward/altiward-forwarder",
+   "sameAs": "https://github.com/Altiward/altiward-forwarder",
    "license": "https://www.apache.org/licenses/LICENSE-2.0",
+   "programmingLanguage": "Go",
+   "isAccessibleForFree": true,
+   "author": {
+    "@id": "https://altiward.com/#org"
+   },
    "publisher": {
     "@id": "https://altiward.com/#org"
    }
@@ -122,7 +167,7 @@
         <a class="button outline" href="https://github.com/Altiward/altiward-forwarder#quick-start-the-relay"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>Set up the relay</a>
         <a class="button outline" href="https://github.com/Altiward/altiward-forwarder#quick-start-the-on-mac-hook"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>Set up the hook</a>
       </div>
-      <p class="hero-note">Free and open source under Apache 2.0. No Altiward agent needed.</p>
+      <p class="hero-note">Free and open source under Apache 2.0. No Altiward agent needed. <a href="/guides/sap-privileges-siem/">Compare it with Privileges' own remote logging</a>.</p>
     </div>
   </div>
 

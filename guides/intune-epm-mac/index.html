@@ -31,13 +31,36 @@
    "@type": "Organization",
    "@id": "https://altiward.com/#org",
    "name": "Altiward",
-   "url": "https://altiward.com/"
+   "url": "https://altiward.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://altiward.com/#logo",
+    "url": "https://altiward.com/mark.png",
+    "contentUrl": "https://altiward.com/mark.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": {
+    "@id": "https://altiward.com/#logo"
+   },
+   "description": "Altiward adds open-source oversight to SAP Privileges, with admin membership checks, configurable expiry enforcement, console revocation and SIEM export. Self-hosted under Apache 2.0.",
+   "email": "hello@altiward.com",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general enquiries",
+    "email": "hello@altiward.com",
+    "availableLanguage": "en-GB"
+   },
+   "sameAs": [
+    "https://github.com/Altiward"
+   ]
   },
   {
    "@type": "WebSite",
    "@id": "https://altiward.com/#site",
    "name": "Altiward",
    "url": "https://altiward.com/",
+   "inLanguage": "en-GB",
    "publisher": {
     "@id": "https://altiward.com/#org"
    }
@@ -66,16 +89,15 @@
    }
   },
   {
-   "@type": [
-    "Article",
-    "TechArticle"
-   ],
+   "@type": "TechArticle",
    "@id": "https://altiward.com/guides/intune-epm-mac/#article",
    "url": "https://altiward.com/guides/intune-epm-mac/",
    "headline": "Intune EPM on Mac: what to use instead",
    "description": "Intune Endpoint Privilege Management is Windows-only. How to give Intune-managed Macs temporary admin with SAP Privileges, and deploy it and Altiward.",
    "inLanguage": "en-GB",
+   "datePublished": "2026-10-20",
    "dateModified": "2026-10-23",
+   "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
    },
@@ -150,7 +172,7 @@
         <span class="label">Guides</span>
         <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
         <a href="/guides/sap-privileges-expiry/">When Mac admin rights outlive their timer</a>
-        <a href="/guides/sap-privileges-siem/">Mac admin evidence in your SIEM</a>
+        <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
         <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
         <a href="/guides/intune-epm-mac/" aria-current="page">Intune EPM on Mac: what to use</a>
         <a href="/laps/">macOS LAPS and just-in-time admin</a>
@@ -209,7 +231,7 @@
 &lt;key&gt;RevokePrivilegesAtLogin&lt;/key&gt;
 &lt;true/&gt;</code></pre>
           </figure>
-          <p>That example limits each grant to 30 minutes, requires a reason, turns on Privileges' tamper protection and removes rights at the next login. To send Privileges' own events to your SIEM, add <code>RemoteLogging</code> to the same file; see <a href="/forwarder/">altiward-forwarder</a> for Splunk and Sentinel.</p>
+          <p>That example limits each grant to 30 minutes, requires a reason, turns on Privileges' tamper protection and removes rights at the next login. To send Privileges' own events to your SIEM, add <code>RemoteLogging</code> to the same file; see <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>.</p>
         </div></li>
         <li><div><strong>Check a pilot Mac.</strong> Under <strong>System Settings › General › Device Management</strong>, both profiles should be listed. Request admin in Privileges, check that the duration matches your limit, then run <code>PrivilegesCLI --history --privilege-changes-only</code> to see the grant recorded.</div></li>
       </ol>
