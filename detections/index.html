@@ -129,7 +129,7 @@
     <section class="section" id="detections" aria-labelledby="detections-title">
       <div class="section-head">
         <span class="label">What's included</span>
-        <h2 id="detections-title">Twelve rules and searches, for both SIEMs.</h2>
+        <h2 id="detections-title">Thirteen rules and searches, for both SIEMs.</h2>
         <p class="muted">Each runs in your SIEM, as a Sentinel rule or hunting query and a Splunk search. They read the events Altiward or altiward-forwarder sends; the forwarder sends grants and revocations only, so most need Altiward.</p>
       </div>
       <div class="compare plain">
@@ -147,12 +147,14 @@
             <tr><th scope="row">A grant or revocation the Mac's admin group contradicts</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
             <tr><th scope="row">The console's break-glass token used</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
             <tr><th scope="row">More than 10 elevations by one person in 7 days</th><td>Analytics rule</td><td>Alert</td><td>Altiward or the forwarder</td></tr>
+            <tr><th scope="row">One person's admin time in a day over your limit</th><td>Analytics rule</td><td>Alert</td><td>Altiward or the forwarder</td></tr>
             <tr><th scope="row">Elevations, with the reason, expiry and what reported them</th><td>Hunting query</td><td>Report</td><td>Altiward or the forwarder</td></tr>
             <tr><th scope="row">Console actions: revocations, enrollment approvals, settings changes</th><td>Hunting query</td><td>Report</td><td>Altiward</td></tr>
             <tr><th scope="row">Console sign-ins and sign-outs</th><td>Hunting query</td><td>Report</td><td>Altiward</td></tr>
           </tbody>
         </table>
       </div>
+      <p class="muted">The admin-time rule is a template: set the limit at the top of the query. 120 minutes a day is the default. To report the same limit as SAP&nbsp;Privileges 2.7's AdminBudget, use the same number. The rule adds up time on the server's side, so it works on any Privileges version, covers someone's Macs together, and isn't reset by moving a Mac's date forward.</p>
     </section>
 
     <section class="section" id="install" aria-labelledby="install-title">
