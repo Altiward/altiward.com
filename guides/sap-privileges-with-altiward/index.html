@@ -229,6 +229,17 @@
 
       <h2 id="findings">Bring unexpected admins into view</h2>
       <p>Altiward checks for admin membership without a recorded grant and outside your list of permanent admins. It also flags an admin account detected during an approved session. Your team can review the finding, request revocation from the console and correlate the session with other security events.</p>
+      <p>With SAP&nbsp;Privileges 2.6 or later and its system extension on, Altiward also reads what the extension records on the Mac: which process added the account to the admin group, and any attempt the extension blocked to remove or move Privileges. Privileges keeps both on the Mac; Altiward puts them in the session's timeline, the Mac's alerts and your SIEM.</p>
+      <div class="revoke-grid">
+        <figure class="shot">
+          <span class="frame"><picture><source srcset="/images/console-added-by-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-added-by-light.png" width="360" height="817" alt="The session for svc-backup on C02YH2CCJG5H: state Revoked from the console, source Without a grant, and a timeline with Found without a grant, added by /usr/sbin/dseditgroup, then New persistence, new admin account svc-backup, then Revoked, from the console." loading="lazy" decoding="async"></picture></span>
+          <figcaption><strong>Who added it</strong>. An account made admin with <code>dseditgroup</code>, found, then revoked from the console. Example data.</figcaption>
+        </figure>
+        <figure class="shot">
+          <span class="frame"><picture><source srcset="/images/console-blocked-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-blocked-light.png" width="360" height="330" alt="The Integrity section for a Mac: every check passing, and an alert reading Blocked: SAP Privileges blocked /bin/mv from trying to rename /Applications/Privileges.app." loading="lazy" decoding="async"></picture></span>
+          <figcaption><strong>What Privileges blocked</strong>. An attempt to move Privileges aside, in the Mac's integrity alerts. Example data.</figcaption>
+        </figure>
+      </div>
       <p>These findings identify something to investigate. An account without a recorded grant is not, by itself, proof of malicious activity.</p>
 
       <h2 id="deployment">Keep control of the evidence</h2>
