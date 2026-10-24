@@ -17,11 +17,12 @@
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta property="og:image:alt" content="Altiward: Open-source oversight for temporary macOS admin rights.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <script type="application/ld+json">
 {
@@ -86,7 +87,9 @@
    "inLanguage": "en-GB",
    "mainEntity": {
     "@id": "https://altiward.com/guides/sap-privileges-with-altiward/#article"
-   }
+   },
+   "datePublished": "2026-10-20",
+   "dateModified": "2026-10-24"
   },
   {
    "@type": "TechArticle",
@@ -96,7 +99,7 @@
    "description": "Compare SAP Privileges alone with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-23",
+   "dateModified": "2026-10-24",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -171,6 +174,7 @@
       <div>
         <span class="label">Guides</span>
         <a href="/guides/sap-privileges-with-altiward/" aria-current="page">What Altiward adds to SAP&nbsp;Privileges</a>
+        <a href="/guides/mac-temporary-admin-tools-compared/">Temporary Mac admin tools compared</a>
         <a href="/guides/sap-privileges-expiry/">When SAP&nbsp;Privileges admin rights outlive the timer</a>
         <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
         <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
@@ -181,7 +185,7 @@
       <div class="toc">
         <span class="label">On this page</span>
         <a href="#summary">What Altiward adds</a>
-        <a href="#expiry">Check the rights, not just the timer</a>
+        <a href="#expiry">Check the admin group after expiry</a>
         <a href="#findings">Bring unexpected admins into view</a>
         <a href="#deployment">Keep control of the evidence</a>
         <a href="#sources">Sources for Privileges' native behaviour</a>
@@ -189,7 +193,6 @@
     </nav>
 
     <main class="guide-article" id="page-content" tabindex="-1">
-      <span class="label">Altiward guide · Comparison</span>
       <h1>What Altiward adds to SAP Privileges</h1>
       <p class="lede">Add expiry enforcement, unexpected-admin findings and fleet-wide session evidence to your existing elevation workflow. Compare SAP&nbsp;Privileges alone with SAP&nbsp;Privileges plus Altiward.</p>
       <div class="meta-line"><span>Last reviewed October 2026</span><span>SAP Privileges 2.6.0</span></div>
@@ -223,7 +226,7 @@
       </div>
       <p class="actions"><a class="button outline" href="https://github.com/Altiward/altiward/blob/main/docs/install.md"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>Read the install guide</a></p>
 
-      <h2 id="expiry">Check the rights, not just the timer</h2>
+      <h2 id="expiry">Check the admin group after expiry</h2>
       <p>A timer and a grant event describe the intended admin window. Altiward's agent also reads the Mac's admin group. With enforcement enabled, it removes rights found past the recorded expiry and configured grace period, then records enforcement as the reason the session ended. The default policy alerts without removing rights; the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example agent profile</a> documents the options.</p>
       <p>Privileges has its own revocation settings and optional tamper protection. Keep those configured: Altiward adds another check rather than making the original controls unnecessary. Our <a href="/guides/sap-privileges-expiry/">expiry guide</a> explains the documented limits and settings.</p>
 
@@ -232,11 +235,11 @@
       <p>With SAP&nbsp;Privileges 2.6 or later and its system extension on, Altiward also reads what the extension records on the Mac: which process added the account to the admin group, and any attempt the extension blocked to remove or move Privileges. Privileges keeps both on the Mac; Altiward puts them in the session's timeline, the Mac's alerts and your SIEM.</p>
       <div class="revoke-grid">
         <figure class="shot">
-          <span class="frame"><picture><source srcset="/images/console-added-by-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-added-by-light.png" width="360" height="817" alt="The session for svc-backup on C02YH2CCJG5H: state Revoked from the console, source Without a grant, and a timeline with Found without a grant, added by /usr/sbin/dseditgroup, then New persistence, new admin account svc-backup, then Revoked, from the console." loading="lazy" decoding="async"></picture></span>
+          <span class="frame"><picture><source type="image/webp" srcset="/images/console-added-by-dark.webp" media="(prefers-color-scheme: dark)"><source srcset="/images/console-added-by-dark.png" media="(prefers-color-scheme: dark)"><source type="image/webp" srcset="/images/console-added-by-light.webp"><img src="/images/console-added-by-light.png" width="360" height="817" alt="The session for svc-backup on C02YH2CCJG5H: state Revoked from the console, source Without a grant, and a timeline with Found without a grant, added by /usr/sbin/dseditgroup, then New persistence, new admin account svc-backup, then Revoked, from the console." loading="lazy" decoding="async"></picture></span>
           <figcaption><strong>Who added it</strong>. An account made admin with <code>dseditgroup</code>, found, then revoked from the console. Example data.</figcaption>
         </figure>
         <figure class="shot">
-          <span class="frame"><picture><source srcset="/images/console-blocked-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-blocked-light.png" width="360" height="330" alt="The Integrity section for a Mac: every check passing, and an alert reading Blocked: SAP Privileges blocked /bin/mv from trying to rename /Applications/Privileges.app." loading="lazy" decoding="async"></picture></span>
+          <span class="frame"><picture><source type="image/webp" srcset="/images/console-blocked-dark.webp" media="(prefers-color-scheme: dark)"><source srcset="/images/console-blocked-dark.png" media="(prefers-color-scheme: dark)"><source type="image/webp" srcset="/images/console-blocked-light.webp"><img src="/images/console-blocked-light.png" width="360" height="330" alt="The Integrity section for a Mac: every check passing, and an alert reading Blocked: SAP Privileges blocked /bin/mv from trying to rename /Applications/Privileges.app." loading="lazy" decoding="async"></picture></span>
           <figcaption><strong>What Privileges blocked</strong>. An attempt to move Privileges aside, in the Mac's integrity alerts. Example data.</figcaption>
         </figure>
       </div>

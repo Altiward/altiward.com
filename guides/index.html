@@ -17,11 +17,12 @@
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta property="og:image:alt" content="Altiward: Open-source oversight for temporary macOS admin rights.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <script type="application/ld+json">
 {
@@ -115,15 +116,22 @@
      {
       "@type": "ListItem",
       "position": 6,
-      "url": "https://altiward.com/dspt-caf/"
+      "url": "https://altiward.com/guides/mac-temporary-admin-tools-compared/"
      },
      {
       "@type": "ListItem",
       "position": 7,
+      "url": "https://altiward.com/dspt-caf/"
+     },
+     {
+      "@type": "ListItem",
+      "position": 8,
       "url": "https://altiward.com/guides/find-unexpected-admins/"
      }
     ]
-   }
+   },
+   "datePublished": "2026-10-20",
+   "dateModified": "2026-10-24"
   },
   {
    "@type": "BreadcrumbList",
@@ -176,8 +184,7 @@
 
   <main id="page-content" tabindex="-1" class="page-end">
     <section class="hero-copy" aria-labelledby="page-title">
-      <span class="label">Guides</span>
-      <h1 id="page-title">Guides for temporary Mac admin.</h1>
+      <h1 id="page-title">Guides for temporary macOS admin</h1>
       <p class="lede">Start with the install guide on GitHub, then use these guides to configure Altiward alongside SAP&nbsp;Privileges and investigate the evidence.</p>
     </section>
 
@@ -185,12 +192,12 @@
       <h2 id="start-title" class="label">Start here</h2>
       <div class="guide-cards two">
         <a class="guide-card" href="https://github.com/Altiward/altiward/blob/main/docs/install.md">
-          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 3.5h4a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 0-1.5-1.5h-4zM13.5 3.5h-4A1.5 1.5 0 0 0 8 5v8a1.5 1.5 0 0 1 1.5-1.5h4z"/></svg><span class="label">Install guide · On GitHub</span></span>
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 3.5h4a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 0-1.5-1.5h-4zM13.5 3.5h-4A1.5 1.5 0 0 0 8 5v8a1.5 1.5 0 0 1 1.5-1.5h4z"/></svg><span class="label">On GitHub</span></span>
           <strong>Install Altiward</strong>
           <span class="desc">The server, the Mac agent, SIEM export and upgrades, step by step.</span>
         </a>
         <a class="guide-card" href="https://github.com/Altiward/altiward/blob/main/docs/data-handling.md">
-          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="8" cy="4" rx="5" ry="1.75"/><path d="M3 4v8c0 1 2.2 1.75 5 1.75s5-.75 5-1.75V4M3 8c0 1 2.2 1.75 5 1.75S13 9 13 8"/></svg><span class="label">Reference · On GitHub</span></span>
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="8" cy="4" rx="5" ry="1.75"/><path d="M3 4v8c0 1 2.2 1.75 5 1.75s5-.75 5-1.75V4M3 8c0 1 2.2 1.75 5 1.75S13 9 13 8"/></svg><span class="label">On GitHub</span></span>
           <strong>What Altiward collects, stores and sends</strong>
           <span class="desc">What the agent collects on each Mac, what the server stores, and the connections each part makes.</span>
         </a>
@@ -201,17 +208,17 @@
       <h2 id="setup-title" class="label">Set it up</h2>
       <div class="guide-cards">
         <a class="guide-card" href="/guides/intune-epm-mac/">
-          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2.5 4 1 1 2-2M2.5 9l1 1 2-2M7.5 4.5h6M7.5 9.5h6M7.5 13h6"/></svg><span class="label">Guide · Intune</span></span>
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m2.5 4 1 1 2-2M2.5 9l1 1 2-2M7.5 4.5h6M7.5 9.5h6M7.5 13h6"/></svg><span class="label">Intune</span></span>
           <strong>Intune EPM on Mac: what to use instead</strong>
           <span class="desc">EPM is Windows-only. Deploy SAP&nbsp;Privileges, and optionally Altiward, to Intune-managed Macs.</span>
         </a>
         <a class="guide-card" href="/guides/sap-privileges-siem/">
-          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2.5" width="12" height="9" rx="1"/><path d="M5 9 7 6.5l1.5 1.5L11 5M5.5 14h5"/></svg><span class="label">Guide · Splunk · Sentinel · syslog</span></span>
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="2.5" width="12" height="9" rx="1"/><path d="M5 9 7 6.5l1.5 1.5L11 5M5.5 14h5"/></svg><span class="label">SIEM</span></span>
           <strong>SAP&nbsp;Privileges events in your SIEM</strong>
           <span class="desc">Privileges' own remote logging, altiward-forwarder or Altiward, with Splunk and Sentinel queries.</span>
         </a>
         <a class="guide-card" href="/laps/">
-          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="10.5" r="3"/><path d="m7.5 8.5 6-6M11.5 4.5l1.5 1.5"/></svg><span class="label">Topic · macOS LAPS</span></span>
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="5.5" cy="10.5" r="3"/><path d="m7.5 8.5 6-6M11.5 4.5l1.5 1.5"/></svg><span class="label">macOS LAPS</span></span>
           <strong>macOS LAPS and just-in-time admin do different jobs</strong>
           <span class="desc">How LAPS in Intune and Jamf Pro, SAP&nbsp;Privileges and Altiward fit together.</span>
         </a>
@@ -220,9 +227,9 @@
 
     <section class="guide-group" aria-labelledby="gaps-title">
       <h2 id="gaps-title" class="label">Understand the gaps</h2>
-      <div class="guide-cards">
+      <div class="guide-cards two">
         <a class="guide-card" href="/guides/sap-privileges-expiry/">
-          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.5 1.5"/></svg><span class="label">Guide · Expiry</span></span>
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 4.5V8l2.5 1.5"/></svg><span class="label">Expiry</span></span>
           <strong>When SAP&nbsp;Privileges admin rights outlive the timer</strong>
           <span class="desc">Six reasons rights can outlive a grant, which Privileges settings reduce the risk, and how to check.</span>
         </a>
@@ -231,8 +238,13 @@
           <strong>What Altiward adds to SAP&nbsp;Privileges</strong>
           <span class="desc">Privileges alone side by side with Privileges plus Altiward: enforcement, findings and fleet-wide evidence.</span>
         </a>
+        <a class="guide-card" href="/guides/mac-temporary-admin-tools-compared/">
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 3.5h11M2.5 8h11M2.5 12.5h11M6 2v12"/></svg><span class="label">Comparison</span></span>
+          <strong>Temporary Mac admin tools compared</strong>
+          <span class="desc">Jamf, Iru, PrivilegesDemoter, Admin By Request and SAP&nbsp;Privileges with Altiward, with sources for every claim.</span>
+        </a>
         <a class="guide-card" href="/dspt-caf/">
-          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.75h5.5L12.5 4.75V14.25H4z"/><path d="M9.5 1.75v3h3M6.25 8.5h4M6.25 11h4"/></svg><span class="label">Topic · Health and care</span></span>
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 1.75h5.5L12.5 4.75V14.25H4z"/><path d="M9.5 1.75v3h3M6.25 8.5h4M6.25 11h4"/></svg><span class="label">Health and care</span></span>
           <strong>CAF-aligned DSPT evidence for Mac admin rights</strong>
           <span class="desc">Which outcomes temporary admin evidence supports, for health and care teams with Macs.</span>
         </a>
@@ -243,7 +255,7 @@
       <h2 id="check-title" class="label">Check your Macs today</h2>
       <a class="guide-feature" href="/guides/find-unexpected-admins/">
         <div>
-          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><span class="label">Free script · Jamf Pro · Intune · MIT licence</span></span>
+          <span class="kind"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"/><path d="m10.5 10.5 3 3"/></svg><span class="label">Free script</span></span>
           <strong>Find unexpected Mac admin accounts</strong>
           <span class="desc">A Jamf Pro extension attribute that lists local admins outside your permanent list at each inventory update, with clear limits on what a snapshot can establish.</span>
           <span class="go">Get the script</span>

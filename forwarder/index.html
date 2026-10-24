@@ -6,22 +6,23 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>altiward-forwarder: open-source relay and hook for SAP Privileges | Altiward</title>
-<meta name="description" content="SAP Privileges event forwarding to Splunk, Microsoft Sentinel and syslog, from a relay you host or a hook on each Mac. Open source, with companion SIEM content.">
+<meta name="description" content="Forward SAP Privileges events to Splunk, Microsoft Sentinel or syslog, from a relay you host or a hook on each Mac. Open source, with SIEM detections.">
 <link rel="canonical" href="https://altiward.com/forwarder/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Altiward">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://altiward.com/forwarder/">
 <meta property="og:title" content="altiward-forwarder: open-source relay and hook for SAP Privileges | Altiward">
-<meta property="og:description" content="SAP Privileges event forwarding to Splunk, Microsoft Sentinel and syslog, from a relay you host or a hook on each Mac. Open source, with companion SIEM content.">
+<meta property="og:description" content="Forward SAP Privileges events to Splunk, Microsoft Sentinel or syslog, from a relay you host or a hook on each Mac. Open source, with SIEM detections.">
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta property="og:image:alt" content="Altiward: Open-source oversight for temporary macOS admin rights.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <script type="application/ld+json">
 {
@@ -70,7 +71,7 @@
    "@id": "https://altiward.com/forwarder/#webpage",
    "url": "https://altiward.com/forwarder/",
    "name": "altiward-forwarder: open-source relay and hook for SAP Privileges | Altiward",
-   "description": "SAP Privileges event forwarding to Splunk, Microsoft Sentinel and syslog, from a relay you host or a hook on each Mac. Open source, with companion SIEM content.",
+   "description": "Forward SAP Privileges events to Splunk, Microsoft Sentinel or syslog, from a relay you host or a hook on each Mac. Open source, with SIEM detections.",
    "isPartOf": {
     "@id": "https://altiward.com/#site"
    },
@@ -86,7 +87,9 @@
     "width": 1200,
     "height": 630
    },
-   "inLanguage": "en-GB"
+   "inLanguage": "en-GB",
+   "datePublished": "2026-10-20",
+   "dateModified": "2026-10-24"
   },
   {
    "@type": "SoftwareSourceCode",
@@ -159,9 +162,8 @@
 <main id="page-content" tabindex="-1">
   <div class="wrap">
     <div class="hero-copy">
-      <span class="label eyebrow">altiward-forwarder · Open source</span>
-      <h1>SAP&nbsp;Privileges events in your SIEM.</h1>
-      <p class="lede">Forward SAP&nbsp;Privileges grants and revocations as OCSF events to your SIEM. Choose a relay you host or a hook on each Mac; SAP&nbsp;Privileges remains the elevation tool.</p>
+      <h1>SAP&nbsp;Privileges events in your SIEM</h1>
+      <p class="lede">altiward-forwarder sends SAP&nbsp;Privileges grants and revocations as OCSF events to your SIEM. Choose a relay you host or a hook on each Mac; SAP&nbsp;Privileges remains the elevation tool.</p>
       <div class="actions">
         <a class="button solid" href="https://github.com/Altiward/altiward-forwarder?tab=readme-ov-file#readme-ov-file"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View forwarder on GitHub</a>
         <a class="button outline" href="https://github.com/Altiward/altiward-forwarder#quick-start-the-relay"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>Set up the relay</a>
@@ -174,8 +176,7 @@
   <div class="wrap closing">
     <section class="section" id="modes" aria-labelledby="modes-title">
       <div class="section-head">
-        <span class="label">How it works</span>
-        <h2 id="modes-title">Two routes from Privileges to your SIEM.</h2>
+        <h2 id="modes-title">Two routes from Privileges to your SIEM</h2>
         <p class="muted">Choose one for your Macs. Either way, each event is marked unverified: it's the Mac's own report.</p>
       </div>
       <dl class="points">
@@ -186,7 +187,6 @@
 
     <section class="section" id="choose" aria-labelledby="choose-title">
       <div class="section-head">
-        <span class="label">Compare</span>
         <h2 id="choose-title">The hook, the relay, or Altiward?</h2>
         <p class="muted">The forwarder passes on what SAP&nbsp;Privileges reports. Altiward also checks it on each Mac. Choose by what you need the record to prove.</p>
       </div>
@@ -211,8 +211,7 @@
 
     <section class="section" id="limits" aria-labelledby="limits-title">
       <div class="section-head">
-        <span class="label">What it can't tell you</span>
-        <h2 id="limits-title">The Mac's own report, forwarded.</h2>
+        <h2 id="limits-title">What the forwarder can't tell you</h2>
       </div>
       <dl class="points">
         <div><dt>Nothing checks the events</dt><dd>Every record is marked unverified. A local admin can stop SAP&nbsp;Privileges from reporting.</dd></div>
@@ -224,8 +223,7 @@
 
     <section class="section" id="scope" aria-labelledby="scope-title">
       <div class="section-head">
-        <span class="label">How the projects fit together</span>
-        <h2 id="scope-title">Event forwarding and admin oversight.</h2>
+        <h2 id="scope-title">How the forwarder and Altiward fit together</h2>
       </div>
       <dl class="points">
         <div><dt>altiward-forwarder</dt><dd>Event forwarding for teams that want SAP&nbsp;Privileges grant and revocation records in their SIEM.</dd></div>
@@ -238,7 +236,7 @@
   <section class="early" aria-labelledby="open-title">
     <div class="wrap">
       <div class="intro">
-        <h2 id="open-title">Get altiward-forwarder on GitHub.</h2>
+        <h2 id="open-title">Get altiward-forwarder on GitHub</h2>
         <p>The code, the setup guides for the relay and the hook, and the releases are in the repository.</p>
       </div>
       <div class="contact">
@@ -257,7 +255,7 @@
           <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
           <span>Altiward</span>
         </a>
-        <p>Open-source oversight for temporary admin on macOS.</p>
+        <p>Open-source oversight for temporary macOS admin rights.</p>
       </div>
       <nav aria-label="Explore Altiward">
         <span class="label">Explore</span>

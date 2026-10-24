@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Temporary Mac admin tools compared | Altiward</title>
+<meta name="description" content="How Jamf, Iru (formerly Kandji), PrivilegesDemoter, Admin By Request and SAP Privileges with Altiward handle temporary Mac admin, with a source for each claim.">
+<link rel="canonical" href="https://altiward.com/guides/mac-temporary-admin-tools-compared/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Altiward">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://altiward.com/guides/mac-temporary-admin-tools-compared/">
+<meta property="og:title" content="Temporary Mac admin tools compared | Altiward">
+<meta property="og:description" content="How Jamf, Iru (formerly Kandji), PrivilegesDemoter, Admin By Request and SAP Privileges with Altiward handle temporary Mac admin, with a source for each claim.">
+<meta property="og:image" content="https://altiward.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Altiward: Open-source oversight for temporary macOS admin rights.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://altiward.com/#org",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://altiward.com/#logo",
+    "url": "https://altiward.com/mark.png",
+    "contentUrl": "https://altiward.com/mark.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": {
+    "@id": "https://altiward.com/#logo"
+   },
+   "description": "Altiward adds open-source oversight to SAP Privileges, with admin membership checks, configurable expiry enforcement, console revocation and SIEM export. Self-hosted under Apache 2.0.",
+   "email": "hello@altiward.com",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general enquiries",
+    "email": "hello@altiward.com",
+    "availableLanguage": "en-GB"
+   },
+   "sameAs": [
+    "https://github.com/Altiward"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://altiward.com/#site",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "inLanguage": "en-GB",
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://altiward.com/guides/mac-temporary-admin-tools-compared/#webpage",
+   "url": "https://altiward.com/guides/mac-temporary-admin-tools-compared/",
+   "name": "Temporary Mac admin tools compared | Altiward",
+   "description": "How Jamf, Iru (formerly Kandji), PrivilegesDemoter, Admin By Request and SAP Privileges with Altiward handle temporary Mac admin, with a source for each claim.",
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://altiward.com/guides/mac-temporary-admin-tools-compared/#breadcrumb"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://altiward.com/og.png",
+    "width": 1200,
+    "height": 630
+   },
+   "inLanguage": "en-GB",
+   "mainEntity": {
+    "@id": "https://altiward.com/guides/mac-temporary-admin-tools-compared/#article"
+   }
+  },
+  {
+   "@type": "TechArticle",
+   "@id": "https://altiward.com/guides/mac-temporary-admin-tools-compared/#article",
+   "url": "https://altiward.com/guides/mac-temporary-admin-tools-compared/",
+   "headline": "Temporary admin on Macs: five approaches compared",
+   "description": "How Jamf, Iru (formerly Kandji), PrivilegesDemoter, Admin By Request and SAP Privileges with Altiward handle temporary Mac admin, with a source for each claim.",
+   "inLanguage": "en-GB",
+   "datePublished": "2026-10-24",
+   "dateModified": "2026-10-24",
+   "image": "https://altiward.com/og.png",
+   "author": {
+    "@id": "https://altiward.com/#org"
+   },
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   },
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "mainEntityOfPage": {
+    "@id": "https://altiward.com/guides/mac-temporary-admin-tools-compared/#webpage"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://altiward.com/guides/mac-temporary-admin-tools-compared/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Altiward",
+     "item": "https://altiward.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://altiward.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Temporary Mac admin tools compared",
+     "item": "https://altiward.com/guides/mac-temporary-admin-tools-compared/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#page-content">Skip to content</a>
+
+<div class="wrap">
+  <header class="site-header">
+      <a class="lockup" href="/" aria-label="Altiward home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <span>Altiward</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <details class="nav-menu">
+          <summary>Products<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></summary>
+          <div class="nav-panel">
+            <a href="/altiward/"><strong>Altiward</strong><span>Agent, server and console for Mac admin oversight</span></a>
+            <a href="/forwarder/"><strong class="mono">altiward-forwarder</strong><span>SAP&nbsp;Privileges events to your SIEM, no agent needed</span></a>
+            <a href="/detections/"><strong class="mono">altiward-siem</strong><span>Detection rules for Sentinel and Splunk</span></a>
+            <a class="panel-foot" href="/#projects">How the three fit together</a>
+          </div>
+        </details>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/" aria-current="true">Guides</a>
+        <a href="/altiward/#start">Install</a>
+      </nav>
+      <span class="spacer"></span>
+      <a class="gh-button" href="https://github.com/Altiward/altiward?tab=readme-ov-file#readme-ov-file"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View on GitHub</a>
+    </header>
+
+  <div class="guide-layout">
+    <nav class="guide-nav" aria-label="Guides">
+      <div>
+        <span class="label">Guides</span>
+        <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
+        <a href="/guides/mac-temporary-admin-tools-compared/" aria-current="page">Temporary Mac admin tools compared</a>
+        <a href="/guides/sap-privileges-expiry/">When SAP&nbsp;Privileges admin rights outlive the timer</a>
+        <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
+        <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
+        <a href="/guides/intune-epm-mac/">Intune EPM on Mac: what to use</a>
+        <a href="/laps/">macOS LAPS and just-in-time admin</a>
+        <a href="/dspt-caf/">CAF-aligned DSPT evidence</a>
+      </div>
+      <div class="toc">
+        <span class="label">On this page</span>
+        <a href="#summary">The short version</a>
+        <a href="#grant">Getting and ending admin</a>
+        <a href="#oversight">Oversight, records and running costs</a>
+        <a href="#jamf">Jamf</a>
+        <a href="#iru">Iru, formerly Kandji</a>
+        <a href="#demoter">PrivilegesDemoter</a>
+        <a href="#abr">Admin By Request</a>
+        <a href="#altiward">SAP&nbsp;Privileges with Altiward</a>
+        <a href="#limits">What Altiward doesn't do</a>
+        <a href="#sources">Sources</a>
+      </div>
+    </nav>
+
+    <main class="guide-article" id="page-content" tabindex="-1">
+      <h1>Temporary admin on Macs: five approaches compared</h1>
+      <p class="lede">How Jamf, Iru (formerly Kandji), PrivilegesDemoter, Admin By Request and SAP&nbsp;Privileges with Altiward give people admin rights for a while and take them back, based on each vendor's own documentation.</p>
+      <div class="meta-line"><span>Last reviewed October 2026</span><span>Vendor documentation checked 24 October 2026</span><span>SAP Privileges 2.6.0</span></div>
+
+      <div class="callout"><svg viewBox="0 0 16 16" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 7.25v3.5M8 5.1v.1"/></svg><div>
+        <p><strong>We make Altiward, so read this with that in mind.</strong> Every statement about another product links to that vendor's own documentation, release notes or source code in the <a href="#sources">sources</a> at the end. Where a vendor's documentation doesn't cover something, the table says "not documented" rather than guessing. Products change quickly, so check the sources before you decide.</p>
+        <p>If we've got something wrong, email <a href="mailto:hello@altiward.com">hello@altiward.com</a> or <a href="https://github.com/Altiward/altiward.com/blob/main/guides/mac-temporary-admin-tools-compared/index.html">suggest a change on GitHub</a>.</p>
+      </div></div>
+
+      <h2 id="summary">The short version</h2>
+      <ul>
+        <li><strong>Admin By Request</strong> documents the widest set of controls of the five: elevation of a single app or installer, timed admin sessions, optional approval, app pre-approval, malware checks and a vendor-hosted portal.</li>
+        <li><strong>Jamf</strong> builds timed elevation into Self Service+, configured through a Jamf Connect profile, with reasons, authentication, monthly limits and per-role durations. Jamf's Jamf Connect 3.0 announcement says a Jamf Connect licence is still required.</li>
+        <li><strong>Iru</strong>, the new name for Kandji, doesn't document an elevation feature of its own. Its documentation deploys SAP&nbsp;Privileges&nbsp;2 as an Auto App instead.</li>
+        <li><strong>PrivilegesDemoter</strong> is a free community script that reminds the logged-in admin to step down and removes their rights if they don't answer. It has had no release since May 2023.</li>
+        <li><strong>SAP&nbsp;Privileges with Altiward</strong> is free and open source. Privileges grants admin; Altiward checks each Mac's admin group against the grants, alerts on or removes rights past expiry, and sends records to your SIEM. It has no approval step and no per-app elevation, and you run its server yourself.</li>
+      </ul>
+
+      <h2 id="grant">Getting and ending admin</h2>
+      <div class="compare plain" tabindex="0" role="region" aria-label="How each tool grants admin rights and takes them back">
+        <table>
+          <thead><tr><th scope="col">Tool</th><th scope="col">How someone gets admin</th><th scope="col">Approval</th><th scope="col">How admin ends</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Jamf: Self Service+ with Jamf Connect</th><td>The person elevates in Self Service+ or with <code>jamfconnect acc-promo --elevate</code> and becomes a local administrator for the minutes you set. Options include a reason from a list you define, authentication first, a monthly limit and per-role durations from your identity provider</td><td>Not documented</td><td>Standard user again when the timer ends, or with <code>--demote</code>. Changing the system clock sets a time-tampering flag that blocks further elevation</td></tr>
+            <tr><th scope="row">Iru (formerly Kandji)</th><td>No elevation feature of its own is documented. Iru documents deploying SAP&nbsp;Privileges&nbsp;2 as an Auto App and keeping it up to date</td><td>As SAP&nbsp;Privileges: no approval setting in SAP's settings reference</td><td>Privileges' own timer. Iru's separate <em>Demote user accounts to Standard</em> parameter makes every non-excluded local account standard, but Iru says not to use it with SAP&nbsp;Privileges&nbsp;2</td></tr>
+            <tr><th scope="row">PrivilegesDemoter</th><td>Doesn't grant admin itself when used with SAP&nbsp;Privileges. In standalone mode, a self-service policy in your MDM runs its <code>--elevate</code> command as root</td><td>Not documented</td><td>Every 5 minutes it checks whether the logged-in user is an admin. Past a threshold, 15 minutes by default, it asks if they still need it; <em>No</em>, or no answer, removes the rights</td></tr>
+            <tr><th scope="row">Admin By Request</th><td><em>Run As Admin</em> elevates one app or installer package. <em>Admin Session</em> makes the person a local administrator for a set time, 15 minutes by default. Pre-approved apps can skip the request</td><td>Optional for each type, off by default. Approve from the portal, mobile app or API. Reasons and multi-factor authentication through Entra ID or a SAML provider are available</td><td>The session ends when its time runs out or the person finishes it. At logon, <em>Revoke admin rights</em>, on by default, makes admin accounts standard unless you exclude them</td></tr>
+            <tr><th scope="row">SAP&nbsp;Privileges with Altiward</th><td>Privileges grants full admin for a time you limit, with an optional reason and authentication. Altiward never grants admin</td><td>None: SAP's settings reference has no approval setting, and Altiward doesn't add one</td><td>Privileges' timer and revocation rules. Altiward's root agent also alerts on rights past the recorded expiry, or removes them if you turn enforcement on, and your team can revoke from the console</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="oversight">Oversight, records and running costs</h2>
+      <div class="compare plain" tabindex="0" role="region" aria-label="How each tool handles unexpected admins, records and hosting">
+        <table>
+          <thead><tr><th scope="col">Tool</th><th scope="col">Admins nobody granted</th><th scope="col">Records and SIEM</th><th scope="col">Where it runs and cost</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Jamf: Self Service+ with Jamf Connect</th><td>Not documented</td><td>Elevation events go to the Mac's unified log, and reasons to an <code>ElevationReasons</code> log file. Jamf documents collecting them with Jamf Protect, a separate product, and sending them to a SIEM</td><td>Self Service+ on each Mac, configured with a Jamf Connect profile. Needs a Jamf Connect licence</td></tr>
+            <tr><th scope="row">Iru (formerly Kandji)</th><td>The <em>Demote user accounts to Standard</em> parameter demotes any admin except the accounts you exclude, at each agent check-in, then restarts the Mac after a 30-minute countdown. Not for use with SAP&nbsp;Privileges&nbsp;2</td><td>Not documented by Iru for elevation. SAP&nbsp;Privileges&nbsp;2 can send its own events to syslog or a webhook</td><td>Part of Iru Endpoint, Iru's device management product. SAP&nbsp;Privileges is free and open source</td></tr>
+            <tr><th scope="row">PrivilegesDemoter</th><td>Checks only the logged-in user, however they became admin. Other admin accounts on the Mac aren't checked</td><td>A log file on each Mac, <code>/var/log/privileges.log</code>, and Jamf Pro policy logs if you use a Jamf policy</td><td>A script and LaunchDaemon on each Mac, with no server. Free, Apache&nbsp;2.0</td></tr>
+            <tr><th scope="row">Admin By Request</th><td>Revokes admin at logon unless excluded, as above. Its Admin Session page says changes to the local admin group during a session are reverted when it ends</td><td>An audit log in the portal. After an Admin Session, the processes run and software installed or removed are uploaded. Splunk through its HTTP Event Collector and webhooks; Microsoft Sentinel through a Logic App and the audit log API</td><td>An agent on each Mac and a portal hosted as SaaS on Microsoft Azure, in one of several regions, with no on-premises servers needed. Free for up to 25 seats; paid plans priced on request</td></tr>
+            <tr><th scope="row">SAP&nbsp;Privileges with Altiward</th><td>Altiward reads the whole admin group every 15 seconds and flags accounts with no recorded grant that aren't on your permanent-admin list. It removes them only when someone revokes them from the console</td><td>Sessions and findings as OCSF to Splunk, Microsoft Sentinel or syslog, including what changed while someone was admin. Events wait in your database until the SIEM accepts them</td><td>An agent on each Mac, plus a server, Postgres database and console that you run. Free, Apache&nbsp;2.0; you pay for the hosting and do the upgrades</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="jamf">Jamf</h2>
+      <p>Jamf's temporary admin feature lives in Self Service+, which Jamf describes as formerly the Jamf Connect menu bar app. You turn it on with the <code>TemporaryUserPromotion</code> setting in a Jamf Connect configuration profile. While elevated, Jamf says the person "is able to conduct any actions available to local administrators", and a timer in the menu bar shows the time left.</p>
+      <p>Where it goes further than SAP&nbsp;Privileges with Altiward:</p>
+      <ul>
+        <li>Durations can follow roles from your identity provider, and a role with a duration of <code>0</code> can't elevate at all.</li>
+        <li>A limit on the number of elevations per calendar month, with a time-tampering flag if someone changes the clock to get round it.</li>
+        <li>Reasons are picked from a list you define, with an <em>other</em> option.</li>
+      </ul>
+      <p>Jamf's pages don't describe an approval step, reporting in Jamf Pro, or how Self Service+ treats admin accounts it didn't create. For evidence outside the Mac, Jamf points to Jamf Protect's unified log filters. In Jamf's Jamf Connect 3.0 announcement, Jamf said licence profiles "remain compatible and required" for the account features in both Jamf Connect and Self Service+.</p>
+
+      <h2 id="iru">Iru, formerly Kandji</h2>
+      <p>Iru's documentation says Kandji branding changed to Iru from 8 April 2026, and calls the device management product Iru Endpoint. We found no Iru page describing a temporary admin feature of its own. What Iru documents for admin rights on Macs:</p>
+      <ul>
+        <li>A <strong>SAP&nbsp;Privileges&nbsp;2 Auto App</strong> that installs Privileges and, with <em>Continuously enforce</em>, keeps it up to date. Iru links to SAP's own documentation for configuring it.</li>
+        <li>A <strong><em>Demote user accounts to Standard</em> parameter</strong> that checks every local account at each agent check-in, demotes any admin you haven't excluded, then restarts the Mac after a 30-minute countdown. Iru warns that it "can remove administrator privileges granted by SAP&nbsp;Privileges&nbsp;2", so don't assign both to the same Macs.</li>
+        <li>A <strong>LAPS Library Item</strong> that rotates passwords for the local administrator accounts you name and stores them in Iru.</li>
+      </ul>
+      <p>For temporary admin on Iru-managed Macs, then, the choice is mostly about what you put around SAP&nbsp;Privileges. Altiward works with Privileges, so it can run on Macs that use the Auto App. List Iru's managed admin account in Altiward's <code>PermanentAdmins</code>, as you would for any <a href="/laps/">LAPS account</a>.</p>
+
+      <h2 id="demoter">PrivilegesDemoter</h2>
+      <p>PrivilegesDemoter is a community project on GitHub (<a href="https://github.com/sgmills/PrivilegesDemoter">sgmills/PrivilegesDemoter</a>), licensed under Apache&nbsp;2.0. SAP doesn't maintain it. A LaunchDaemon runs it as root every 5 minutes. If the logged-in user is an admin past the threshold, 15 minutes by default, it asks whether they still need admin rights. <em>Yes</em> resets the timer; <em>No</em> or no answer removes them. You set it up with a configuration profile, including a list of accounts it should never demote. Notifications can use swiftDialog, IBM Notifier or Jamf Helper, or be turned off for silent demotion.</p>
+      <p>Where it goes further than SAP&nbsp;Privileges with Altiward:</p>
+      <ul>
+        <li>It's small: one script and one LaunchDaemon, with no server or database.</li>
+        <li>It can work without SAP&nbsp;Privileges, using a self-service policy to elevate.</li>
+        <li>It nudges people to give up rights early, which Altiward doesn't do.</li>
+      </ul>
+      <p>Things to check before relying on it. The latest release is v3.0, from 15 May 2023, and the last code change was in November 2024; both predate or coincide with SAP&nbsp;Privileges&nbsp;2.0, released on 20 November 2024. Its documentation refers to <code>DockToggleTimeout</code>, a setting SAP lists for Privileges 1.0.5 to 1.5.4, so test it against the Privileges version you run. Because it runs every 5 minutes, its wiki notes that a reminder can come up to 5 minutes after the threshold. It checks only the logged-in user, and its log stays on the Mac.</p>
+
+      <h2 id="abr">Admin By Request</h2>
+      <p>Admin By Request is a commercial endpoint privilege management product with agents for Windows, macOS and Linux and a cloud portal. On macOS it offers two kinds of elevation: <em>Run As Admin</em>, for one app or installer package, and <em>Admin Session</em>, which makes the person a local administrator for a limited time.</p>
+      <p>Where it goes further than SAP&nbsp;Privileges with Altiward:</p>
+      <ul>
+        <li>Elevation of a single app or installer, so people don't need full admin to install software.</li>
+        <li>An optional approval step for each kind of elevation, from the portal, a mobile app or the API, with email and ticketing notifications.</li>
+        <li>App pre-approval by vendor, Team ID, bundle ID or checksum, and a setting that auto-approves apps once they've been approved manually.</li>
+        <li>Malware checks through OPSWAT MetaDefender before an app runs elevated.</li>
+        <li>Control over which System Settings panes standard users can open, and whether <code>sudo</code> works in Terminal during an Admin Session (off by default).</li>
+        <li>Session records that list the processes run and the software installed or removed, according to Admin By Request's Admin Session page and spec sheet.</li>
+        <li>A hosted portal, so there's no server for you to run.</li>
+      </ul>
+      <p>On the other side of that trade, the portal is SaaS: Admin By Request's spec sheet describes it as hosted on Microsoft Azure, and it keeps customer data in one of its regional data centres. Approval is off by default, including on the free plan. The free plan covers up to 25 seats; Business and Enterprise prices are on request.</p>
+
+      <h2 id="altiward">SAP&nbsp;Privileges with Altiward</h2>
+      <p>SAP&nbsp;Privileges is a free, open-source app from SAP that grants full admin for a limited time. Altiward works with SAP&nbsp;Privileges: its root agent runs on each Mac alongside Privileges and never grants admin itself. What it adds:</p>
+      <ul>
+        <li><strong>An independent check of the admin group.</strong> Privileges' timer runs in the person's own session, and SAP says Privileges can't guarantee that rights are removed. Altiward's agent, running as root, compares the whole admin group with the grants Privileges recorded.</li>
+        <li><strong>Expiry you choose how to handle.</strong> By default it alerts on rights past their expiry. With <code>ExpiryEnforcement</code> set to <code>enforce</code>, it removes them after a grace period.</li>
+        <li><strong>Admins nobody granted, across the fleet.</strong> Accounts with no recorded grant and not on your permanent-admin list are flagged in the console and sent to your SIEM. With Privileges 2.6 or later and its system extension on, the finding names the process that added the account.</li>
+        <li><strong>Revocation from the console,</strong> per session, per account or per Mac.</li>
+        <li><strong>Gaps you can see.</strong> The server flags Macs that stop checking in, and the agent reports tampering with itself or with Privileges' protection.</li>
+        <li><strong>Evidence in your own systems.</strong> OCSF records go to Splunk, Microsoft Sentinel or syslog, and nothing is sent to us.</li>
+      </ul>
+      <p><a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a> compares the two in detail.</p>
+
+      <h2 id="limits">What Altiward doesn't do</h2>
+      <p>Altiward checks and records admin rights, and leaves some jobs to other tools:</p>
+      <ul>
+        <li><strong>It doesn't grant admin.</strong> Altiward needs SAP&nbsp;Privileges to do that. If Jamf, Admin By Request or anything else grants admin instead, Altiward shows every admin outside your permanent list as one nobody granted.</li>
+        <li><strong>No approval workflow and no per-app elevation.</strong> Privileges gives full admin for a period, and neither it nor Altiward has an approval step. If you need either, Admin By Request documents both.</li>
+        <li><strong>You run the server.</strong> That means a Linux server with Docker Compose, or Azure Container Apps, plus two DNS names, Postgres backups and upgrades. For laptops away from the office, the agent hostname has to be reachable from the internet.</li>
+        <li><strong>Rights past expiry stay by default.</strong> The default policy alerts; removal happens only once you set <code>ExpiryEnforcement</code> to <code>enforce</code>. Expiry comes from Privileges, so a grant Privileges gives no expiry never counts as overdue.</li>
+        <li><strong>Unexpected admins aren't removed automatically.</strong> Altiward flags them and your team revokes them from the console.</li>
+        <li><strong>No app control or malware scanning.</strong> Altiward reports what changed while someone was admin, such as launch items, sudoers rules and new accounts, but not every process that ran. Your EDR covers that.</li>
+        <li><strong>A local admin can stop the agent,</strong> as with any tool on the Mac. The server then reports the Mac as no longer checking in.</li>
+      </ul>
+      <p>If you need any of these, the products above cover them, and the <a href="#sources">sources</a> below are the place to confirm the details for your fleet.</p>
+
+      <h2 id="sources">Sources</h2>
+      <p>All checked on 24 October 2026.</p>
+      <ul class="sources">
+        <li>Jamf, <a href="https://learn.jamf.com/r/en-US/jamf-connect-documentation-current/Privilege_Elevation_Local_Accounts">Privilege Elevation</a>: Self Service+ as the former menu bar app, the <code>TemporaryUserPromotion</code> setting, the timer, local administrator actions and the <code>acc-promo</code> commands</li>
+        <li>Jamf, <a href="https://learn.jamf.com/r/en-US/jamf-connect-documentation-current/Configuring_Privilege_Elevation">Configuring macOS Privilege Elevation in Self Service+</a>: duration, monthly limit, reasons, verification, roles and time tampering</li>
+        <li>Jamf, <a href="https://learn.jamf.com/r/en-US/jamf-connect-documentation-current/Managing_Privilege_Elevation_with_Logs">Managing Privilege Elevation with Logs</a>: the unified log category, the <code>ElevationReasons</code> file and Jamf Protect log filters</li>
+        <li>Jamf Community, <a href="https://community.jamf.com/release-announcements-177/jamf-connect-3-0-0-now-available-53885">Jamf Connect 3.0.0 now available</a>, posted by Jamf's community manager on 9 June 2025: privilege elevation in Self Service+ 2.0.0 and licence profiles still required</li>
+        <li>Iru, <a href="https://docs.iru.com/en/iru/platform-overview/iru-brand-update">Iru brand update</a>: Kandji branding changed to Iru from 8 April 2026</li>
+        <li>Iru, <a href="https://docs.iru.com/en/endpoint/library/deployment-guides/apple/deploy-sap-privileges-2-auto-app">Deploy the SAP Privileges 2 Auto App</a>: the Auto App and the warning about the demotion parameter</li>
+        <li>Iru, <a href="https://docs.iru.com/en/endpoint/blueprints/parameters/demote-user-accounts-to-standard">Demote User Accounts to Standard</a>: how the parameter works, its exclusions and restart countdown, and its incompatibility with SAP&nbsp;Privileges&nbsp;2</li>
+        <li>Iru, <a href="https://docs.iru.com/en/endpoint/library/library-items-profiles/configure-the-laps-library-item">Configure the LAPS Library Item</a>: password rotation for local administrator accounts</li>
+        <li>Iru, <a href="https://docs.iru.com/llms.txt">documentation index</a>: searched for elevation, privilege and temporary admin topics; none beyond those above</li>
+        <li>PrivilegesDemoter, <a href="https://github.com/sgmills/PrivilegesDemoter">README</a> and <a href="https://github.com/sgmills/PrivilegesDemoter/releases">releases</a>: what it does, licence, v3.0 released 15 May 2023</li>
+        <li>PrivilegesDemoter wiki: <a href="https://github.com/sgmills/PrivilegesDemoter/wiki/Preferences">Preferences</a>, <a href="https://github.com/sgmills/PrivilegesDemoter/wiki/Admin-Threshold">Admin Threshold</a>, <a href="https://github.com/sgmills/PrivilegesDemoter/wiki/Standalone-Mode">Standalone Mode</a> and <a href="https://github.com/sgmills/PrivilegesDemoter/wiki/Logging">Logging</a></li>
+        <li>PrivilegesDemoter, <a href="https://github.com/sgmills/PrivilegesDemoter/blob/main/pkg/PrivilegesDemoter.sh">PrivilegesDemoter.sh</a> and <a href="https://github.com/sgmills/PrivilegesDemoter/blob/main/pkg/blog.mostlymac.privileges.check.plist">its LaunchDaemon</a>: checks the console user only, every 300 seconds</li>
+        <li>Admin By Request, <a href="https://docs.adminbyrequest.com/portal/settings/mac.htm">Mac Settings</a>: Run As Admin, Admin Session, approval and reason defaults, authentication, revoking admin rights, System Settings panes, <code>sudo</code>, malware checks and app pre-approval</li>
+        <li>Admin By Request, <a href="https://docs.adminbyrequest.com/features/admin-session.htm">Admin Session</a>: the default duration, platforms, the audit trail of processes and software, and reverting admin-group changes when a session ends</li>
+        <li>Admin By Request, <a href="https://docs.adminbyrequest.com/resources/Documents/Spec%20EPM%20Windows%208.6.pdf">EPM spec sheet</a>, Windows edition, 4 August 2025: the cloud portal on Microsoft Azure, no on-premises servers, and session details uploaded to the portal</li>
+        <li>Admin By Request, <a href="https://docs.adminbyrequest.com/MicroContent/resources/MicroContent/micro-faq-connectivity/what-are-the-new-data-centers.htm">new data centres</a>: regional hosting</li>
+        <li>Admin By Request, <a href="https://www.adminbyrequest.com/en/pricing">pricing</a>: the free plan for up to 25 seats, and Business and Enterprise prices on request</li>
+        <li>Admin By Request, <a href="https://www.adminbyrequest.com/en/docs/splunk">Splunk integration</a> and <a href="https://docs.adminbyrequest.com/integrations/sentinel/overview.htm">Microsoft Sentinel integration</a></li>
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges">Managing Privileges</a>: every Privileges setting, including <code>DockToggleTimeout</code> for versions 1.0.5 to 1.5.4, and remote logging</li>
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Frequently-Asked-Questions">Frequently Asked Questions</a>: Privileges can't guarantee that admin rights are removed</li>
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/277">issue 277</a>: revocation happens in the user's session</li>
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/releases">Privileges releases</a>: 2.0.0 released 20 November 2024; 2.6.0 current</li>
+        <li>Altiward, <a href="https://github.com/Altiward/altiward?tab=readme-ov-file#readme-ov-file">README</a>, <a href="https://github.com/Altiward/altiward/blob/main/agent/README.md">agent README</a> and <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md">install guide</a>: what Altiward does and its known limits</li>
+      </ul>
+
+      <div class="closing-box">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <div>
+          <strong>Try Altiward with demo data first.</strong>
+          <p>The demo console runs with Docker alone, so you can see the findings and records before deciding whether to run a server.</p>
+        </div>
+        <a class="button solid" href="https://github.com/Altiward/altiward?tab=readme-ov-file#quick-start">Run the demo</a>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="site-footer slim">
+  <div class="wrap">
+    <p class="legal">© 2026 Altiward. Open source under the Apache License 2.0. Altiward is an independent project and isn't affiliated with or endorsed by SAP. SAP is a trademark of SAP SE. Other product names are trademarks of their owners.</p>
+    <nav aria-label="Project resources">
+      <a href="/security/">Report a vulnerability</a>
+      <a href="mailto:hello@altiward.com">hello@altiward.com</a>
+      <a href="https://github.com/Altiward/altiward.com/blob/main/guides/mac-temporary-admin-tools-compared/index.html">Edit this page on GitHub</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>

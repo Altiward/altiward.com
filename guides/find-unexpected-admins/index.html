@@ -17,11 +17,12 @@
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta property="og:image:alt" content="Altiward: Open-source oversight for temporary macOS admin rights.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <script type="application/ld+json">
 {
@@ -86,7 +87,9 @@
    "inLanguage": "en-GB",
    "mainEntity": {
     "@id": "https://altiward.com/guides/find-unexpected-admins/#article"
-   }
+   },
+   "datePublished": "2026-10-20",
+   "dateModified": "2026-10-24"
   },
   {
    "@type": "TechArticle",
@@ -96,7 +99,7 @@
    "description": "Altiward's free Unexpected admins check lists Mac admins outside your permanent-admin list, for Jamf Pro or Intune. It doesn't verify grants.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-23",
+   "dateModified": "2026-10-24",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -191,6 +194,7 @@
       <div>
         <span class="label">Guides</span>
         <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
+        <a href="/guides/mac-temporary-admin-tools-compared/">Temporary Mac admin tools compared</a>
         <a href="/guides/sap-privileges-expiry/">When SAP&nbsp;Privileges admin rights outlive the timer</a>
         <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
         <a href="/guides/find-unexpected-admins/" aria-current="page">Find unexpected Mac admin accounts</a>
@@ -210,7 +214,6 @@
     </nav>
 
     <main class="guide-article" id="page-content" tabindex="-1">
-      <span class="label">Altiward guide · Free script</span>
       <h1>Find unexpected Mac admin accounts</h1>
       <p class="lede">Altiward's free Unexpected admins check lists local admins outside your permanent-admin list. Use it as a Jamf Pro extension attribute or adapt its output for Intune. It gives you a snapshot to investigate; it does not verify whether rights were granted.</p>
       <div class="meta-line"><span>unexpected-admins.zsh</span><span>MIT licence</span><span>Jamf Pro · Intune</span><span>Published October 2026</span></div>
