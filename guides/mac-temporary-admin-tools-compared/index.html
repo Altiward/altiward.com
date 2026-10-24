@@ -299,7 +299,7 @@
       <h2 id="limits">What Altiward doesn't do</h2>
       <p>Altiward checks and records admin rights, and leaves some jobs to other tools:</p>
       <ul>
-        <li><strong>It doesn't grant admin.</strong> Altiward needs SAP&nbsp;Privileges to do that. If Jamf, Admin By Request or anything else grants admin instead, Altiward shows every admin outside your permanent list as one nobody granted.</li>
+        <li><strong>It doesn't grant admin.</strong> Altiward needs SAP&nbsp;Privileges to do that. If Jamf, Admin By Request or anything else grants admin instead, Altiward shows every admin outside your permanent list as one nobody granted, and with <code>OutOfBandEnforcement</code> set to <code>enforce</code> it removes them.</li>
         <li><strong>No approval workflow and no per-app elevation.</strong> Privileges gives full admin for a period, and neither it nor Altiward has an approval step. If you need either, Admin By Request documents both.</li>
         <li><strong>You run the server.</strong> That means a Linux server with Docker Compose, or Azure Container Apps, plus two DNS names, Postgres backups and upgrades. For laptops away from the office, the agent hostname has to be reachable from the internet.</li>
         <li><strong>Rights past expiry stay by default.</strong> The default policy alerts; removal happens only once you set <code>ExpiryEnforcement</code> to <code>enforce</code>. Expiry comes from Privileges, so a grant Privileges gives no expiry never counts as overdue.</li>

@@ -251,7 +251,7 @@
       <p>Privileges has one hook setting, so Altiward can't run alongside altiward-forwarder's on-Mac hook. Its relay works with either.</p>
 
       <h2 id="laps">Keep the managed admin account separate</h2>
-      <p>If Intune creates a local admin account at enrollment, put its short name in <code>PermanentAdmins</code>, exactly as you set it in Intune. Altiward leaves listed accounts out of unexpected-admin findings and expiry enforcement and removal of admin rights nobody granted. Left out, the account shows as an admin nobody granted, and with <code>OutOfBandEnforcement</code> set to <code>enforce</code> Altiward removes it from the admin group. Password management stays with Intune. See <a href="/laps/">how Altiward treats permanent admins</a>.</p>
+      <p>If Intune creates a local admin account at enrollment, put its short name in <code>PermanentAdmins</code>, exactly as you set it in Intune. Altiward leaves listed accounts out of unexpected-admin findings, expiry enforcement and the removal of admin rights nobody granted. Left out, the account shows as an admin nobody granted, and with <code>OutOfBandEnforcement</code> set to <code>enforce</code> Altiward removes it from the admin group. Password management stays with Intune. See <a href="/laps/">how Altiward treats permanent admins</a>.</p>
 
       <h2 id="validate">Check the whole workflow</h2>
       <p>On a pilot Mac with both Privileges and Altiward:</p>

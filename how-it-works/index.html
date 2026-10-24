@@ -229,7 +229,7 @@
               <tr><th scope="row" class="mono">ExpiryGraceMinutes</th><td class="value"><span class="mono">5</span><span class="tag">Default</span></td><td>Minutes after expiry before rights count as overdue.</td></tr>
               <tr><th scope="row" rowspan="2" class="mono">OutOfBandEnforcement</th><td class="value"><span class="mono">alert</span><span class="tag">Default</span></td><td>Flags admin rights nobody granted as a finding. Someone revokes them from the console.</td></tr>
               <tr><td class="value mono">enforce</td><td>Removes admin rights nobody granted after the grace period, at the next heartbeat, and records them as removed without a grant. Never removes a permanent admin or leaves a Mac with no admin, and pauses while SAP&nbsp;Privileges' hook isn't reporting to Altiward.</td></tr>
-              <tr><th scope="row" class="mono">OutOfBandGraceMinutes</th><td class="value"><span class="mono">5</span><span class="tag">Default</span></td><td>Minutes admin rights nobody granted last before the agent removes them. The minimum is 1.</td></tr>
+              <tr><th scope="row" class="mono">OutOfBandGraceMinutes</th><td class="value"><span class="mono">5</span><span class="tag">Default</span></td><td>In <span class="mono">enforce</span> mode, how long admin rights nobody granted stay before the agent removes them. The minimum is 1.</td></tr>
             </tbody>
           </table>
         </div>
