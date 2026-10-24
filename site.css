@@ -300,6 +300,7 @@ p code, li code, dd code, td code { padding: 1px 5px; border-radius: var(--radiu
 .policy > div:first-child { flex: 1 1 320px; display: flex; flex-direction: column; gap: 16px; }
 .policy > div:first-child p { color: var(--muted); }
 .policy > div:first-child p a, .policy > div:first-child p code { color: var(--ink); }
+.policy-aside { display: flex; flex-direction: column; gap: 6px; padding-top: 8px; }
 .policy .table-box { flex: 2 1 520px; }
 .policy a.more { font-size: 14px; font-weight: 600; }
 
