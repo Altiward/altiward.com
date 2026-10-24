@@ -237,7 +237,7 @@
         </div>
         <div>
           <h3>Tell Altiward which accounts are managed</h3>
-          <p>List the LAPS account in <code>PermanentAdmins</code> in Altiward's configuration profile. The <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example profile</a> documents the setting. Altiward leaves listed accounts alone and checks other admins.</p>
+          <p>List the LAPS account in <code>PermanentAdmins</code> in Altiward's configuration profile. The <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example profile</a> documents the setting. Altiward never flags or removes a listed account and records each use of it as evidence. It still checks other admins.</p>
         </div>
       </div>
     </section>
@@ -250,7 +250,7 @@
         <div><dt>Excludes managed accounts</dt><dd>Accounts listed as permanent admins are excluded from unexpected-admin findings, from removal of admin rights nobody granted and from expiry enforcement.</dd></div>
         <div><dt>Watches everyone else</dt><dd>Every other account in the admin group is checked. An admin account made on the side is still flagged as admin rights nobody granted. With <code>OutOfBandEnforcement</code> set to <code>enforce</code>, the agent removes it after a grace period.</dd></div>
         <div><dt>Set through your MDM</dt><dd>The list comes from the configuration profile you deploy with your MDM. If someone changes it on the Mac outside your MDM, Altiward reports it as tampering.</dd></div>
-        <div><dt>Who used the LAPS account</dt><dd>That stays with your MDM. In Intune, the audit log records each time someone views or rotates the password.</dd></div>
+        <div><dt>Records each use</dt><dd>Altiward records each sign-in at the Mac, in Terminal or over SSH, each time the account's password is typed into an admin prompt on someone else's session, and each <code>sudo</code> or <code>su</code> where macOS keeps the log line. It's evidence on the Mac's page in the console and in your SIEM, never an alert. Your MDM still shows who viewed or rotated the password; in Intune, that's the audit log.</dd></div>
       </dl>
       <div class="callout"><svg viewBox="0 0 16 16" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 7.25v3.5M8 5.1v.1"/></svg><div><p><strong>List your LAPS account before turning on removal.</strong> With <code>OutOfBandEnforcement</code> set to <code>enforce</code>, a LAPS account left out of <code>PermanentAdmins</code> is removed from the admin group, because it counts as admin rights nobody granted. So is a hidden MDM management account. Without SAP&nbsp;Privileges, every admin who isn't a permanent admin counts the same way. Altiward never removes a permanent admin. Removal is off by default.</p></div></div>
     </section>
