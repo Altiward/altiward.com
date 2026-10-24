@@ -1,0 +1,54 @@
+name: IndexNow
+
+# After GitHub Pages publishes the site, tells the search engines that use IndexNow (Bing
+# among them) which pages that commit changed, so they recrawl those first. A manual run
+# submits every page in the sitemap. The key isn't a secret: search engines check it against
+# the key file of the same name at the site root.
+on:
+  workflow_run:
+    workflows: [pages-build-deployment]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  KEY: a02685625c482622e90b3b99e12b4193
+
+jobs:
+  submit:
+    if: github.event_name == 'workflow_dispatch' || github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+          fetch-depth: 2
+      - name: Submit pages
+        run: |
+          if [ "$GITHUB_EVENT_NAME" = workflow_dispatch ]; then
+            urls=$(grep -o '<loc>[^<]*</loc>' sitemap.xml | sed -e 's|<loc>||' -e 's|</loc>||')
+          elif git rev-parse -q --verify HEAD~1 >/dev/null; then
+            # Changed, added and deleted pages: a deleted page tells search engines to drop it.
+            urls=$(git diff --name-only HEAD~1 HEAD -- '*.html' | grep -vx '404.html' |
+              sed -e 's|index\.html$||' -e 's|^|https://altiward.com/|' || true)
+          fi
+          if [ -z "$urls" ]; then
+            echo "No pages changed in this commit."
+            exit 0
+          fi
+          echo "$urls"
+          URLS="$urls" python3 -c '
+          import json, os
+          key = os.environ["KEY"]
+          print(json.dumps({"host": "altiward.com", "key": key,
+                            "keyLocation": f"https://altiward.com/{key}.txt",
+                            "urlList": os.environ["URLS"].split()}))' > body.json
+          code=$(curl -sS -o response.txt -w '%{http_code}' -H 'Content-Type: application/json; charset=utf-8' \
+            --data @body.json https://api.indexnow.org/indexnow)
+          cat response.txt
+          case "$code" in
+            200|202) echo "IndexNow accepted the list ($code)." ;;
+            *) echo "::error::IndexNow returned $code"; exit 1 ;;
+          esac
