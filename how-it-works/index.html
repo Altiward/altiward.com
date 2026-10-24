@@ -5,23 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>How Altiward checks and enforces Mac admin rights | Altiward</title>
+<title>How Altiward checks and enforces macOS admin rights | Altiward</title>
 <meta name="description" content="See an example of Altiward enforcing expiry, requesting admin revocation and exporting session evidence and findings to your SIEM.">
 <link rel="canonical" href="https://altiward.com/how-it-works/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Altiward">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://altiward.com/how-it-works/">
-<meta property="og:title" content="How Altiward checks and enforces Mac admin rights | Altiward">
+<meta property="og:title" content="How Altiward checks and enforces macOS admin rights | Altiward">
 <meta property="og:description" content="See an example of Altiward enforcing expiry, requesting admin revocation and exporting session evidence and findings to your SIEM.">
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta property="og:image:alt" content="Altiward: Open-source oversight for temporary macOS admin rights.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <script type="application/ld+json">
 {
@@ -69,7 +70,7 @@
    "@type": "WebPage",
    "@id": "https://altiward.com/how-it-works/#webpage",
    "url": "https://altiward.com/how-it-works/",
-   "name": "How Altiward checks and enforces Mac admin rights | Altiward",
+   "name": "How Altiward checks and enforces macOS admin rights | Altiward",
    "description": "See an example of Altiward enforcing expiry, requesting admin revocation and exporting session evidence and findings to your SIEM.",
    "isPartOf": {
     "@id": "https://altiward.com/#site"
@@ -86,7 +87,9 @@
     "width": 1200,
     "height": 630
    },
-   "inLanguage": "en-GB"
+   "inLanguage": "en-GB",
+   "datePublished": "2026-10-20",
+   "dateModified": "2026-10-24"
   },
   {
    "@type": "SoftwareApplication",
@@ -170,8 +173,7 @@
 
   <main id="page-content" tabindex="-1">
     <section class="hero-copy" aria-labelledby="page-title">
-      <span class="label">How it works</span>
-      <h1 id="page-title">Once they're admin, they can stop the timer.</h1>
+      <h1 id="page-title">What happens when someone stops SAP&nbsp;Privileges' timer</h1>
       <p class="lede">SAP&nbsp;Privileges takes admin rights back with a countdown that runs in the person's own session. With admin rights, they can stop it, and the rights stay. Altiward's agent runs as root, keeps its own record of the expiry and checks the Mac's admin group directly.</p>
     </section>
 
@@ -209,8 +211,7 @@
     <section class="section" id="policy" aria-labelledby="policy-title">
       <div class="policy">
         <div>
-          <span class="label">Expiry policy</span>
-          <h2 id="policy-title">You choose what happens at expiry.</h2>
+          <h2 id="policy-title">You choose what happens at expiry</h2>
           <p>The agent checks at each heartbeat. Integrity checks can identify changes to the monitored components. If the agent stops checking in, the server flags a loss of visibility; it can't establish everything that happened while the agent was unavailable.</p>
           <p>Couldn't they stop Altiward too? The agent is a root LaunchDaemon. Its tamper checks alert if that LaunchDaemon or its signature changes, and the server raises a finding when a Mac stops checking in.</p>
           <p>Review the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example agent profile</a> before you change the policy.</p>
@@ -234,21 +235,20 @@
 
     <section class="section" id="revocation" aria-labelledby="revoke-title">
       <div class="section-head">
-        <span class="label">Revocation</span>
-        <h2 id="revoke-title">Revoke an admin account without a recorded grant.</h2>
+        <h2 id="revoke-title">Revoke an admin account without a recorded grant</h2>
         <p>The account <code>contractor</code> holds admin rights on <code>C02MVEHQGKMQ</code>, with no grant on record. Here's how you take its rights away, in screenshots of the console with example data.</p>
       </div>
       <div class="revoke-grid">
         <figure class="shot">
-          <span class="frame"><picture><source srcset="/images/console-revoke-find-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-revoke-find-light.png" width="360" height="666" alt="The detail panel for the contractor account on C02MVEHQGKMQ in the Altiward console: state Without a grant, a Revoke admin rights button, no expiry or reason, and a timeline entry Found without a grant." loading="lazy" decoding="async"></picture></span>
+          <span class="frame"><picture><source type="image/webp" srcset="/images/console-revoke-find-dark.webp" media="(prefers-color-scheme: dark)"><source srcset="/images/console-revoke-find-dark.png" media="(prefers-color-scheme: dark)"><source type="image/webp" srcset="/images/console-revoke-find-light.webp"><img src="/images/console-revoke-find-light.png" width="360" height="666" alt="The detail panel for the contractor account on C02MVEHQGKMQ in the Altiward console: state Without a grant, a Revoke admin rights button, no expiry or reason, and a timeline entry Found without a grant." loading="lazy" decoding="async"></picture></span>
           <figcaption><strong>1 · Find it</strong>. Admins now, with the account's session open. Example data.</figcaption>
         </figure>
         <figure class="shot confirm">
-          <span class="frame"><picture><source srcset="/images/console-revoke-confirm-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-revoke-confirm-light.png" width="440" height="198" alt="The confirmation dialog: Revoke admin rights for contractor? contractor loses admin rights on C02MVEHQGKMQ, usually within a few seconds while the Mac is online, or when it next connects. Buttons Cancel and Revoke." loading="lazy" decoding="async"></picture></span>
+          <span class="frame"><picture><source type="image/webp" srcset="/images/console-revoke-confirm-dark.webp" media="(prefers-color-scheme: dark)"><source srcset="/images/console-revoke-confirm-dark.png" media="(prefers-color-scheme: dark)"><source type="image/webp" srcset="/images/console-revoke-confirm-light.webp"><img src="/images/console-revoke-confirm-light.png" width="440" height="198" alt="The confirmation dialog: Revoke admin rights for contractor? contractor loses admin rights on C02MVEHQGKMQ, usually within a few seconds while the Mac is online, or when it next connects. Buttons Cancel and Revoke." loading="lazy" decoding="async"></picture></span>
           <figcaption><strong>2 · Confirm it</strong>. The Mac applies the request when it can reach your server. Example data.</figcaption>
         </figure>
         <figure class="shot">
-          <span class="frame"><picture><source srcset="/images/console-revoke-record-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-revoke-record-light.png" width="360" height="688" alt="The same session after the Mac applied the revocation: state Revoked from the console, an end time, and a timeline with Found without a grant followed by Revoked, from the console." loading="lazy" decoding="async"></picture></span>
+          <span class="frame"><picture><source type="image/webp" srcset="/images/console-revoke-record-dark.webp" media="(prefers-color-scheme: dark)"><source srcset="/images/console-revoke-record-dark.png" media="(prefers-color-scheme: dark)"><source type="image/webp" srcset="/images/console-revoke-record-light.webp"><img src="/images/console-revoke-record-light.png" width="360" height="688" alt="The same session after the Mac applied the revocation: state Revoked from the console, an end time, and a timeline with Found without a grant followed by Revoked, from the console." loading="lazy" decoding="async"></picture></span>
           <figcaption><strong>3 · On record</strong>. The session ends, and the timeline says how. Example data.</figcaption>
         </figure>
       </div>
@@ -259,8 +259,7 @@
       <div class="siem">
         <div>
           <div class="section-head">
-            <span class="label">What reaches your SIEM</span>
-            <h2 id="siem-title">Four example findings, as OCSF events.</h2>
+            <h2 id="siem-title">Four example findings as OCSF events</h2>
             <p>Altiward exports recorded sessions and findings as <a href="https://schema.ocsf.io/">OCSF</a> events. In Splunk they arrive with the sourcetype <code>altiward:ocsf</code>. The same event types go to Microsoft Sentinel or a syslog receiver.</p>
           </div>
           <div class="finding-rows">
@@ -298,18 +297,17 @@
 
     <section class="section" id="see-it" aria-labelledby="see-it-title">
       <div class="section-head">
-        <span class="label">See it working</span>
-        <h2 id="see-it-title">In the console, and in your SIEM.</h2>
+        <h2 id="see-it-title">The same events in the console and Splunk</h2>
         <p>The console's Overview, and the overview dashboard for Splunk that comes with the server, built from the same events.</p>
       </div>
       <div class="shot-pair">
         <figure class="shot" id="shot-overview">
-          <a class="frame zoom" href="#view-overview"><picture><source srcset="/images/console-overview-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-overview-light.png" width="1440" height="900" alt="The Altiward console&#x27;s Overview: ten people with admin rights now, one without a grant, two things that need a look, and elevations per day over the last 30 days." loading="lazy" decoding="async"></picture><span class="zoom-cue" aria-hidden="true">Open full size</span></a>
+          <a class="frame zoom" href="#view-overview"><picture><source type="image/webp" srcset="/images/console-overview-dark-800.webp 800w, /images/console-overview-dark-1440.webp 1440w, /images/console-overview-dark-2880.webp 2880w" sizes="(min-width: 900px) 540px, 100vw" media="(prefers-color-scheme: dark)"><source srcset="/images/console-overview-dark.png" media="(prefers-color-scheme: dark)"><source type="image/webp" srcset="/images/console-overview-light-800.webp 800w, /images/console-overview-light-1440.webp 1440w, /images/console-overview-light-2880.webp 2880w" sizes="(min-width: 900px) 540px, 100vw"><img src="/images/console-overview-light.png" width="1440" height="900" alt="The Altiward console&#x27;s Overview: ten people with admin rights now, one without a grant, two things that need a look, and elevations per day over the last 30 days." loading="lazy" decoding="async"></picture><span class="zoom-cue" aria-hidden="true">Open full size</span></a>
           <figcaption><strong>Overview</strong>, in the Altiward console. Example data.</figcaption>
         </figure>
         <div class="lightbox" id="view-overview" role="group" aria-label="Overview, full size">
           <a class="lightbox-backdrop" href="#shot-overview" tabindex="-1" aria-hidden="true"></a>
-          <picture><source srcset="/images/console-overview-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-overview-light.png" width="1440" height="900" alt="The Altiward console&#x27;s Overview: ten people with admin rights now, one without a grant, two things that need a look, and elevations per day over the last 30 days." loading="lazy" decoding="async"></picture>
+          <picture><source type="image/webp" srcset="/images/console-overview-dark-800.webp 800w, /images/console-overview-dark-1440.webp 1440w, /images/console-overview-dark-2880.webp 2880w" sizes="100vw" media="(prefers-color-scheme: dark)"><source srcset="/images/console-overview-dark.png" media="(prefers-color-scheme: dark)"><source type="image/webp" srcset="/images/console-overview-light-800.webp 800w, /images/console-overview-light-1440.webp 1440w, /images/console-overview-light-2880.webp 2880w" sizes="100vw"><img src="/images/console-overview-light.png" width="1440" height="900" alt="The Altiward console&#x27;s Overview: ten people with admin rights now, one without a grant, two things that need a look, and elevations per day over the last 30 days." loading="lazy" decoding="async"></picture>
           <a class="lightbox-close" href="#shot-overview">Close</a>
         </div>
         <figure class="shot">
@@ -339,7 +337,7 @@
 <section class="early" aria-labelledby="cta-title">
   <div class="wrap">
     <div class="intro">
-      <h2 id="cta-title">Get started with Altiward.</h2>
+      <h2 id="cta-title">Install Altiward</h2>
       <p>The install guide covers the server, Mac agent, SIEM export and upgrades.</p>
     </div>
     <div class="contact">
@@ -357,7 +355,7 @@
           <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
           <span>Altiward</span>
         </a>
-        <p>Open-source oversight for temporary admin on macOS.</p>
+        <p>Open-source oversight for temporary macOS admin rights.</p>
       </div>
       <nav aria-label="Explore Altiward">
         <span class="label">Explore</span>

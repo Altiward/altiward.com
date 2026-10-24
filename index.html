@@ -5,23 +5,24 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<title>Altiward | Temporary Mac admin. Lasting accountability.</title>
-<meta name="description" content="Open-source tools for Mac admin oversight, SAP Privileges event forwarding and SIEM detections. Verify rights, configure expiry enforcement and keep the evidence.">
+<title>Altiward | Oversight for temporary macOS admin rights</title>
+<meta name="description" content="Open-source oversight for temporary macOS admin rights, alongside SAP Privileges: check who holds admin, enforce expiry and send the evidence to your SIEM.">
 <link rel="canonical" href="https://altiward.com/">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Altiward">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://altiward.com/">
-<meta property="og:title" content="Altiward | Temporary Mac admin. Lasting accountability.">
-<meta property="og:description" content="Open-source tools for Mac admin oversight, SAP Privileges event forwarding and SIEM detections. Verify rights, configure expiry enforcement and keep the evidence.">
+<meta property="og:title" content="Altiward | Oversight for temporary macOS admin rights">
+<meta property="og:description" content="Open-source oversight for temporary macOS admin rights, alongside SAP Privileges: check who holds admin, enforce expiry and send the evidence to your SIEM.">
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta property="og:image:alt" content="Altiward: Open-source oversight for temporary macOS admin rights.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <script type="application/ld+json">
 {
@@ -69,7 +70,7 @@
    "@type": "WebPage",
    "@id": "https://altiward.com/#webpage",
    "url": "https://altiward.com/",
-   "name": "Altiward | Temporary Mac admin. Lasting accountability.",
+   "name": "Altiward | Oversight for temporary macOS admin rights",
    "isPartOf": {
     "@id": "https://altiward.com/#site"
    },
@@ -82,7 +83,9 @@
     "width": 1200,
     "height": 630
    },
-   "inLanguage": "en-GB"
+   "inLanguage": "en-GB",
+   "datePublished": "2026-10-20",
+   "dateModified": "2026-10-24"
   },
   {
    "@type": "SoftwareApplication",
@@ -148,9 +151,8 @@
 
   <main id="page-content" tabindex="-1">
     <section class="home-hero" aria-labelledby="hero-title">
-      <span class="label">Open source · Apache 2.0 · Alongside SAP&nbsp;Privileges</span>
-      <h1 id="hero-title" class="display wide">Temporary Mac admin. <span>Lasting accountability.</span></h1>
-      <p class="lede">Three open-source projects for Macs that use SAP&nbsp;Privileges. Altiward checks each Mac's admin group and can remove rights that outlive their grant. Altiward-forwarder sends Privileges' own events to your SIEM. Altiward-siem holds the detections for both.</p>
+      <h1 id="hero-title" class="display wide">Oversight for temporary macOS admin rights</h1>
+      <p class="lede">Altiward checks each Mac's admin group against the grants SAP&nbsp;Privileges records, flags admins nobody granted, and can remove rights that outlive their grant. It's open source and runs on your own infrastructure.</p>
       <div class="actions">
         <a class="button solid" href="/altiward/">Explore Altiward</a>
         <a class="button outline" href="https://github.com/Altiward"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>All projects on GitHub</a>
@@ -159,8 +161,7 @@
 
     <section class="section" id="why" aria-labelledby="why-title">
       <div class="section-head">
-        <span class="label">Why Altiward</span>
-        <h2 id="why-title">Why the timer isn't enough.</h2>
+        <h2 id="why-title">Why SAP&nbsp;Privileges' timer isn't enough</h2>
         <p>SAP&nbsp;Privileges gives admin rights for a set time, and a countdown in the person's own session takes them back. Once someone is admin, they can stop that countdown, and nothing on the Mac removes the rights. By default, Altiward's agent alerts when the timer is stopped, and, if enabled, removes rights that outlive their grant.</p>
       </div>
       <figure class="strip" aria-labelledby="why-strip-title">
@@ -211,10 +212,9 @@
 
     <section class="project-cards" style="padding-top: var(--section)" id="projects" aria-label="The three projects">
       <div class="project-card lead">
-        <span class="label">Agent · Server · Console</span>
         <h2 class="mono"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>altiward</h2>
         <p>Oversight of Mac admin rights: it checks the real admin group against recorded grants, can remove rights past their expiry, and sends the evidence to your SIEM.</p>
-        <a class="thumb" href="/altiward/" tabindex="-1" aria-hidden="true"><picture><source srcset="/images/console-admins-now-dark.png" media="(prefers-color-scheme: dark)"><img src="/images/console-admins-now-light.png" width="1440" height="900" alt="" loading="eager" decoding="async"></picture></a>
+        <a class="thumb" href="/altiward/" tabindex="-1" aria-hidden="true"><picture><source type="image/webp" srcset="/images/console-admins-now-dark-800.webp 800w, /images/console-admins-now-dark-1440.webp 1440w, /images/console-admins-now-dark-2880.webp 2880w" sizes="(min-width: 1000px) 640px, 100vw" media="(prefers-color-scheme: dark)"><source srcset="/images/console-admins-now-dark.png" media="(prefers-color-scheme: dark)"><source type="image/webp" srcset="/images/console-admins-now-light-800.webp 800w, /images/console-admins-now-light-1440.webp 1440w, /images/console-admins-now-light-2880.webp 2880w" sizes="(min-width: 1000px) 640px, 100vw"><img src="/images/console-admins-now-light.png" width="1440" height="900" alt="" loading="lazy" decoding="async"></picture></a>
         <p class="small">Admins now, in the Altiward console. Example data.</p>
         <div class="card-links">
           <a href="/altiward/">About Altiward</a>
@@ -223,13 +223,11 @@
       </div>
       <div class="project-stack">
         <div class="project-card">
-          <span class="label">Relay · Mac hook</span>
           <h2 class="mono"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>altiward-forwarder</h2>
           <p>Forwards SAP&nbsp;Privileges grants and revocations to your SIEM through a relay or an on-Mac hook. Destinations depend on the route. No Altiward agent needed.</p>
           <div class="card-links"><a href="/forwarder/">About the forwarder</a></div>
         </div>
         <div class="project-card">
-          <span class="label">Sentinel · Splunk</span>
           <h2 class="mono"><svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>altiward-siem</h2>
           <p>Analytics rules, hunting queries and saved searches for both projects' events, with a one-step deployment for Sentinel.</p>
           <div class="card-links"><a href="/detections/">See the detections</a></div>
@@ -239,8 +237,7 @@
 
     <section class="section" id="choose" aria-labelledby="choose-title">
       <div class="section-head">
-        <span class="label">Which do you need?</span>
-        <h2 id="choose-title">Start from what you need the record to show.</h2>
+        <h2 id="choose-title">Which project do you need?</h2>
         <p>Altiward and the forwarder send OCSF records. Add the SIEM detections that match your event source.</p>
       </div>
       <ul class="chooser">
@@ -253,8 +250,7 @@
 
     <section class="section split-section page-end" id="guides" aria-labelledby="guides-title">
       <div class="section-head">
-        <span class="label">Guides</span>
-        <h2 id="guides-title">For the questions Mac admins ask.</h2>
+        <h2 id="guides-title">Guides</h2>
         <a class="more-link" href="/guides/">All guides</a>
       </div>
       <ul class="guide-list">
@@ -274,7 +270,7 @@
           <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
           <span>Altiward</span>
         </a>
-        <p>Open-source oversight for temporary admin on macOS.</p>
+        <p>Open-source oversight for temporary macOS admin rights.</p>
       </div>
       <nav aria-label="Explore Altiward">
         <span class="label">Explore</span>

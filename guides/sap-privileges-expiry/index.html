@@ -17,11 +17,12 @@
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="Altiward: Temporary Mac admin. Lasting accountability.">
+<meta property="og:image:alt" content="Altiward: Open-source oversight for temporary macOS admin rights.">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/mark.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/site.css">
 <script type="application/ld+json">
 {
@@ -86,7 +87,9 @@
    "inLanguage": "en-GB",
    "mainEntity": {
     "@id": "https://altiward.com/guides/sap-privileges-expiry/#article"
-   }
+   },
+   "datePublished": "2026-10-20",
+   "dateModified": "2026-10-24"
   },
   {
    "@type": "TechArticle",
@@ -96,7 +99,7 @@
    "description": "Why SAP Privileges admin rights can outlive the timer on a Mac: six causes, the settings that fix most, and a profile to start from. Checked on 2.6.0.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-23",
+   "dateModified": "2026-10-24",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -171,6 +174,7 @@
       <div>
         <span class="label">Guides</span>
         <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
+        <a href="/guides/mac-temporary-admin-tools-compared/">Temporary Mac admin tools compared</a>
         <a href="/guides/sap-privileges-expiry/" aria-current="page">When SAP&nbsp;Privileges admin rights outlive the timer</a>
         <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
         <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
@@ -192,7 +196,6 @@
     </nav>
 
     <main class="guide-article" id="page-content" tabindex="-1">
-      <span class="label">Altiward guide · Expiry enforcement</span>
       <h1>When SAP&nbsp;Privileges admin rights outlive the timer</h1>
       <p class="lede">SAP&nbsp;Privileges takes admin rights away with a countdown that runs in the person's own session. Six things can leave those rights in place after the timer ends. Settings in your Privileges profile fix most of them; the rest need a check that runs outside the session.</p>
       <div class="meta-line"><span>Last reviewed October 2026</span><span>SAP Privileges 2.6.0</span><span>corp.sap.privileges</span></div>
@@ -301,14 +304,14 @@
 
       <h2 id="limits">Checking from outside the session</h2>
       <p>SAP's FAQ says that "controls, mitigations, defense-in-depth, reporting, and auditing suitable to each organization's environments and threat models are needed. This is true with or without the use of the <em>Privileges</em> application." Causes 3 to 5 need something outside the person's session that checks the admin group itself.</p>
-      <p><strong>A scheduled demotion script</strong> runs as root from a LaunchDaemon and removes admin rights still held after a wait you set. Kandji publishes one as <a href="https://support.kandji.io/sap-privileges">Privileges Checker</a>, which checks every 15 minutes, and <a href="https://github.com/sgmills/PrivilegesDemoter">PrivilegesDemoter</a> is a community option configured by profile. They're simple and free. They use their own wait rather than the expiry Privileges set, they act on the Mac only, and a local admin can unload them.</p>
+      <p><strong>A scheduled demotion script</strong> runs as root from a LaunchDaemon and removes admin rights still held after a wait you set. Kandji, now Iru, published one as <a href="https://support.kandji.io/kb/deploying-sap-privileges-auto-app-with-privileges-checker">Privileges Checker</a>, which checks every 15 minutes, though Iru's current <a href="https://docs.iru.com/en/endpoint/library/deployment-guides/apple/deploy-sap-privileges-2-auto-app">SAP Privileges 2 guide</a> no longer mentions it, and <a href="https://github.com/sgmills/PrivilegesDemoter">PrivilegesDemoter</a> is a community option configured by profile. They're simple and free. They use their own wait rather than the expiry Privileges set, they act on the Mac only, and a local admin can unload them.</p>
       <p><strong>Altiward</strong> is ours, and it's also free and open source. It compares the admin group with the grant Privileges reported, including its expiry. By default it alerts on rights past expiry; with <code>ExpiryEnforcement</code> set to <code>enforce</code> in the <code>com.altiward.agent</code> profile, it removes them after a grace period, five minutes by default. It also reports admins nobody granted. It takes more to run than a script: a server, console and database you host, and an agent on each Mac. A local admin can stop the agent too, but the server then reports that Mac as no longer checking in, so a stopped check shows up as a gap rather than silence. <a href="/guides/sap-privileges-with-altiward/">Compare Privileges alone with Privileges plus Altiward</a>, or <a href="/how-it-works/">see an example of enforcement and its evidence</a>.</p>
 
       <h2 id="sources">Sources</h2>
       <ul class="sources">
         <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges">Managing Privileges</a> and <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Frequently-Asked-Questions">Frequently Asked Questions</a>, Privileges wiki</li>
         <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/releases">Privileges release notes</a>, 2.3.0 to 2.6.0</li>
-        <li>Kandji, <a href="https://support.kandji.io/sap-privileges">Deploy SAP Privileges alongside the Kandji Privileges Checker</a>; <a href="https://github.com/sgmills/PrivilegesDemoter">PrivilegesDemoter</a> on GitHub</li>
+        <li>Kandji, <a href="https://support.kandji.io/kb/deploying-sap-privileges-auto-app-with-privileges-checker">Deploying SAP Privileges Auto App with Privileges Checker</a>; Iru, <a href="https://docs.iru.com/en/endpoint/library/deployment-guides/apple/deploy-sap-privileges-2-auto-app">Deploy the SAP Privileges 2 Auto App</a>; <a href="https://github.com/sgmills/PrivilegesDemoter">PrivilegesDemoter</a> on GitHub</li>
         <li>GitHub issues <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/92">#92</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/185">#185</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/260">#260</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/274">#274</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/277">#277</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/280">#280</a>, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/288">#288</a></li>
       </ul>
 
