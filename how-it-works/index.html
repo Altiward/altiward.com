@@ -213,7 +213,10 @@
         <div>
           <h2 id="policy-title">You choose what the agent removes</h2>
           <p>The agent checks at each heartbeat. Integrity checks can identify changes to the monitored components. If the agent stops checking in, the server flags a loss of visibility; it can't establish everything that happened while the agent was unavailable.</p>
-          <p>Couldn't they stop Altiward too? The agent is a root LaunchDaemon. Its tamper checks alert if that LaunchDaemon or its signature changes, and the server raises a finding when a Mac stops checking in.</p>
+          <div class="policy-aside">
+            <h3 class="label">Couldn't they stop Altiward too?</h3>
+            <p>The agent is a root LaunchDaemon. Its tamper checks alert if that LaunchDaemon or its signature changes, and the server raises a finding when a Mac stops checking in.</p>
+          </div>
           <p>Review the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example agent profile</a> before you change the policy. Removal is off by default. With <code>OutOfBandEnforcement</code> on <code>enforce</code>, an admin you haven't listed in <code>PermanentAdmins</code> is removed, including a <a href="/laps/">LAPS account</a> or hidden management account.</p>
           <a class="more" href="/guides/sap-privileges-expiry/">When SAP&nbsp;Privileges admin rights outlive the timer</a>
         </div>
