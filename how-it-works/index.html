@@ -211,13 +211,13 @@
     <section class="section" id="policy" aria-labelledby="policy-title">
       <div class="policy">
         <div>
-          <h2 id="policy-title">You choose what happens at expiry</h2>
+          <h2 id="policy-title">You choose what the agent removes</h2>
           <p>The agent checks at each heartbeat. Integrity checks can identify changes to the monitored components. If the agent stops checking in, the server flags a loss of visibility; it can't establish everything that happened while the agent was unavailable.</p>
           <p>Couldn't they stop Altiward too? The agent is a root LaunchDaemon. Its tamper checks alert if that LaunchDaemon or its signature changes, and the server raises a finding when a Mac stops checking in.</p>
-          <p>Review the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example agent profile</a> before you change the policy.</p>
+          <p>Review the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example agent profile</a> before you change the policy. Removal is off by default. With <code>OutOfBandEnforcement</code> on <code>enforce</code>, an admin you haven't listed in <code>PermanentAdmins</code> is removed, including a <a href="/laps/">LAPS account</a> or hidden management account.</p>
           <a class="more" href="/guides/sap-privileges-expiry/">When SAP&nbsp;Privileges admin rights outlive the timer</a>
         </div>
-        <div class="table-box settings" tabindex="0" role="region" aria-label="Expiry settings">
+        <div class="table-box settings" tabindex="0" role="region" aria-label="Enforcement settings">
           <table>
             <thead>
               <tr><th scope="col">Setting</th><th scope="col">Value</th><th scope="col">What the agent does</th></tr>
@@ -227,6 +227,9 @@
               <tr><td class="value mono">enforce</td><td>Removes rights found past expiry and the grace period, then records how the session ended.</td></tr>
               <tr><td class="value mono">off</td><td>Turns the expiry check off.</td></tr>
               <tr><th scope="row" class="mono">ExpiryGraceMinutes</th><td class="value"><span class="mono">5</span><span class="tag">Default</span></td><td>Minutes after expiry before rights count as overdue.</td></tr>
+              <tr><th scope="row" rowspan="2" class="mono">OutOfBandEnforcement</th><td class="value"><span class="mono">alert</span><span class="tag">Default</span></td><td>Flags admin rights nobody granted as a finding. Someone revokes them from the console.</td></tr>
+              <tr><td class="value mono">enforce</td><td>Removes admin rights nobody granted after the grace period, at the next heartbeat, and records them as removed without a grant. Never removes a permanent admin or leaves a Mac with no admin, and pauses while SAP&nbsp;Privileges' hook isn't reporting to Altiward.</td></tr>
+              <tr><th scope="row" class="mono">OutOfBandGraceMinutes</th><td class="value"><span class="mono">5</span><span class="tag">Default</span></td><td>Minutes admin rights nobody granted last before the agent removes them. The minimum is 1.</td></tr>
             </tbody>
           </table>
         </div>
@@ -252,7 +255,7 @@
           <figcaption><strong>3 · On record</strong>. The session ends, and the timeline says how. Example data.</figcaption>
         </figure>
       </div>
-      <p class="flow-note">The same button revokes an approved session early. Revoking removes the admin rights; the account itself stays for you to deal with. Accounts that should always be admin, like your <a href="/laps/">macOS LAPS account</a>, are listed in Altiward's profile and left alone.</p>
+      <p class="flow-note">The same button revokes an approved session early. Revoking removes the admin rights; the account itself stays for you to deal with. Accounts that should always be admin, like your <a href="/laps/">macOS LAPS account</a>, are listed in Altiward's profile and left alone. By default Altiward flags the rest and waits for you to revoke them; with <code>OutOfBandEnforcement</code> set to <code>enforce</code>, the agent removes them itself, and the console shows <em>Removed without a grant</em>.</p>
     </section>
 
     <section class="section" id="siem" aria-labelledby="siem-title">

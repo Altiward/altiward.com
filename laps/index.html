@@ -215,7 +215,7 @@
             <tr><th scope="row">Who holds admin</th><td>IT, through one managed account</td><td>The person at the Mac, for a set time</td><td>Checks reported admin rights; works with SAP&nbsp;Privileges, which handles elevation</td></tr>
             <tr><th scope="row">What it does</th><td>Stores and rotates the admin account's password</td><td>Grants admin on request, with a timer and a reason</td><td>Checks membership against recorded grants, can remove rights found past expiry, and builds session evidence</td></tr>
             <tr><th scope="row">When admin ends</th><td>The managed account remains an admin; password rotation controls future access to its credential</td><td>A revocation timer and configured revocation rules; SAP documents limits to guaranteed removal</td><td>The agent alerts by default, or removes overdue rights when enforcement is enabled, separately from Privileges' timer</td></tr>
-            <tr><th scope="row">Admin nobody granted</th><td>Not covered</td><td>Logged on the Mac from version 2.3, with the process that made the change from 2.6</td><td>Flagged, with a finding sent to your SIEM</td></tr>
+            <tr><th scope="row">Admin nobody granted</th><td>Not covered</td><td>Logged on the Mac from version 2.3, with the process that made the change from 2.6</td><td>Flagged, with a finding sent to your SIEM. Removed after a grace period if you set <code>OutOfBandEnforcement</code> to <code>enforce</code></td></tr>
             <tr><th scope="row">The record</th><td>Intune's audit log shows who viewed or rotated the password</td><td>Can send each change to syslog or a webhook</td><td>Who, on which Mac, the reason, and how it ended, sent to Splunk, Microsoft Sentinel or syslog</td></tr>
           </tbody>
         </table>
@@ -247,11 +247,12 @@
         <h2 id="altiward-title">What Altiward does with your LAPS account</h2>
       </div>
       <dl class="points">
-        <div><dt>Excludes managed accounts</dt><dd>Accounts listed as permanent admins are excluded from unexpected-admin findings and expiry enforcement.</dd></div>
-        <div><dt>Watches everyone else</dt><dd>Every other account in the admin group is checked. An admin account made on the side is still flagged as admin rights nobody granted.</dd></div>
+        <div><dt>Excludes managed accounts</dt><dd>Accounts listed as permanent admins are excluded from unexpected-admin findings, from removal of admin rights nobody granted and from expiry enforcement.</dd></div>
+        <div><dt>Watches everyone else</dt><dd>Every other account in the admin group is checked. An admin account made on the side is still flagged as admin rights nobody granted. With <code>OutOfBandEnforcement</code> set to <code>enforce</code>, the agent removes it after a grace period.</dd></div>
         <div><dt>Set through your MDM</dt><dd>The list comes from the configuration profile you deploy with your MDM. If someone changes it on the Mac outside your MDM, Altiward reports it as tampering.</dd></div>
         <div><dt>Who used the LAPS account</dt><dd>That stays with your MDM. In Intune, the audit log records each time someone views or rotates the password.</dd></div>
       </dl>
+      <div class="callout"><svg viewBox="0 0 16 16" fill="none" stroke="var(--muted)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="8" r="6.25"/><path d="M8 7.25v3.5M8 5.1v.1"/></svg><div><p><strong>List your LAPS account before turning on removal.</strong> With <code>OutOfBandEnforcement</code> set to <code>enforce</code>, a LAPS account left out of <code>PermanentAdmins</code> is removed from the admin group, because it counts as admin rights nobody granted. So is a hidden MDM management account. Without SAP&nbsp;Privileges, every admin who isn't a permanent admin counts the same way. Altiward never removes a permanent admin. Removal is off by default.</p></div></div>
     </section>
 
     <section class="section" id="questions" aria-labelledby="questions-title">
@@ -273,7 +274,7 @@
         </div>
         <div>
           <h3>Will Altiward flag our LAPS account?</h3>
-          <p>Not once it's listed as a permanent admin. Until then, it's flagged like any other admin nobody granted.</p>
+          <p>Not once it's listed as a permanent admin. Until then, it's flagged like any other admin nobody granted, and with <code>OutOfBandEnforcement</code> set to <code>enforce</code> it's removed from the admin group.</p>
         </div>
       </div>
       <p class="more"><a class="button outline" href="/how-it-works/">See how it works</a></p>
