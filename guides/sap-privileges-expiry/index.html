@@ -89,7 +89,7 @@
     "@id": "https://altiward.com/guides/sap-privileges-expiry/#article"
    },
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-24"
+   "dateModified": "2026-10-25"
   },
   {
    "@type": "TechArticle",
@@ -99,7 +99,7 @@
    "description": "Why SAP Privileges admin rights can outlive the timer on a Mac: six causes, the settings that fix most, and a profile to start from. Checked on 2.6.0.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-24",
+   "dateModified": "2026-10-25",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -305,7 +305,7 @@
       <h2 id="limits">Checking from outside the session</h2>
       <p>SAP's FAQ says that "controls, mitigations, defense-in-depth, reporting, and auditing suitable to each organization's environments and threat models are needed. This is true with or without the use of the <em>Privileges</em> application." Causes 3 to 5 need something outside the person's session that checks the admin group itself.</p>
       <p><strong>A scheduled demotion script</strong> runs as root from a LaunchDaemon and removes admin rights still held after a wait you set. Kandji, now Iru, published one as <a href="https://support.kandji.io/kb/deploying-sap-privileges-auto-app-with-privileges-checker">Privileges Checker</a>, which checks every 15 minutes, though Iru's current <a href="https://docs.iru.com/en/endpoint/library/deployment-guides/apple/deploy-sap-privileges-2-auto-app">SAP Privileges 2 guide</a> no longer mentions it, and <a href="https://github.com/sgmills/PrivilegesDemoter">PrivilegesDemoter</a> is a community option configured by profile. They're simple and free. They use their own wait rather than the expiry Privileges set, they act on the Mac only, and a local admin can unload them.</p>
-      <p><strong>Altiward</strong> is ours, and it's also free and open source. It compares the admin group with the grant Privileges reported, including its expiry. By default it alerts on rights past expiry; with <code>ExpiryEnforcement</code> set to <code>enforce</code> in the <code>com.altiward.agent</code> profile, it removes them after a grace period, five minutes by default. It also reports admins nobody granted. It takes more to run than a script: a server, console and database you host, and an agent on each Mac. A local admin can stop the agent too, but the server then reports that Mac as no longer checking in, so a stopped check shows up as a gap rather than silence. <a href="/guides/sap-privileges-with-altiward/">Compare Privileges alone with Privileges plus Altiward</a>, or <a href="/how-it-works/">see an example of enforcement and its evidence</a>.</p>
+      <p><strong>Altiward</strong> is ours, and it's also free and open source. It compares the admin group with the grant Privileges reported, including its expiry. By default it alerts on rights past expiry; with <code>ExpiryEnforcement</code> set to <code>enforce</code> in the <code>com.altiward.agent</code> profile, it removes them after a grace period, five minutes by default. It also reports admins nobody granted, and checks the settings MDM sets for Privileges: it alerts when nothing caps how long a grant lasts, when renewals are allowed while it enforces expiry, and when <code>RevokePrivilegesAtLogin</code> or <code>RevokePrivilegesAfterSystemTimeChange</code> would make a permanent admin a standard user. A renewal in Privileges moves the expiry Altiward holds, so renewed rights aren't treated as overdue. It takes more to run than a script: a server, console and database you host, and an agent on each Mac. A local admin can stop the agent too, but the server then reports that Mac as no longer checking in, so a stopped check shows up as a gap rather than silence. <a href="/guides/sap-privileges-with-altiward/">Compare Privileges alone with Privileges plus Altiward</a>, or <a href="/how-it-works/">see an example of enforcement and its evidence</a>.</p>
 
       <h2 id="sources">Sources</h2>
       <ul class="sources">
