@@ -89,7 +89,7 @@
     "@id": "https://altiward.com/guides/sap-privileges-with-altiward/#article"
    },
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-24"
+   "dateModified": "2026-10-25"
   },
   {
    "@type": "TechArticle",
@@ -99,7 +99,7 @@
    "description": "Compare SAP Privileges alone with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-24",
+   "dateModified": "2026-10-25",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -216,7 +216,7 @@
             <tr><th scope="row">Fleet visibility</th><td>Local history and configurable remote grant and revocation events</td><td>Adds a console showing reported admin rights across enrolled Macs and requests to revoke them</td></tr>
             <tr><th scope="row">Coverage gaps</th><td>Grant and revocation events do not by themselves confirm that an agent is still reporting</td><td>The Altiward server flags missing agent check-ins so your team can see where checks have stopped</td></tr>
             <tr><th scope="row">Changes while admin</th><td>SAP's FAQ says Privileges doesn't track what is done while someone holds admin rights</td><td>Reports new launch items, sudoers rules, SSH keys, local accounts and remote access that appeared while someone was admin</td></tr>
-            <tr><th scope="row">Tampering</th><td>Version 2.5+ has an optional system extension that stops Privileges being removed or unloaded on the Mac</td><td>Alerts when that protection is off, Privileges' hook isn't Altiward's, its timer is stopped while someone holds rights, or the Altiward agent is changed, and sends each attempt the extension blocked to your SIEM, which Privileges logs only on the Mac</td></tr>
+            <tr><th scope="row">Tampering</th><td>Version 2.5+ has an optional system extension that stops Privileges being removed or unloaded on the Mac</td><td>Alerts when that protection is off or its extension isn't running, Privileges' hook isn't Altiward's, its timer is stopped while someone holds rights, or the Altiward agent is changed, and sends each attempt the extension blocked to your SIEM, which Privileges logs only on the Mac</td></tr>
             <tr><th scope="row">Daily admin time</th><td>Version 2.7, documented but not yet released, adds AdminBudget, a daily limit on each Mac; SAP notes that moving the Mac's date forward resets it</td><td>A SIEM rule adds up each person's admin time per day across their Macs and alerts above a limit you set, on any Privileges version</td></tr>
             <tr><th scope="row">Delivery</th><td>Remote logging sends from the logged-in user's session; unsent events can be queued, 20 by default, and SAP describes that queue as not suitable for audits</td><td>Each event is kept on the Mac until your server confirms it, and in your database until your SIEM accepts it</td></tr>
             <tr><th scope="row">SIEM evidence</th><td>Can forward grant and revocation events by syslog or webhook</td><td>Adds session records and findings for unexpected admins, detected admin-account creation, expiry enforcement and missing check-ins</td></tr>
@@ -232,7 +232,7 @@
 
       <h2 id="findings">Bring unexpected admins into view</h2>
       <p>Altiward checks for admin membership without a recorded grant and outside your list of permanent admins. It also flags an admin account detected during an approved session. Your team can review the finding, request revocation from the console and correlate the session with other security events.</p>
-      <p>With SAP&nbsp;Privileges 2.6 or later and its system extension on, Altiward also reads what the extension records on the Mac: which process added the account to the admin group, and any attempt the extension blocked to remove or move Privileges. Privileges keeps both on the Mac; Altiward puts them in the session's timeline, the Mac's alerts and your SIEM.</p>
+      <p>With SAP&nbsp;Privileges 2.6 or later and its system extension on, Altiward also reads what the extension records on the Mac: which process added the account to the admin group, and any attempt the extension blocked to remove or move Privileges. Privileges keeps both on the Mac; Altiward puts them in the session's timeline, the Mac's alerts and your SIEM. It also checks each grant Privileges reports against Privileges' own log, so a grant claimed by running Altiward's hook by hand doesn't count: in <code>enforce</code> mode it's refused and the rights are removed, and either way it's reported.</p>
       <div class="revoke-grid">
         <figure class="shot">
           <span class="frame"><picture><source type="image/webp" srcset="/images/console-added-by-dark.webp" media="(prefers-color-scheme: dark)"><source srcset="/images/console-added-by-dark.png" media="(prefers-color-scheme: dark)"><source type="image/webp" srcset="/images/console-added-by-light.webp"><img src="/images/console-added-by-light.png" width="360" height="817" alt="The session for svc-backup on C02YH2CCJG5H: state Revoked from the console, source Without a grant, and a timeline with Found without a grant, added by /usr/sbin/dseditgroup, then New persistence, new admin account svc-backup, then Revoked, from the console." loading="lazy" decoding="async"></picture></span>

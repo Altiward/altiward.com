@@ -96,7 +96,7 @@
    "description": "How Jamf, Iru (formerly Kandji), PrivilegesDemoter, Admin By Request and SAP Privileges with Altiward handle temporary Mac admin, with a source for each claim.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-24",
-   "dateModified": "2026-10-24",
+   "dateModified": "2026-10-25",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -236,7 +236,7 @@
             <tr><th scope="row">Iru (formerly Kandji)</th><td>The <em>Demote user accounts to Standard</em> parameter demotes any admin except the accounts you exclude, at each agent check-in, then restarts the Mac after a 30-minute countdown. Not for use with SAP&nbsp;Privileges&nbsp;2</td><td>Not documented by Iru for elevation. SAP&nbsp;Privileges&nbsp;2 can send its own events to syslog or a webhook</td><td>Part of Iru Endpoint, Iru's device management product. SAP&nbsp;Privileges is free and open source</td></tr>
             <tr><th scope="row">PrivilegesDemoter</th><td>Checks only the logged-in user, however they became admin. Other admin accounts on the Mac aren't checked</td><td>A log file on each Mac, <code>/var/log/privileges.log</code>, and Jamf Pro policy logs if you use a Jamf policy</td><td>A script and LaunchDaemon on each Mac, with no server. Free, Apache&nbsp;2.0</td></tr>
             <tr><th scope="row">Admin By Request</th><td>Revokes admin at logon unless excluded, as above. Its Admin Session page says changes to the local admin group during a session are reverted when it ends</td><td>An audit log in the portal. After an Admin Session, the processes run and software installed or removed are uploaded. Splunk through its HTTP Event Collector and webhooks; Microsoft Sentinel through a Logic App and the audit log API</td><td>An agent on each Mac and a portal hosted as SaaS on Microsoft Azure, in one of several regions, with no on-premises servers needed. Free for up to 25 seats; paid plans priced on request</td></tr>
-            <tr><th scope="row">SAP&nbsp;Privileges with Altiward</th><td>Altiward reads the whole admin group every 15 seconds and flags accounts with no recorded grant that aren't on your permanent-admin list. By default it removes them only when someone revokes them from the console; with <code>OutOfBandEnforcement</code> set to <code>enforce</code>, the agent removes them itself after a grace period</td><td>Sessions and findings as OCSF to Splunk, Microsoft Sentinel or syslog, including what changed while someone was admin. Events wait in your database until the SIEM accepts them</td><td>An agent on each Mac, plus a server, Postgres database and console that you run. Free, Apache&nbsp;2.0; you pay for the hosting and do the upgrades</td></tr>
+            <tr><th scope="row">SAP&nbsp;Privileges with Altiward</th><td>Altiward reads the whole admin group every 15 seconds and flags accounts with no recorded grant that aren't on your permanent-admin list. By default it removes them only when someone revokes them from the console; with <code>OutOfBandEnforcement</code> set to <code>enforce</code>, the agent removes them itself after a grace period. With Privileges 2.6 or later and its system extension, a grant counts only when Privileges' own log confirms it</td><td>Sessions and findings as OCSF to Splunk, Microsoft Sentinel or syslog, including what changed while someone was admin. Events wait in your database until the SIEM accepts them</td><td>An agent on each Mac, plus a server, Postgres database and console that you run. Free, Apache&nbsp;2.0; you pay for the hosting and do the upgrades</td></tr>
           </tbody>
         </table>
       </div>
@@ -291,7 +291,7 @@
         <li><strong>Expiry you choose how to handle.</strong> By default it alerts on rights past their expiry. With <code>ExpiryEnforcement</code> set to <code>enforce</code>, it removes them after a grace period.</li>
         <li><strong>Admins nobody granted, across the fleet.</strong> Accounts with no recorded grant and not on your permanent-admin list are flagged in the console and sent to your SIEM. With Privileges 2.6 or later and its system extension on, the finding names the process that added the account.</li>
         <li><strong>Revocation from the console,</strong> per session, per account or per Mac.</li>
-        <li><strong>Gaps you can see.</strong> The server flags Macs that stop checking in, and the agent reports tampering with itself or with Privileges' protection.</li>
+        <li><strong>Gaps you can see.</strong> The server flags Macs that stop checking in, and the agent reports tampering with itself or with Privileges' protection, and grants that Privileges' own log doesn't back.</li>
         <li><strong>Evidence in your own systems.</strong> OCSF records go to Splunk, Microsoft Sentinel or syslog, and nothing is sent to us.</li>
       </ul>
       <p><a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a> compares the two in detail.</p>
