@@ -6,14 +6,14 @@
 <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <title>What Altiward adds to SAP Privileges | Altiward</title>
-<meta name="description" content="Compare SAP Privileges alone with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.">
+<meta name="description" content="Compare SAP Privileges alone, including 2.6's audit history, with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.">
 <link rel="canonical" href="https://altiward.com/guides/sap-privileges-with-altiward/">
 <meta property="og:type" content="article">
 <meta property="og:site_name" content="Altiward">
 <meta property="og:locale" content="en_GB">
 <meta property="og:url" content="https://altiward.com/guides/sap-privileges-with-altiward/">
 <meta property="og:title" content="What Altiward adds to SAP Privileges | Altiward">
-<meta property="og:description" content="Compare SAP Privileges alone with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.">
+<meta property="og:description" content="Compare SAP Privileges alone, including 2.6's audit history, with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.">
 <meta property="og:image" content="https://altiward.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -71,7 +71,7 @@
    "@id": "https://altiward.com/guides/sap-privileges-with-altiward/#webpage",
    "url": "https://altiward.com/guides/sap-privileges-with-altiward/",
    "name": "What Altiward adds to SAP Privileges | Altiward",
-   "description": "Compare SAP Privileges alone with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.",
+   "description": "Compare SAP Privileges alone, including 2.6's audit history, with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.",
    "isPartOf": {
     "@id": "https://altiward.com/#site"
    },
@@ -89,17 +89,17 @@
     "@id": "https://altiward.com/guides/sap-privileges-with-altiward/#article"
    },
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-25"
+   "dateModified": "2026-10-26"
   },
   {
    "@type": "TechArticle",
    "@id": "https://altiward.com/guides/sap-privileges-with-altiward/#article",
    "url": "https://altiward.com/guides/sap-privileges-with-altiward/",
    "headline": "What Altiward adds to SAP Privileges",
-   "description": "Compare SAP Privileges alone with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.",
+   "description": "Compare SAP Privileges alone, including 2.6's audit history, with Privileges plus Altiward: expiry enforcement, unexpected admin findings, fleet visibility and SIEM evidence.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-25",
+   "dateModified": "2026-10-26",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -185,6 +185,7 @@
       <div class="toc">
         <span class="label">On this page</span>
         <a href="#summary">What Altiward adds</a>
+        <a href="#audit-history">Compare SAP&nbsp;Privileges audit history feature</a>
         <a href="#expiry">Check the admin group after expiry</a>
         <a href="#findings">Bring unexpected admins into view</a>
         <a href="#deployment">Keep control of the evidence</a>
@@ -211,7 +212,7 @@
           <tbody>
             <tr><th scope="row">Requesting admin</th><td>Grants admin with managed duration, authentication and reason settings</td><td>The same Privileges workflow, with Altiward checking the resulting admin rights</td></tr>
             <tr><th scope="row">Expiry enforcement</th><td>Revocation timer, configurable revocation rules and optional tamper protection; SAP documents limits to guaranteed removal</td><td>Adds an independent check: alert on overdue rights by default, or remove them when enforcement is enabled</td></tr>
-            <tr><th scope="row">Unexpected admins</th><td>Version 2.6.0 can record admin-group changes locally, including the process responsible, with its system extension on macOS 14+</td><td>Checks membership against recorded grants and your permanent-admin list, and sends findings to the console and SIEM; with the extension on, names the process that added the account</td></tr>
+            <tr><th scope="row">Unexpected admins</th><td>Version 2.6.0 can record admin-group changes in the Mac's own log, including the process responsible, with its system extension on macOS 14+; remote logging doesn't send them</td><td>Checks membership against recorded grants and your permanent-admin list, and sends findings to the console and SIEM; with the extension on, names the process that added the account</td></tr>
             <tr><th scope="row">Removing admin rights</th><td>Removes the rights it granted, when the timer ends or the user gives them back; SAP says it doesn't remove admin rights it didn't grant</td><td>Revoke any admin who isn't a permanent admin from the console, per session, per account or per Mac; the agent removes them from the admin group itself. With <code>OutOfBandEnforcement</code> set to <code>enforce</code>, it also removes admin rights nobody granted after a grace period, without a request</td></tr>
             <tr><th scope="row">Fleet visibility</th><td>Local history and configurable remote grant and revocation events</td><td>Adds a console showing reported admin rights across enrolled Macs and requests to revoke them</td></tr>
             <tr><th scope="row">Coverage gaps</th><td>Grant and revocation events do not by themselves confirm that an agent is still reporting</td><td>The Altiward server flags missing agent check-ins so your team can see where checks have stopped</td></tr>
@@ -225,6 +226,25 @@
         </table>
       </div>
       <p class="actions"><a class="button outline" href="https://github.com/Altiward/altiward/blob/main/docs/install.md"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>Read the install guide</a></p>
+
+      <h2 id="audit-history">Compare SAP&nbsp;Privileges audit history feature</h2>
+      <p>Privileges 2.6.0 added an audit history. On macOS 14 or later, with its system extension on, it records each change to the admin group, including changes made outside Privileges, and the process that made it. The <code>--history</code> option of <code>PrivilegesCLI</code> shows the past 30 days of entries written by 2.6.0 or later. That answers what happened on one Mac. The questions below are about every Mac.</p>
+      <div class="compare product-comparison" tabindex="0" role="region" aria-label="Privileges 2.6 audit history compared with Privileges 2.6 plus Altiward">
+        <table>
+          <thead><tr><th scope="col">Question</th><th scope="col">Privileges 2.6 alone</th><th scope="col">Privileges 2.6 + Altiward</th></tr></thead>
+          <tbody>
+            <tr><th scope="row">Where is the record kept?</th><td>In the Mac's own log, read with <code>PrivilegesCLI --history</code> for the past 30 days</td><td>On your server, for as long as you choose, and in your SIEM</td></tr>
+            <tr><th scope="row">Who can erase it?</th><td>Anyone with admin rights on that Mac, including the person it records. Wiping, replacing or losing the Mac erases it too</td><td>No one on the Mac: the record is on your server and in your SIEM</td></tr>
+            <tr><th scope="row">What reaches your SIEM?</th><td>Remote logging sends the grants and revocations Privileges makes. Admin-group changes made outside Privileges, and attempts the extension blocked, stay on the Mac</td><td>Every admin nobody granted, with the process that added them, each attempt the extension blocked, and every grant and revocation</td></tr>
+            <tr><th scope="row">Who holds admin now?</th><td>Ask each Mac</td><td>One console view across every enrolled Mac</td></tr>
+            <tr><th scope="row">Someone made admin another way</th><td>Recorded on the Mac. Privileges doesn't remove admin rights it didn't grant</td><td>Flagged in the console and your SIEM, revocable from the console, and removed after a grace period with <code>OutOfBandEnforcement</code> set to <code>enforce</code></td></tr>
+            <tr><th scope="row">Rights that outlive the timer</th><td>A grant with no revocation after it, found by reading each Mac's history</td><td>The agent reads the admin group and raises an alert, or removes the rights with <code>ExpiryEnforcement</code> set to <code>enforce</code></td></tr>
+            <tr><th scope="row">A Mac that stops reporting</th><td>Nothing is recorded, so nothing looks wrong</td><td>The server flags the missed check-ins</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>A quick test: from one place, without signing in to any Mac, can you list everyone who holds admin now, say which of them nobody granted, and show that last quarter's grants were removed? Privileges 2.6 records the facts on each Mac. Altiward collects them, checks them against the admin group and keeps them off the Mac.</p>
+      <p>If grants and revocations in your SIEM are enough, <a href="/forwarder/">altiward-forwarder</a> relays Privileges' webhook with no agent on the Mac. It carries what remote logging sends, so changes made outside Privileges still stay on the Mac.</p>
 
       <h2 id="expiry">Check the admin group after expiry</h2>
       <p>A timer and a grant event describe the intended admin window. Altiward's agent also reads the Mac's admin group. With enforcement enabled, it removes rights found past the recorded expiry and configured grace period, then records enforcement as the reason the session ended. The default policy alerts without removing rights; the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example agent profile</a> documents the options.</p>
@@ -253,6 +273,7 @@
         <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges">Managing Privileges</a>: managed settings, remote logging and system extension</li>
         <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Frequently-Asked-Questions">Frequently Asked Questions</a>: revocation limits and local-admin capabilities</li>
         <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/releases/tag/2.6.0">Privileges 2.6.0 release notes</a>: local history and admin-group change records</li>
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/blob/2.6.0/source/PrivilegesExtension/main.m">system extension source, 2.6.0</a>: admin-group changes and blocked attempts are written to the Mac's log only</li>
         <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/130">issue 130</a>: Privileges removes only admin rights requested through it</li>
         <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges#adminbudget">AdminBudget</a>: the daily limit planned for version 2.7, and how a date change affects it</li>
         <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/209">issue 209</a>: the client-side event queue and its suitability for audits</li>
