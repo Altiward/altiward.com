@@ -21,12 +21,14 @@ jobs:
       - uses: lycheeverse/lychee-action@e7477775783ea5526144ba13e8db5eec57747ce8 # v2.9.0
         with:
           # The Azure portal refuses automated requests; its Deploy to Azure links are fine.
+          # NHS England's site blocks GitHub's runners with 403; its pages load in a browser.
           args: >-
             --no-progress
             --root-dir ${{ github.workspace }}
             --index-files index.html
             --include-fragments
             --exclude '^https://portal\.azure\.com/'
+            --exclude '^https://digital\.nhs\.uk/'
             --max-retries 3
             --timeout 30
             ${{ github.event_name != 'push' && github.event_name != 'pull_request' && ' ' || '--offline' }}
