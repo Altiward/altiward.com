@@ -24,10 +24,12 @@ locations. Brand sources live in the application's `assets/brand/`; its
 `scripts/brand/export.sh website <path-to-this-checkout>` refreshes the SVG mark.
 `og.png` is the brand's SocialCard; refresh it from the application's checkout with
 `swift scripts/brand/render-social.swift ../altiward.com/og.png website`. The other raster
-assets (`mark.png`, `apple-touch-icon.png`, `favicon.ico`) and the console screenshots in
-`images/` are maintained here. The screenshots are real captures of the console with example
-data, never drawings: `console-<view>-light.png` and `-dark.png`, at a 1440 by 900 viewport and
-device scale 2 (the revocation shots are crops of the detail panel and dialog). Pages show them
+assets (`mark.png`, `apple-touch-icon.png`, `favicon.ico`) are maintained here. The console
+screenshots in `images/` are real captures of the console with example data, never drawings;
+refresh them, with their WebP copies, from the application's checkout with
+`make site-screenshots SITE=../altiward.com`, then check the alt text, captions and sizes of
+the pages that show them. They are `console-<view>-light.png` and `-dark.png`, at a 1440 by 900
+viewport and device scale 2 (the detail panel and dialog shots are crops). Pages show them
 with `<picture>`, the dark one under `prefers-color-scheme: dark`, with width, height and alt
 text, and every caption says "Example data".
 
