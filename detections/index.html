@@ -169,7 +169,7 @@
       <p class="lede">altiward-siem holds analytics rules, hunting queries and saved searches for the OCSF records Altiward and altiward-forwarder send. Every field each one reads is checked against example records from both projects.</p>
       <div class="actions">
         <a class="button solid" href="https://github.com/Altiward/altiward-siem?tab=readme-ov-file#readme-ov-file"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View detections on GitHub</a>
-        <a class="button outline" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward-siem%2Fv0.4.0%2Fsentinel%2Fazuredeploy.json">Deploy the Sentinel rules</a>
+        <a class="button outline" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward-siem%2Fv0.9.0%2Fsentinel%2Fazuredeploy.json">Deploy the Sentinel rules</a>
       </div>
       <p class="hero-note">Free and open source under Apache 2.0. Set up the Sentinel table first, as <a href="https://github.com/Altiward/altiward/tree/main/integrations/sentinel">Altiward's Sentinel guide</a> describes.</p>
     </div>
@@ -178,7 +178,7 @@
   <div class="wrap closing">
     <section class="section" id="detections" aria-labelledby="detections-title">
       <div class="section-head">
-        <h2 id="detections-title">Thirteen rules and searches</h2>
+        <h2 id="detections-title">Eighteen rules and searches</h2>
         <p class="muted">Each runs in your SIEM, as a Sentinel rule or hunting query and a Splunk search. They read the events Altiward or altiward-forwarder sends; the forwarder sends grants and revocations only, so most need Altiward.</p>
       </div>
       <div class="compare plain">
@@ -190,6 +190,10 @@
             <tr><th scope="row">Admin rights SAP&nbsp;Privileges didn't grant, still unexplained</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
             <tr><th scope="row">Admin rights that outlived their expiry</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
             <tr><th scope="row">A tamper check failing on a Mac</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
+            <tr><th scope="row">A SAP&nbsp;Privileges grant claim the agent refused or Privileges' log didn't confirm</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
+            <tr><th scope="row">A Mac's device key replaced without approval</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
+            <tr><th scope="row">A Mac's device key waiting for approval</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
+            <tr><th scope="row">Bursts of new Macs enrolled with one token</th><td>Hunting query</td><td>Report</td><td>Altiward</td></tr>
             <tr><th scope="row">Persistence that appeared while someone was admin</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
             <tr><th scope="row">A local account that appeared while someone was admin</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
             <tr><th scope="row">A Mac that stopped checking in</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
@@ -205,6 +209,7 @@
         </table>
       </div>
       <p class="muted">The admin-time rule is a template: set the limit at the top of the query. 120 minutes a day is the default. To report the same limit as SAP&nbsp;Privileges 2.7's AdminBudget, use the same number. The rule adds up time on the server's side, so it works on any Privileges version, covers someone's Macs together, and isn't reset by moving a Mac's date forward.</p>
+      <p class="muted">The device-key rules alert at High when a Mac's key is replaced without approval, and at Medium when a key waits for approval: check it against the Mac's last check-in and its owner. With Altiward server 0.9.0's <strong>Approve every new Mac</strong> on, every new Mac raises a pending-key alert too. The enrolment-burst query counts new Macs one enrolment token adds in an hour, to find a leaked token.</p>
     </section>
 
     <section class="section" id="install" aria-labelledby="install-title">
@@ -212,7 +217,7 @@
         <h2 id="install-title">Install in Sentinel or Splunk</h2>
       </div>
       <dl class="points">
-        <div><dt>Microsoft Sentinel</dt><dd>Deploy every analytics rule at once with the <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward-siem%2Fv0.4.0%2Fsentinel%2Fazuredeploy.json">Deploy to Azure template</a>, or create one from its YAML. Paste a hunting query into Logs. The rules read the <code>AltiwardOCSF_CL</code> table, which Altiward's setup script creates; altiward-forwarder uses the same table.</dd></div>
+        <div><dt>Microsoft Sentinel</dt><dd>Deploy every analytics rule at once with the <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward-siem%2Fv0.9.0%2Fsentinel%2Fazuredeploy.json">Deploy to Azure template</a>, or create one from its YAML. Paste a hunting query into Logs. The rules read the <code>AltiwardOCSF_CL</code> table, which Altiward's setup script creates; altiward-forwarder uses the same table.</dd></div>
         <div><dt>Splunk</dt><dd>Copy <code>savedsearches.conf</code> into one of your apps. The alerts and reports start switched off: enable the ones you want and add an alert action. Each search is also a file to paste into Search.</dd></div>
         <div><dt>Checked against real records</dt><dd>CI checks every field a detection reads against example OCSF records from Altiward and altiward-forwarder, so a rule can't depend on a field neither project sends.</dd></div>
       </dl>
