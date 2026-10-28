@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://altiward.com/</loc><lastmod>2026-10-24</lastmod></url>
-  <url><loc>https://altiward.com/altiward/</loc><lastmod>2026-10-26</lastmod></url>
-  <url><loc>https://altiward.com/how-it-works/</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://altiward.com/altiward/</loc><lastmod>2026-10-28</lastmod></url>
+  <url><loc>https://altiward.com/how-it-works/</loc><lastmod>2026-10-28</lastmod></url>
   <url><loc>https://altiward.com/laps/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://altiward.com/forwarder/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://altiward.com/detections/</loc><lastmod>2026-10-28</lastmod></url>
   <url><loc>https://altiward.com/dspt-caf/</loc><lastmod>2026-10-24</lastmod></url>
-  <url><loc>https://altiward.com/assurance/</loc><lastmod>2026-10-27</lastmod></url>
+  <url><loc>https://altiward.com/assurance/</loc><lastmod>2026-10-28</lastmod></url>
   <url><loc>https://altiward.com/security/</loc><lastmod>2026-10-26</lastmod></url>
   <url><loc>https://altiward.com/guides/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://altiward.com/guides/sap-privileges-expiry/</loc><lastmod>2026-10-25</lastmod></url>
@@ -15,5 +15,5 @@
   <url><loc>https://altiward.com/guides/find-unexpected-admins/</loc><lastmod>2026-10-24</lastmod></url>
   <url><loc>https://altiward.com/guides/sap-privileges-with-altiward/</loc><lastmod>2026-10-26</lastmod></url>
   <url><loc>https://altiward.com/guides/mac-temporary-admin-tools-compared/</loc><lastmod>2026-10-25</lastmod></url>
-  <url><loc>https://altiward.com/guides/intune-epm-mac/</loc><lastmod>2026-10-24</lastmod></url>
+  <url><loc>https://altiward.com/guides/intune-epm-mac/</loc><lastmod>2026-10-28</lastmod></url>
 </urlset>
