@@ -182,6 +182,10 @@
           <p>Review detected changes to local accounts, launch items, sudoers, SSH keys and remote access. Missing check-ins show where visibility has stopped.</p>
         </div>
         <div>
+          <h3>Work with Intune and Platform SSO</h3>
+          <p>Connect Intune, read-only, and the server checks each Mac that enrols a new key against Intune. A key sent with the device ID of another Mac or device waits for your approval, and is reported at High. The console shows each Mac's primary user and the Macs Intune manages that have never reported to Altiward, and a Mac that Intune still hears from but Altiward doesn't is reported within hours instead of days. On Macs registered for Platform SSO, events name each person by the account Platform SSO links them to, and a changed link is reported as tampering.</p>
+        </div>
+        <div>
           <h3>Bring the record into your SIEM</h3>
           <p>Send session evidence, findings and console actions to Splunk, Microsoft Sentinel or syslog as OCSF events, and correlate them with the telemetry you already collect. A daily record of each Mac's admin group, and each change to it, goes too, so you keep who held admin after the console's own history is removed.</p>
         </div>
@@ -276,7 +280,7 @@
         </dl>
         <div class="actions">
           <a class="button solid" href="https://github.com/Altiward/altiward/blob/main/docs/install.md">Read the install guide</a>
-          <a class="button outline" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward%2Fserver-v1.1.0%2Fdeploy%2Fazure%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward%2Fserver-v1.1.0%2Fdeploy%2Fazure%2FcreateUiDefinition.json"><svg class="azure-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/azure.svg#azure-mark"></use></svg>Deploy to Azure</a>
+          <a class="button outline" href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward%2Fserver-v1.2.0%2Fdeploy%2Fazure%2Fazuredeploy.json/createUIDefinitionUri/https%3A%2F%2Fraw.githubusercontent.com%2FAltiward%2Faltiward%2Fserver-v1.2.0%2Fdeploy%2Fazure%2FcreateUiDefinition.json"><svg class="azure-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/azure.svg#azure-mark"></use></svg>Deploy to Azure</a>
           <a class="button outline" href="https://github.com/Altiward/altiward/releases">Releases</a>
         </div>
       </div>

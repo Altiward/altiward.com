@@ -89,7 +89,7 @@
     "@id": "https://altiward.com/guides/sap-privileges-siem/#article"
    },
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-24"
+   "dateModified": "2026-10-28"
   },
   {
    "@type": "TechArticle",
@@ -99,7 +99,7 @@
    "description": "Get macOS SAP Privileges grant and revoke events into Splunk, Microsoft Sentinel or syslog: Privileges' own remote logging, altiward-forwarder or Altiward.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-24",
+   "dateModified": "2026-10-28",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -289,7 +289,7 @@
       <p>Every record says <code>verified: false</code>, because it's what the Mac reported and nothing checks it. A local admin can stop Privileges from reporting.</p>
 
       <h2 id="altiward">3. Altiward: checked against the admin group</h2>
-      <p>The Altiward agent reads each Mac's admin group and compares it with the grants Privileges reported and your permanent-admin list. The server sends the same OCSF records, plus findings for what doesn't match. CEF is also available for syslog. You choose the destination; no session evidence goes to Altiward.</p>
+      <p>The Altiward agent reads each Mac's admin group and compares it with the grants Privileges reported and your permanent-admin list. The server sends the same OCSF records, plus findings for what doesn't match, and a daily record of each Mac's admin group and each change to it, so your SIEM keeps who held admin after the console's own history is removed. CEF is also available for syslog. You choose the destination; no session evidence goes to Altiward.</p>
       <div class="compare" tabindex="0" role="region" aria-label="Altiward SIEM integrations">
         <table>
           <thead><tr><th scope="col">Destination</th><th scope="col">How Altiward sends events</th><th scope="col">Setup and examples</th></tr></thead>
@@ -313,7 +313,7 @@
         <li><strong>Admin rights without a recorded grant:</strong> check the account's purpose and your permanent-admin list.</li>
         <li><strong>Detected changes during a session:</strong> correlate new local accounts or other persistence changes with your security telemetry.</li>
         <li><strong>Rights past expiry:</strong> check your configured expiry policy and the recorded outcome. Alerting is the default; removing rights requires enforcement to be enabled.</li>
-        <li><strong>Missing check-ins:</strong> investigate a loss of visibility. The finding does not establish why the Mac stopped reporting.</li>
+        <li><strong>Missing check-ins:</strong> investigate a loss of visibility. The finding does not establish why the Mac stopped reporting. It names who was in the Mac's admin group at its last check-in. With Intune connected, a Mac that Intune still hears from is reported within hours, at High, because its agent may have been removed or stopped.</li>
       </ul>
       <p>The <a href="/how-it-works/#see-it">console and SIEM walkthrough</a> shows example records, and the <a href="https://github.com/Altiward/altiward/blob/main/docs/schema/README.md">event schema</a> has the full contract.</p>
 
