@@ -89,7 +89,7 @@
     "@id": "https://altiward.com/guides/sap-privileges-expiry/#article"
    },
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-25"
+   "dateModified": "2026-10-28"
   },
   {
    "@type": "TechArticle",
@@ -99,7 +99,7 @@
    "description": "Why SAP Privileges admin rights can outlive the timer on a Mac: six causes, the settings that fix most, and a profile to start from. Checked on 2.6.0.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-25",
+   "dateModified": "2026-10-28",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -176,6 +176,7 @@
         <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
         <a href="/guides/mac-temporary-admin-tools-compared/">Temporary Mac admin tools compared</a>
         <a href="/guides/sap-privileges-expiry/" aria-current="page">When SAP&nbsp;Privileges admin rights outlive the timer</a>
+        <a href="/guides/stop-sap-privileges-admin/">Stop someone getting admin with SAP&nbsp;Privileges</a>
         <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
         <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
         <a href="/guides/intune-epm-mac/">Intune EPM on Mac: what to use</a>
@@ -253,7 +254,7 @@
           </tbody>
         </table>
       </div>
-      <p>Keep <code>LimitToUser</code>, <code>LimitToGroup</code> and the <code>…ExcludedUsers</code> keys for the accounts that genuinely need them, and remember that anyone outside them has no timer.</p>
+      <p>Keep <code>LimitToUser</code>, <code>LimitToGroup</code> and the <code>…ExcludedUsers</code> keys for the accounts that genuinely need them, and remember that anyone outside them has no timer. To stop a person or a Mac getting admin, see <a href="/guides/stop-sap-privileges-admin/">Stop someone getting admin with SAP&nbsp;Privileges</a>.</p>
 
       <h2 id="profile">A profile to start from</h2>
       <p>This turns on every setting in the table except remote logging. Upload it as custom settings for <code>corp.sap.privileges</code>, for example in Jamf Pro's <em>Application &amp; Custom Settings</em>. Intune's preference file wants the keys alone, without the first four lines or the last two; see the <a href="/guides/intune-epm-mac/#privileges">Intune guide</a>.</p>

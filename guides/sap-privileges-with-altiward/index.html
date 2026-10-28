@@ -89,7 +89,7 @@
     "@id": "https://altiward.com/guides/sap-privileges-with-altiward/#article"
    },
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-26"
+   "dateModified": "2026-10-28"
   },
   {
    "@type": "TechArticle",
@@ -99,7 +99,7 @@
    "description": "Compare SAP Privileges alone, including 2.6's audit history, with Privileges plus Altiward: expiry enforcement, unexpected admins, fleet visibility and SIEM.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-26",
+   "dateModified": "2026-10-28",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -176,6 +176,7 @@
         <a href="/guides/sap-privileges-with-altiward/" aria-current="page">What Altiward adds to SAP&nbsp;Privileges</a>
         <a href="/guides/mac-temporary-admin-tools-compared/">Temporary Mac admin tools compared</a>
         <a href="/guides/sap-privileges-expiry/">When SAP&nbsp;Privileges admin rights outlive the timer</a>
+        <a href="/guides/stop-sap-privileges-admin/">Stop someone getting admin with SAP&nbsp;Privileges</a>
         <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
         <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
         <a href="/guides/intune-epm-mac/">Intune EPM on Mac: what to use</a>
@@ -248,7 +249,7 @@
 
       <h2 id="expiry">Check the admin group after expiry</h2>
       <p>A timer and a grant event describe the intended admin window. Altiward's agent also reads the Mac's admin group. With enforcement enabled, it removes rights found past the recorded expiry and configured grace period, then records enforcement as the reason the session ended. The default policy alerts without removing rights; the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example agent profile</a> documents the options.</p>
-      <p>Privileges has its own revocation settings and optional tamper protection. Keep those configured: Altiward adds another check rather than making the original controls unnecessary. Our <a href="/guides/sap-privileges-expiry/">expiry guide</a> explains the documented limits and settings.</p>
+      <p>Privileges has its own revocation settings and optional tamper protection. Keep those configured: Altiward adds another check rather than making the original controls unnecessary. Our <a href="/guides/sap-privileges-expiry/">expiry guide</a> explains the documented limits and settings. Altiward records and revokes admin rights but doesn't stop anyone asking Privileges again: to do that, change Privileges' settings, as <a href="/guides/stop-sap-privileges-admin/">Stop someone getting admin</a> explains.</p>
 
       <h2 id="findings">Bring unexpected admins into view</h2>
       <p>Altiward checks for admin membership without a recorded grant and outside your list of permanent admins. It also flags an admin account detected during an approved session. Your team can review the finding, request revocation from the console and correlate the session with other security events.</p>
