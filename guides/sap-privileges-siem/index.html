@@ -313,7 +313,7 @@
         <li><strong>Admin rights without a recorded grant:</strong> check the account's purpose and your permanent-admin list.</li>
         <li><strong>Detected changes during a session:</strong> correlate new local accounts or other persistence changes with your security telemetry.</li>
         <li><strong>Rights past expiry:</strong> check your configured expiry policy and the recorded outcome. Alerting is the default; removing rights requires enforcement to be enabled.</li>
-        <li><strong>Missing check-ins:</strong> investigate a loss of visibility. The finding does not establish why the Mac stopped reporting.</li>
+        <li><strong>Missing check-ins:</strong> investigate a loss of visibility. The finding does not establish why the Mac stopped reporting. It names who was in the Mac's admin group at its last check-in. With Intune connected, a Mac that Intune still hears from is reported within hours, at High, because its agent may have been removed or stopped.</li>
       </ul>
       <p>The <a href="/how-it-works/#see-it">console and SIEM walkthrough</a> shows example records, and the <a href="https://github.com/Altiward/altiward/blob/main/docs/schema/README.md">event schema</a> has the full contract.</p>
 
