@@ -89,7 +89,7 @@
    },
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-24"
+   "dateModified": "2026-10-28"
   },
   {
    "@type": "SoftwareSourceCode",
@@ -199,12 +199,12 @@
             <tr><th scope="row">A local account that appeared while someone was admin</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
             <tr><th scope="row">A Mac that stopped checking in</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
             <tr><th scope="row">A grant or revocation the Mac's admin group contradicts</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
-            <tr><th scope="row">The console's break-glass token used</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
+            <tr><th scope="row">The console's break-glass token used to sign in or to change something</th><td>Analytics rule</td><td>Alert</td><td>Altiward</td></tr>
             <tr><th scope="row">More than 10 elevations by one person in 7 days</th><td>Analytics rule</td><td>Alert</td><td>Altiward or the forwarder</td></tr>
             <tr><th scope="row">One person's admin time in a day over your limit</th><td>Analytics rule</td><td>Alert</td><td>Altiward or the forwarder</td></tr>
             <tr><th scope="row">Elevations, with the reason, expiry and what reported them</th><td>Hunting query</td><td>Report</td><td>Altiward or the forwarder</td></tr>
             <tr><th scope="row">Console actions: revocations, enrollment approvals, settings changes</th><td>Hunting query</td><td>Report</td><td>Altiward</td></tr>
-            <tr><th scope="row">Console sign-ins and sign-outs</th><td>Hunting query</td><td>Report</td><td>Altiward</td></tr>
+            <tr><th scope="row">Console sign-ins and sign-outs, with single sign-on or a console token</th><td>Hunting query</td><td>Report</td><td>Altiward</td></tr>
             <tr><th scope="row">Use of permanent admin accounts, such as the LAPS account: sign-ins, admin prompts and screen sharing</th><td>Hunting query</td><td>Report</td><td>Altiward</td></tr>
           </tbody>
         </table>
@@ -212,6 +212,7 @@
       <p class="muted">The admin-time rule is a template: set the limit at the top of the query. 120 minutes a day is the default. To report the same limit as SAP&nbsp;Privileges 2.7's AdminBudget, use the same number. The rule adds up time on the server's side, so it works on any Privileges version, covers someone's Macs together, and isn't reset by moving a Mac's date forward.</p>
       <p class="muted">The device-key rules alert at High when a Mac's key is replaced without approval, and at Medium when a key waits for approval: check it against the Mac's last check-in and its owner. With Altiward server 0.9.0's <strong>Approve every new Mac</strong> on, every new Mac raises a pending-key alert too.</p>
       <p class="muted">The rotated-key rule alerts at High, runs every 15 minutes and needs Altiward server 1.0.0 and altiward-siem 1.0.0. It means a device key the Mac had already replaced by rotation was used again, so two copies of that key exist: the Mac's, and one made from a backup, a disk image or Migration Assistant. The server may already have revoked the Mac's working key, so neither holder has one and the Mac enrols again by itself. The alert's revoked-key field says whether it did. A copy carries the Mac's serial number and hardware UUID, so before you approve a pending key, run <code>altiward-agent status</code> on the Mac through your MDM and approve only the key whose fingerprint matches the one it prints. If nothing was revoked and the pending key is the Mac's, the active key, if there is one, isn't the Mac's: revoke it, then approve the Mac's. Then look for where the copy came from. A Mac restored from a backup older than its last rotation raises this alert too, and its fresh key is genuine.</p>
+      <p class="muted">The break-glass rule alerts when someone signs in with the console's break-glass token, or changes something with it. It needs Altiward server 1.2.0 and altiward-siem 1.2.0 to alert on sign-ins: the server records each hour a console token is used as a sign-in. The rule still alerts when those records arrive late, such as after an identity provider outage. With those versions, the console sign-ins query and report also show sign-ins made with a console token, alongside single sign-on.</p>
       <p class="muted">The enrolment-burst query counts new Macs one enrolment token adds in an hour, to find a leaked token.</p>
     </section>
 
