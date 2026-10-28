@@ -89,7 +89,7 @@
     "@id": "https://altiward.com/guides/intune-epm-mac/#article"
    },
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-24"
+   "dateModified": "2026-10-28"
   },
   {
    "@type": "TechArticle",
@@ -99,7 +99,7 @@
    "description": "Intune Endpoint Privilege Management is Windows-only. How to give Intune-managed Macs temporary admin with SAP Privileges, and deploy it and Altiward.",
    "inLanguage": "en-GB",
    "datePublished": "2026-10-20",
-   "dateModified": "2026-10-24",
+   "dateModified": "2026-10-28",
    "image": "https://altiward.com/og.png",
    "author": {
     "@id": "https://altiward.com/#org"
@@ -243,12 +243,14 @@
       <h2 id="altiward">Add Altiward for oversight</h2>
       <p>Privileges grants admin, and Altiward checks it. Altiward's agent reads each Mac's admin group, compares it with the grants Privileges reported, and alerts on rights past their expiry, or removes them if you turn enforcement on. It sends the evidence to your SIEM. It needs an Altiward server first: follow the <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md">install guide</a>, which also lists <a href="https://github.com/Altiward/altiward/blob/main/docs/data-handling.md">what leaves each Mac</a>. Then, in Intune:</p>
       <ul>
-        <li><strong>Agent settings:</strong> a <strong>Templates › Preference file</strong> policy with domain <code>com.altiward.agent</code>, from the <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.plist">example settings</a>: <code>ServerURL</code>, <code>EnrollmentToken</code>, <code>PermanentAdmins</code> and <code>ExpiryEnforcement</code> (<code>alert</code> by default, or <code>enforce</code> to remove overdue rights).</li>
+        <li><strong>Agent settings:</strong> a <strong>Templates › Custom</strong> policy, device channel, with <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/com.altiward.agent.mobileconfig"><code>com.altiward.agent.mobileconfig</code></a>, a ready-made profile that Intune accepts without conversion. Edit your copy first: <code>ServerURL</code>, <code>EnrollmentToken</code>, <code>PermanentAdmins</code> and <code>ExpiryEnforcement</code> (<code>alert</code> by default, or <code>enforce</code> to remove overdue rights), and the rest as its comments explain. Leave <code>MDMDeviceID</code> as <code>{{deviceid}}</code>, which Intune fills in with each Mac's device ID.</li>
         <li><strong>Login items:</strong> a <strong>Templates › Custom</strong> policy, device channel, with <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/altiward-login-items.mobileconfig"><code>altiward-login-items.mobileconfig</code></a>, so people can't turn the agent off.</li>
         <li><strong>The package:</strong> <code>Altiward-&lt;version&gt;.pkg</code> from <a href="https://github.com/Altiward/altiward/releases">GitHub Releases</a>, added as <strong>macOS app (PKG)</strong>.</li>
         <li><strong>The hook:</strong> add the keys from the agent release's <a href="https://github.com/Altiward/altiward/blob/main/deploy/mdm/corp.sap.privileges.plist"><code>corp.sap.privileges.plist</code></a> to your existing Privileges preference file. <code>PostChangeExecutableChecksum</code> must match the agent version you deploy, or Privileges won't run the hook. Leave <code>PostChangeActionOnGrantOnly</code> unset, because Altiward needs revokes too.</li>
       </ul>
+      <p>To create the agent settings and login items policies in one go, run <code>Push-AltiwardProfiles.ps1</code> from the server release's <code>integrations/intune/</code> folder. It signs in as you, creates the policies (or updates them when you run it again) and assigns them to a group. Run it with <code>-WhatIf</code> first, and leave out <code>-PrivilegesSettings</code> when Privileges' settings are already in a preference file, as in this guide. <a href="https://github.com/Altiward/altiward/blob/main/deploy/intune/README.md">Its README</a> lists the permissions it asks for.</p>
       <p>Privileges has one hook setting, so Altiward can't run alongside altiward-forwarder's on-Mac hook. Its relay works with either.</p>
+      <p>The Altiward server can also read Intune's list of Macs through Microsoft Graph, read-only, with one application permission: each Mac's serial number, name, primary user and last check-in. It never changes anything in Intune. See <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md#7-connect-intune-optional">Connect Intune</a> in the install guide.</p>
 
       <h2 id="laps">Keep the managed admin account separate</h2>
       <p>If Intune creates a local admin account at enrollment, put its short name in <code>PermanentAdmins</code>, exactly as you set it in Intune. Altiward leaves listed accounts out of unexpected-admin findings, expiry enforcement and the removal of admin rights nobody granted. Left out, the account shows as an admin nobody granted, and with <code>OutOfBandEnforcement</code> set to <code>enforce</code> Altiward removes it from the admin group. Password management stays with Intune. See <a href="/laps/">how Altiward treats permanent admins</a>.</p>
