@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'none'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<title>Stop someone getting admin with SAP Privileges | Altiward</title>
+<meta name="description" content="Stop a person or a Mac getting admin through SAP Privileges: EnforcePrivileges, LimitToUser and LimitToGroup in Intune and Jamf Pro, and how to check it took.">
+<link rel="canonical" href="https://altiward.com/guides/stop-sap-privileges-admin/">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="Altiward">
+<meta property="og:locale" content="en_GB">
+<meta property="og:url" content="https://altiward.com/guides/stop-sap-privileges-admin/">
+<meta property="og:title" content="Stop someone getting admin with SAP Privileges | Altiward">
+<meta property="og:description" content="Stop a person or a Mac getting admin through SAP Privileges: EnforcePrivileges, LimitToUser and LimitToGroup in Intune and Jamf Pro, and how to check it took.">
+<meta property="og:image" content="https://altiward.com/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Altiward: Open-source oversight for temporary macOS admin rights.">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/mark.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="preload" href="/fonts/inter-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/jetbrains-mono-latin-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/site.css">
+<script type="application/ld+json">
+{
+ "@context": "https://schema.org",
+ "@graph": [
+  {
+   "@type": "Organization",
+   "@id": "https://altiward.com/#org",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "logo": {
+    "@type": "ImageObject",
+    "@id": "https://altiward.com/#logo",
+    "url": "https://altiward.com/mark.png",
+    "contentUrl": "https://altiward.com/mark.png",
+    "width": 512,
+    "height": 512
+   },
+   "image": {
+    "@id": "https://altiward.com/#logo"
+   },
+   "description": "Altiward adds open-source oversight to SAP Privileges, with admin membership checks, configurable expiry enforcement, console revocation and SIEM export. Self-hosted under Apache 2.0.",
+   "email": "hello@altiward.com",
+   "contactPoint": {
+    "@type": "ContactPoint",
+    "contactType": "general enquiries",
+    "email": "hello@altiward.com",
+    "availableLanguage": "en-GB"
+   },
+   "sameAs": [
+    "https://github.com/Altiward"
+   ]
+  },
+  {
+   "@type": "WebSite",
+   "@id": "https://altiward.com/#site",
+   "name": "Altiward",
+   "url": "https://altiward.com/",
+   "inLanguage": "en-GB",
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   }
+  },
+  {
+   "@type": "WebPage",
+   "@id": "https://altiward.com/guides/stop-sap-privileges-admin/#webpage",
+   "url": "https://altiward.com/guides/stop-sap-privileges-admin/",
+   "name": "Stop someone getting admin with SAP Privileges | Altiward",
+   "description": "Stop a person or a Mac getting admin through SAP Privileges: EnforcePrivileges, LimitToUser and LimitToGroup in Intune and Jamf Pro, and how to check it took.",
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "breadcrumb": {
+    "@id": "https://altiward.com/guides/stop-sap-privileges-admin/#breadcrumb"
+   },
+   "primaryImageOfPage": {
+    "@type": "ImageObject",
+    "url": "https://altiward.com/og.png",
+    "width": 1200,
+    "height": 630
+   },
+   "inLanguage": "en-GB",
+   "mainEntity": {
+    "@id": "https://altiward.com/guides/stop-sap-privileges-admin/#article"
+   },
+   "datePublished": "2026-10-28",
+   "dateModified": "2026-10-28"
+  },
+  {
+   "@type": "TechArticle",
+   "@id": "https://altiward.com/guides/stop-sap-privileges-admin/#article",
+   "url": "https://altiward.com/guides/stop-sap-privileges-admin/",
+   "headline": "Stop someone getting admin with SAP Privileges",
+   "description": "Stop a person or a Mac getting admin through SAP Privileges: EnforcePrivileges, LimitToUser and LimitToGroup in Intune and Jamf Pro, and how to check it took.",
+   "inLanguage": "en-GB",
+   "datePublished": "2026-10-28",
+   "dateModified": "2026-10-28",
+   "image": "https://altiward.com/og.png",
+   "author": {
+    "@id": "https://altiward.com/#org"
+   },
+   "publisher": {
+    "@id": "https://altiward.com/#org"
+   },
+   "isPartOf": {
+    "@id": "https://altiward.com/#site"
+   },
+   "mainEntityOfPage": {
+    "@id": "https://altiward.com/guides/stop-sap-privileges-admin/#webpage"
+   }
+  },
+  {
+   "@type": "BreadcrumbList",
+   "@id": "https://altiward.com/guides/stop-sap-privileges-admin/#breadcrumb",
+   "itemListElement": [
+    {
+     "@type": "ListItem",
+     "position": 1,
+     "name": "Altiward",
+     "item": "https://altiward.com/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 2,
+     "name": "Guides",
+     "item": "https://altiward.com/guides/"
+    },
+    {
+     "@type": "ListItem",
+     "position": 3,
+     "name": "Stop someone getting admin with SAP Privileges",
+     "item": "https://altiward.com/guides/stop-sap-privileges-admin/"
+    }
+   ]
+  }
+ ]
+}
+</script>
+</head>
+<body>
+<a class="skip-link" href="#page-content">Skip to content</a>
+
+<div class="wrap">
+  <header class="site-header">
+      <a class="lockup" href="/" aria-label="Altiward home">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <span>Altiward</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <details class="nav-menu">
+          <summary>Products<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m3 4.5 3 3 3-3"/></svg></summary>
+          <div class="nav-panel">
+            <a href="/altiward/"><strong>Altiward</strong><span>Agent, server and console for Mac admin oversight</span></a>
+            <a href="/forwarder/"><strong class="mono">altiward-forwarder</strong><span>SAP&nbsp;Privileges events to your SIEM, no agent needed</span></a>
+            <a href="/detections/"><strong class="mono">altiward-siem</strong><span>Detection rules for Sentinel and Splunk</span></a>
+            <a class="panel-foot" href="/#projects">How the three fit together</a>
+          </div>
+        </details>
+        <a href="/how-it-works/">How it works</a>
+        <a href="/guides/" aria-current="true">Guides</a>
+        <a href="/altiward/#start">Install</a>
+      </nav>
+      <span class="spacer"></span>
+      <a class="gh-button" href="https://github.com/Altiward/altiward?tab=readme-ov-file#readme-ov-file"><svg class="github-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><use href="/images/github.svg#github-mark"></use></svg>View on GitHub</a>
+    </header>
+
+  <div class="guide-layout">
+    <nav class="guide-nav" aria-label="Guides">
+      <div>
+        <span class="label">Guides</span>
+        <a href="/guides/sap-privileges-with-altiward/">What Altiward adds to SAP&nbsp;Privileges</a>
+        <a href="/guides/mac-temporary-admin-tools-compared/">Temporary Mac admin tools compared</a>
+        <a href="/guides/sap-privileges-expiry/">When SAP&nbsp;Privileges admin rights outlive the timer</a>
+        <a href="/guides/stop-sap-privileges-admin/" aria-current="page">Stop someone getting admin with SAP&nbsp;Privileges</a>
+        <a href="/guides/sap-privileges-siem/">SAP&nbsp;Privileges events in your SIEM</a>
+        <a href="/guides/find-unexpected-admins/">Find unexpected Mac admin accounts</a>
+        <a href="/guides/intune-epm-mac/">Intune EPM on Mac: what to use</a>
+        <a href="/laps/">macOS LAPS and just-in-time admin</a>
+        <a href="/dspt-caf/">CAF-aligned DSPT evidence</a>
+      </div>
+      <div class="toc">
+        <span class="label">On this page</span>
+        <a href="#answer">The short answer</a>
+        <a href="#why">Why revoking isn't enough</a>
+        <a href="#settings">The three settings</a>
+        <a href="#intune">Stop a Mac in Intune</a>
+        <a href="#jamf">Stop a Mac in Jamf Pro</a>
+        <a href="#scope">Scope Privileges with your oversight</a>
+        <a href="#check">Check it took</a>
+        <a href="#sources">Sources</a>
+      </div>
+    </nav>
+
+    <main class="guide-article" id="page-content" tabindex="-1">
+      <h1>Stop someone getting admin with SAP&nbsp;Privileges</h1>
+      <p class="lede">Revoking someone's admin rights ends the rights they have now. It doesn't stop them asking SAP&nbsp;Privileges again a minute later. To stop a person or a Mac getting admin, change Privileges' own settings through your MDM, then check the change took.</p>
+      <div class="meta-line"><span>Last reviewed October 2026</span><span>SAP Privileges 2.6.0</span><span>Intune and Jamf Pro</span></div>
+
+      <h2 id="answer">The short answer</h2>
+      <ol class="step-rows">
+        <li><div><strong>For one Mac,</strong> give it a copy of your Privileges profile with <code>EnforcePrivileges</code> set to <code>user</code>, and exclude it from the usual one.</div></li>
+        <li><div><strong>For who may use Privileges at all,</strong> set <code>LimitToUser</code> or <code>LimitToGroup</code>, and make sure people outside the limit aren't admins already: Privileges doesn't time their rights.</div></li>
+        <li><div><strong>Scope Privileges and your oversight together,</strong> to the same groups, so no Mac has Privileges without something recording what it grants.</div></li>
+        <li><div><strong>Check on the Mac</strong> that the person is a standard user and Privileges shows it's managed, and in your oversight tool that nothing else made them admin.</div></li>
+      </ol>
+      <p>Key names are the ones you set in a configuration profile for the <code>corp.sap.privileges</code> preference domain, as SAP's <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges">Managing Privileges</a> page documents them. This guide was checked against <a href="https://github.com/SAP/macOS-enterprise-privileges/releases/tag/2.6.0">Privileges 2.6.0</a>.</p>
+
+      <h2 id="why">Why revoking isn't enough</h2>
+      <p>Privileges is self-service: anyone it manages can ask for admin whenever they like, within the limits its profile sets. Removing someone from the admin group, by hand, with a script or from an oversight console, ends that grant only. The next request works as before.</p>
+      <p>Two other moves look like answers and aren't:</p>
+      <ul>
+        <li><strong>Removing Privileges from the Mac</strong> also removes the timer that would end a grant in progress, so rights held at that moment stay. End them first.</li>
+        <li><strong>Unenrolling the Mac from your oversight tool,</strong> or revoking its key in Altiward, stops you hearing from it. Privileges carries on granting admin, and nothing is recorded centrally until the Mac reports again.</li>
+      </ul>
+
+      <h2 id="settings">The three settings</h2>
+      <div class="compare" tabindex="0" role="region" aria-label="Privileges settings that control who can get admin">
+        <table>
+          <thead><tr><th scope="col">Key</th><th scope="col">Value</th><th scope="col">What it does</th><th scope="col">Use it for</th></tr></thead>
+          <tbody>
+            <tr><th scope="row"><code>EnforcePrivileges</code></th><td><code>user</code>, <code>admin</code> or <code>none</code></td><td>SAP: "Immediately enforces specific privileges." With <code>user</code>, the person is made a standard user, and stays one while the profile applies. With <code>none</code>, Privileges can't change privileges at all, so whatever the person holds now stays.</td><td>Stopping one Mac, or a group of Macs. Use <code>user</code>, not <code>none</code>.</td></tr>
+            <tr><th scope="row"><code>LimitToUser</code></th><td>An array of short names</td><td>Restricts use of Privileges to those accounts. SAP asks for the array form; the single string is kept for version 1 and will go.</td><td>Allowing only named people on shared or sensitive Macs.</td></tr>
+            <tr><th scope="row"><code>LimitToGroup</code></th><td>An array of group names</td><td>Restricts use of Privileges to members of those groups, as the Mac sees them.</td><td>Allowing a team, through a group on the Mac.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>The two limits allow people rather than block them, so they suit "only these people may" better than "everyone except this person". Anyone outside a limit isn't managed by Privileges at all: SAP calls it "expected behavior" that an admin right they hold has no timer (<a href="https://github.com/SAP/macOS-enterprise-privileges/issues/277">issue #277</a>). Before you add a limit, check nobody outside it is an admin already. Our free <a href="/guides/find-unexpected-admins/">Unexpected admins check</a> lists admins outside your permanent list.</p>
+      <p>Privileges' Dock icon changes when a profile sets any of these three keys, and no other key changes it, so it's a quick sign on the Mac that the profile arrived.</p>
+
+      <h2 id="intune">Stop a Mac in Intune</h2>
+      <p>Intune can't exclude a person from a profile that's assigned to devices: Microsoft's <a href="https://learn.microsoft.com/en-us/intune/intune-service/configuration/device-profile-assign">assignment guidance</a> says excluding user groups from a device group assignment isn't supported, because Intune doesn't evaluate which devices belong to which users. Work with the person's Mac instead, in a static device group.</p>
+      <ol class="step-rows">
+        <li><div><strong>Make a static device group,</strong> such as <em>No self-service admin</em>, in Microsoft Entra ID, and add the Mac. Static, because Microsoft recommends against excluding dynamic device groups where timing matters: a new Mac can get the profile before the group catches up.</div></li>
+        <li><div><strong>Copy your Privileges settings</strong> into a new macOS policy, the same profile type you use now (a preference file for <code>corp.sap.privileges</code>, or a custom profile), and add the key below. Keep every other key, including Altiward's hook settings if you use Altiward, so the Mac stays configured as before apart from this.</div></li>
+        <li><div><strong>Assign the copy</strong> to <em>No self-service admin</em>.</div></li>
+        <li><div><strong>Exclude <em>No self-service admin</em></strong> from your usual Privileges profile's assignment. Two profiles setting <code>corp.sap.privileges</code> on one Mac conflict, so the Mac must get exactly one.</div></li>
+      </ol>
+      <figure class="code-panel">
+        <figcaption class="code-head"><span class="file">corp.sap.privileges, the key to add</span></figcaption>
+<pre tabindex="0" aria-label="EnforcePrivileges key for a Privileges preference file"><code>&lt;key&gt;EnforcePrivileges&lt;/key&gt;
+&lt;string&gt;user&lt;/string&gt;</code></pre>
+      </figure>
+      <p>To let the Mac back, remove it from the group. Intune then removes the copy and applies the usual profile.</p>
+
+      <h2 id="jamf">Stop a Mac in Jamf Pro</h2>
+      <p>The same pattern works with <a href="https://learn.jamf.com/en-US/bundle/jamf-pro-documentation-current/page/Scope.html">scope</a>. Put the Mac in a static computer group, add that group to the <strong>Exclusions</strong> on your usual Privileges profile's scope, and scope a copy of the profile, with <code>EnforcePrivileges</code> set to <code>user</code>, to the group alone.</p>
+
+      <h2 id="scope">Scope Privileges with your oversight</h2>
+      <p>Assign the Privileges app, its settings and its system extension profile to exactly the groups that get your oversight tool, and to none wider. A Mac with Privileges but no oversight lets people become admins with nothing recorded off the Mac. In Intune, if you use Altiward's <code>Push-AltiwardProfiles.ps1</code>, it assigns Altiward's profiles to one group: add the Privileges app and its profiles to the same group yourself. The <a href="/guides/intune-epm-mac/">Intune guide</a> covers deploying both.</p>
+      <p>Keep the stopped Mac in that scope. It still has Privileges installed, and you want to keep hearing from it.</p>
+
+      <h2 id="check">Check it took</h2>
+      <p><strong>On the Mac,</strong> check the person is no longer in the admin group. This prints yes or no:</p>
+      <figure class="code-panel">
+        <figcaption class="code-head"><span class="file">Admin group check</span></figcaption>
+<pre tabindex="0" aria-label="Command that checks whether a user is in the admin group"><code>dseditgroup -o checkmember -m &lt;short name&gt; admin</code></pre>
+      </figure>
+      <p>Then ask for admin in Privileges as that person: it shouldn't grant it. Check your break-glass account and your MDM's managed admin account are still admins, on a pilot Mac before you rely on it.</p>
+      <p><strong>From outside the Mac,</strong> an oversight tool shows whether the change holds. Altiward's agent reads the Mac's admin group: <strong>Admins now</strong> stops listing the person, and if anything else makes them admin later, such as a script or a second admin account, it's reported as an admin nobody granted. The agent's health readings include the <code>EnforcePrivileges</code> value the Mac's profile sets, so your SIEM records when the setting arrived. Altiward records and reports; the stopping is done by Privileges and your MDM.</p>
+
+      <h2 id="sources">Sources</h2>
+      <ul class="sources">
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/wiki/Managing-Privileges">Managing Privileges</a>, Privileges wiki: <code>EnforcePrivileges</code>, <code>LimitToUser</code>, <code>LimitToGroup</code> and the Dock icon</li>
+        <li>SAP, <a href="https://github.com/SAP/macOS-enterprise-privileges/releases/tag/2.6.0">Privileges 2.6.0 release notes</a>, and GitHub issue <a href="https://github.com/SAP/macOS-enterprise-privileges/issues/277">#277</a></li>
+        <li>Microsoft, <a href="https://learn.microsoft.com/en-us/intune/intune-service/configuration/device-profile-assign">Assign device profiles in Microsoft Intune</a>, group exclusion support matrix</li>
+        <li>Jamf, <a href="https://learn.jamf.com/en-US/bundle/jamf-pro-documentation-current/page/Scope.html">Scope</a>, Jamf Pro documentation</li>
+        <li>Altiward, <a href="https://github.com/Altiward/altiward/blob/main/docs/install.md">install guide</a>, Deploy the agent</li>
+      </ul>
+
+      <div class="closing-box">
+        <svg viewBox="0 0 64 64" aria-hidden="true"><rect x="8" y="44" width="48" height="12" fill="currentColor"/><rect x="24" y="28" width="32" height="12" fill="currentColor"/><rect x="40" y="12" width="16" height="12" fill="var(--signal)"/></svg>
+        <div>
+          <strong>See whether the change holds.</strong>
+          <p>Altiward reads each Mac's admin group, so a setting that didn't take, or admin rights gained another way, show up rather than going unnoticed.</p>
+        </div>
+        <a class="button solid" href="/how-it-works/">See how it works</a>
+      </div>
+    </main>
+  </div>
+</div>
+
+<footer class="site-footer slim">
+  <div class="wrap">
+    <p class="legal">© 2026 Altiward. Open source under the Apache License 2.0. Altiward is an independent project and isn't affiliated with or endorsed by SAP. SAP is a trademark of SAP SE.</p>
+    <nav aria-label="Project resources">
+      <a href="/security/">Report a vulnerability</a>
+      <a href="/assurance/">Assessing Altiward</a>
+      <a href="mailto:hello@altiward.com">hello@altiward.com</a>
+      <a href="https://github.com/Altiward/altiward.com/blob/main/guides/stop-sap-privileges-admin/index.html">Edit this page on GitHub</a>
+    </nav>
+  </div>
+</footer>
+</body>
+</html>
