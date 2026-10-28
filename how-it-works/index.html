@@ -267,13 +267,13 @@
         <div>
           <div class="section-head">
             <h2 id="siem-title">Four example findings as OCSF events</h2>
-            <p>Altiward exports recorded sessions and findings as <a href="https://schema.ocsf.io/">OCSF</a> events. In Splunk they arrive with the sourcetype <code>altiward:ocsf</code>. The same event types go to Microsoft Sentinel or a syslog receiver.</p>
+            <p>Altiward exports recorded sessions and findings as <a href="https://schema.ocsf.io/">OCSF</a> events. In Splunk they arrive with the sourcetype <code>altiward:ocsf</code>. The same event types go to Microsoft Sentinel or a syslog receiver. A daily record of each Mac's admin group, and each change to it, goes as OCSF Group Management events, so you keep who held admin after the console's own history is removed.</p>
           </div>
           <div class="finding-rows">
             <div><strong>Admin rights without a grant</strong><span class="tag high">High</span><p>An account in the Mac's admin group without a recorded grant and outside your list of permanent admins. Investigate its purpose before deciding how to respond.</p></div>
             <div><strong>Admin account created</strong><span class="tag high">High</span><p>A new admin account appeared while someone held approved admin. Mapped to MITRE ATT&amp;CK <a href="https://attack.mitre.org/techniques/T1136/001/">T1136.001, Create Account: Local Account</a>.</p></div>
             <div><strong>Admin rights outlived their expiry</strong><span class="tag">Medium</span><p>The grant ran out but the rights didn't. Altiward reports it, or removes them when enforcement is on.</p></div>
-            <div><strong>Altiward agent stopped checking in</strong><span class="tag">Medium</span><p>The server has missed expected check-ins from a Mac. Investigate the loss of visibility; the agent may still be checking locally.</p></div>
+            <div><strong>Altiward agent stopped checking in</strong><span class="tag">Medium</span><p>The server has missed expected check-ins from a Mac. Investigate the loss of visibility; the agent may still be checking locally. A Mac you've retired in the console never raises it.</p></div>
           </div>
         </div>
         <figure class="code-panel">
