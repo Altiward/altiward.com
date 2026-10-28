@@ -196,6 +196,7 @@
             <tr><th scope="row">Is it released?</th><td>Yes. Version 1.1.0 of the server and the Mac agent, released on 28 October 2026, and version 1.0.0 of altiward-forwarder and altiward-siem, released on 27 October 2026.</td><td>Releases for <a href="https://github.com/Altiward/altiward/releases/tag/server-v1.1.0">the server</a>, <a href="https://github.com/Altiward/altiward/releases/tag/agent-v1.1.0">the agent</a>, <a href="https://github.com/Altiward/altiward-forwarder/releases">altiward-forwarder</a> and <a href="https://github.com/Altiward/altiward-siem/releases/tag/v1.0.0">altiward-siem</a></td></tr>
             <tr><th scope="row">Licence and cost</th><td>Apache 2.0, free. There's no licence key or activation, so nothing stops working when a contract ends.</td><td><a href="https://github.com/Altiward/altiward/blob/main/LICENSE">LICENSE</a></td></tr>
             <tr><th scope="row">Where does the data go?</th><td>To your server, then to the SIEM and identity provider you configure. No telemetry, crash reporting or registration, and nothing is sent to us.</td><td><a href="https://github.com/Altiward/altiward/blob/main/docs/data-handling.md">Data handling</a></td></tr>
+            <tr><th scope="row">How long is data kept?</th><td>With a SIEM connected, the console keeps a year of history by default. With none, it keeps history for good. An admin can set a period instead, from 90 days to 10 years. Nothing is removed before the SIEM has it, and Activity has its own setting.</td><td><a href="https://github.com/Altiward/altiward/blob/main/docs/data-handling.md#how-long-history-is-kept">How long history is kept</a></td></tr>
             <tr><th scope="row">Development practices</th><td>Altiward meets the OpenSSF Best Practices <strong>passing</strong> criteria (October 2026): a self-assessment against the Open Source Security Foundation's criteria for change control, reporting, testing, security and analysis, with each answer and its evidence public.</td><td><a href="https://www.bestpractices.dev/projects/15960">OpenSSF Best Practices, project 15960</a>, and the weekly <a href="https://scorecard.dev/viewer/?uri=github.com/Altiward/altiward">OpenSSF Scorecard</a></td></tr>
             <tr><th scope="row">Who supports it?</th><td>The project, through GitHub Discussions and issues, with no guaranteed response time. There's no paid support contract today.</td><td><a href="https://github.com/Altiward/.github/blob/main/SUPPORT.md">Getting help</a></td></tr>
           </tbody>
@@ -258,7 +259,7 @@
         <div>
           <span class="num">03</span>
           <h3>Operate</h3>
-          <p>You back up Postgres, look after certificates if Caddy doesn't, connect single sign-on and your SIEM, and watch Fleet for Macs that stop checking in. Removing Altiward leaves SAP&nbsp;Privileges working as before.</p>
+          <p>You back up Postgres, look after certificates if Caddy doesn't, connect single sign-on and your SIEM, watch Fleet for Macs that stop checking in, and retire Macs you've taken out of use by revoking their key. Removing Altiward leaves SAP&nbsp;Privileges working as before.</p>
         </div>
       </div>
     </section>
